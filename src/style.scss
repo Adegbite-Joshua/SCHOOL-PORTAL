@@ -1,0 +1,59 @@
+@use 'sass:math';
+$color: red;
+
+.h4 {
+    background: $color;
+}
+// @for $i from 1 through 10 {
+//     .width#{$i}{
+//         width: calc($i/10)vw;
+//     }
+// }
+@mixin calendarDisp{
+    width: calc(100%/7);
+    aspect-ratio: 1;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // padding: 10px;  
+    text-align: center;  
+    &:hover{
+        background-color: #f2f2f2;
+        border-radius: 50%;
+    }
+}
+
+.weeks, .days{
+    width: 100%;
+    ul{
+        list-style: none;
+        width: 100%;
+        display: flex;
+    }
+    ul{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    ul li{
+        @include calendarDisp
+    }
+}
+.inactive{
+    color: #f2f2f2f3;
+}
+.active{
+    color: rgba(252, 2, 252, 0.986);
+    
+}
+// @for $i from 1 through 5 {
+
+// }
+
+
+
+// I created this music web app and weather searh app making use of APIs
+// Links: 
+// Weather App: https://adegbite-joshua.github.io/WEATHER-APP/
+// Music App: 

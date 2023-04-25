@@ -1,0 +1,263 @@
+.open-button1 {
+  background-color: #0FBBE6;
+  color: white;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  /* width: 280px; */
+}
+
+/* The popup chat - hidden by default */
+.chat-popup1 {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 999999999999999999999999999999;
+}
+
+/* Add styles to the form container */
+.form-container1 {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container1 textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container1 textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container1 .btn1 {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container1 .cancel1 {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container1 .btn1:hover, .open-button1:hover {
+  opacity: 1;
+}
+
+.signup{
+  background-image: radial-gradient(
+    circle at 20% 25% ,
+    black 30%,
+    rgb(15, 187, 230) 35%
+  );
+  /* url() */
+
+  padding: 1rem;
+  height: 90vh;
+}
+
+.sidenav {
+  height: 100vh; /* 100% Full-height */
+  width: 20vw; /* 0 width - change this with JavaScript */
+  /* position: fixed;
+  z-index: 1;
+  bottom: 0;
+  left: 0; */
+  display: inline-block;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  /* padding-top: 150px; Place content 60px from the top */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 35px 8px 32px;
+  text-decoration: none;
+  font-size: 18px;
+  text-align: start;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  width: 20vw;
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.StudentMainDiv{
+  display: inline-block;
+  width: 60vw !important;
+  height: 100vh;
+  background-color: #0FBBE6;
+  padding-top:80px !important;
+}
+
+.topSpace{
+  padding-top: 80px !important;
+}
+.subjectsDiv{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+}
+.taskDiv{
+  width: 20vw;
+  height: 100vh;
+  overflow-y: auto;
+}
+.InboxMainDiv , .SubjectMainDiv, .SettingsMainDiv, .AllSettingsDiv{
+  width: 55vw;
+  height: 100vh;
+}
+.OtherStudents, .SubjectSideDiv, .SettingsOtherDiv{
+  width: 25vw;
+  height: 100vh;
+}
+
+/* Chat containers */
+.container1 {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+/* Darker chat container */
+.darker1 {
+  border-color: #ccc;
+  background-color: #ddd;
+}
+
+/* Clear floats */
+.container1::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Style images */
+.container1 img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+/* Style the right image */
+.container1 img.right1 {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+
+/* Style time text */
+.time-right1 {
+  float: right;
+  color: #aaa;
+}
+
+/* Style time text */
+.time-left1 {
+  float: left;
+  color: #999;
+}
+
+.messageContainer{
+  height: 80vh;
+  overflow-y: auto;
+}
+.messageContainer::-webkit-scrollbar{
+  height: 0;
+  width: 0;
+}
+
+.ErrorMainDiv{
+  width: 80vw;
+  height: 100vh;
+}
+
+.OtherStudentsDiv::-webkit-scrollbar, .AnnouncementMainDiv::-webkit-scrollbar{
+  width: 10px;
+  height: 10px;
+  background-color: rgb(29, 221, 255);
+}
+.OtherStudentsDiv::-webkit-scrollbar-track, .AnnouncementMainDiv::-webkit-scrollbar-track{
+  width: 10px;
+  height: 10px;
+  /* background-color: yellow; */
+}
+.OtherStudentsDiv::-webkit-scrollbar-thumb, .AnnouncementMainDiv::-webkit-scrollbar-thumb{
+  width: 10px;
+  height: 10px;
+  background-color: rgba(252, 252, 16, 0.712);
+  background-image: url(vite.svg);
+  background-repeat: repeat;
+  background-size: 100% 20px;
+  /* background- */
+}
+
+table {
+  table-layout: fixed;
+}
+
+/* .tdInput{
+  width: 60px !important;
+  height: 40px;
+} */
+
+.AnnouncementMain{
+  width: 80vw;
+  height: 100vh;
+  overflow-y: auto;
+}
+.StudentCalendar{
+  width: 70%;
+  aspect-ratio: 1;
+}
+/* .calendar ul{
+  width: 100%;
+  list-style: none;
+  display: flex;
+} */
+/* .calendar ul li{
+  width: calc(100%/7);
+} */
