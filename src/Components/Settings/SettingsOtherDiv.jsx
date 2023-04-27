@@ -4,7 +4,7 @@ import React from 'react'
 const SettingsOtherDiv = () => {
   return (
     <>
-        <div className='SettingsOtherDiv border border-2 border-info'>
+        <div className='SettingsOtherDiv border border-2 border-info topSpace'>
           <h5>General</h5>
           <h5>Edit Profile</h5>
           <h5>Subjects</h5>

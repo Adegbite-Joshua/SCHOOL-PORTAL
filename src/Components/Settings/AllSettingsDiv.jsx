@@ -11,7 +11,7 @@ const AllSettingsDiv = () => {
             <StudentSocialMedia/>
             <StudentSubject/>
             <StudentProfileUpdate/>
-            <StudentCalendar/>
+            {/* <StudentCalendar/> */}
         </div>
     </>
   )

@@ -79,12 +79,12 @@
 }
 
 .sidenav {
-  height: 100vh; /* 100% Full-height */
-  width: 20vw; /* 0 width - change this with JavaScript */
-  /* position: fixed;
+  height: 70px; /* 100% Full-height */
+  width: 100vw; /* 0 width - change this with JavaScript */
+  position: fixed;
   z-index: 1;
-  bottom: 0;
-  left: 0; */
+  top: 0;
+  left: 0;
   display: inline-block;
   background-color: #111; /* Black*/
   overflow-x: hidden; /* Disable horizontal scroll */
@@ -93,9 +93,13 @@
 
 /* The navigation menu links */
 .sidenav a {
+  display: flex;
+  /* flex-direction: row;
+  align-items: center;
+  justify-content: center; */
   padding: 8px 35px 8px 32px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 14px;
   text-align: start;
   color: #818181;
   display: block;
@@ -122,7 +126,8 @@
 
 .StudentMainDiv{
   display: inline-block;
-  width: 60vw !important;
+  /* width: 70vw !important; */
+  flex-basis: 70%;
   height: 100vh;
   background-color: #0FBBE6;
   padding-top:80px !important;
@@ -131,24 +136,32 @@
 .topSpace{
   padding-top: 80px !important;
 }
-.subjectsDiv{
+/* .subjectsDiv{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   padding: 1rem;
-}
+} */
 .taskDiv{
-  width: 20vw;
+  /* width: 30vw; */
+  flex-basis: 30%;
+  padding: 1rem;
   height: 100vh;
   overflow-y: auto;
 }
 .InboxMainDiv , .SubjectMainDiv, .SettingsMainDiv, .AllSettingsDiv{
-  width: 55vw;
+  /* width: 55vw; */
+  flex-basis: 70%;
   height: 100vh;
 }
 .OtherStudents, .SubjectSideDiv, .SettingsOtherDiv{
-  width: 25vw;
+  /* width: 30vw; */
+  flex-basis: 30%;
   height: 100vh;
+  /* display: flex;
+  border: 1px solid red;
+  align-items: center; */
+  /* justify-content: center; */
 }
 
 /* Chat containers */
@@ -245,7 +258,7 @@ table {
 } */
 
 .AnnouncementMain{
-  width: 80vw;
+  width: 100vw;
   height: 100vh;
   overflow-y: auto;
 }

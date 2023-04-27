@@ -2,18 +2,19 @@ import { useState } from 'react'
 import './App.css'
 import './style.scss'
 import './../node_modules/font-awesome/css/font-awesome.css'
-import '../node_modules/bootstrap/dist/css/bootstrap.css'
-import LandingPage from './Components/LandingPage'
+// import '../node_modules/bootstrap/dist/css/bootstrap.css'
+import LandingPage from './Components/LandingPage/LandingPage'
 import SignUpPage from './Components/Login/SignUpPage'
 import { Routes, Route } from "react-router-dom";
 import SignInPage from './Components/Login/SignInPage'
 import MessageSchool from './Components/MessageSchool'
 import StudentDashboard from './Components/Dashboard/StudentDashboard'
 import StudentInbox from './Components/Inbox/StudentInbox'
-import ErrorPage from './Components/ErrorPage'
+import ErrorPage from './Components/ErrorPage/ErrorPage'
 import StudentsSubject from './Components/Subjects/StudentsSubject'
 import StudentAnnouncement from './Components/Announcements/StudentAnnouncement'
 import StudentSettings from './Components/Settings/StudentSettings'
+import StudentActivity from './Components/Activities/StudentActivity'
 
 
 
@@ -31,6 +32,7 @@ function App() {
           <Route path='/inbox' element={<StudentInbox/>}/>
           <Route path='/subjects' element={<StudentsSubject/>}/>
           <Route path='/announcement' element={<StudentAnnouncement/>}/>
+          <Route path='/activities' element={<StudentActivity/>}/>
           <Route path='/settings' element={<StudentSettings/>} />
           <Route path='*' element={<ErrorPage/>}/>
         </Routes>

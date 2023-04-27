@@ -17,8 +17,8 @@ const InboxMainDiv = () => {
     // messageContainer.scrollTop = messageContainer.scrollHeight;
   return (
     <>
-        <div className='InboxMainDiv p-5 position-relative'>
-            <h3 className='position-sticky top-0 text-center'>Adegbite Joshua</h3>
+        <div className='InboxMainDiv p-5 position-relative topSpace'>
+            <h3 className='position-sticky top-0 text-center'>Adegbite Joshua <span id='toggleIcon' className='float-end border border-2 p-2 rounded-3'><i className='fas fa-bars'></i></span></h3>
             <div id='messageContainer' className='messageContainer'>
                 <ReceiverMessage/>    
                 <SenderMessage/>    

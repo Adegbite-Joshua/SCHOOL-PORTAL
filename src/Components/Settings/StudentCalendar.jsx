@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react'
 
 
 const StudentCalendar = () => {
-    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'October', 'November', 'December']
+    let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     const [date, setdate] = useState(new Date())
     const [currentYear, setcurrentYear] = useState(date.getFullYear())
     const [currentMonth, setcurrentMonth] = useState(date.getMonth()) 
+    console.log(months);
     // console.log(date.getDate())
     const renderCalendar =()=>{
         // const [daysNumber, setdaysNumber] = useState(new Date(currentYear, currentMonth+1, 0).getDate())
@@ -32,33 +33,52 @@ const StudentCalendar = () => {
         for (let i = lastDayofMonth; i < 6 ; i++) {
             document.getElementById('daysList').innerHTML += `<li className=''>${(i-lastDayofMonth+1)}</li>`
         }
+        console.log(currentMonth);
+        console.log(currentYear);
     }
     
     useEffect(() => {
         renderCalendar()
     
-    }, [currentYear, currentMonth])
+    },[])
     
     document.querySelectorAll('.icon').forEach(icon => {
+        // console.log(icon);
         icon.addEventListener('click', ()=>{
             if (icon.id==='prev') {
+                // console.log(icon);
                 if (currentMonth==0) {
+                    let newYear = Number(currentYear)-1;
+                    setcurrentYear(newYear)
                     setcurrentMonth(11)
-                    setcurrentYear(currentYear-1)
+                    // setdate(new Date(currentYear, currentMonth))
+                    // currentYear = date.getFullYear();
+                    // currentMonth = date.getMonth();
+
+                    renderCalendar()
                 } else{
-                    setcurrentMonth(currentMonth-1)
+                    let newMonth = currentMonth(currentMonth)-1;
+                    setcurrentMonth(newMonth)
+                    // renderCalendar()
                 }
             } else if (icon.id==='next') {
+                // console.log(icon);
                 if (currentMonth==11) {
+                    let newYear = Number(currentYear)+1;
+                    setcurrentYear(newYear)
                     setcurrentMonth(0)
-                    setcurrentYear(currentYear+1)
-                } else{
-                    setcurrentMonth(currentMonth+1)
+                    // renderCalendar()
+                    // setdate(new Date(currentYear, currentMonth))
+                } else {
+                    let newMonth = Number(currentMonth)+1;
+                    setcurrentMonth(newMonth)
+                    // renderCalendar()
                 }
-            } else{
-
-                renderCalendar()
-            }
+            }// } else{
+                // renderCalendar()
+            // }
+            // console.log(currentMonth)
+            // console.log(currentYear)
         })
     });
   return (
@@ -85,7 +105,7 @@ const StudentCalendar = () => {
                 </div>
                 <div className="days">
                     <ul id='daysList'>
-                        {/* <li>8</li> */}
+                        
                     </ul>
                 </div>
                 

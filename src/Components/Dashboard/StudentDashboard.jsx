@@ -1,13 +1,14 @@
 import React from 'react'
 import StudentMainDiv from './StudentMainDiv'
-import StudentSideNav from '../StudentSideNav'
+import StudentSideNav from '../StudentNav/StudentSideNav'
 import Tasks from '../Tasks'
+import './style.scss'
 
 const StudentDashboard = () => {
   document.querySelector("title").innerText = `Dashboard`
   return (
     <>
-        <div className='d-flex'>
+        <div className='d-flex allWrap'>
             <StudentSideNav/>
             <StudentMainDiv/>
             <div className='d-inline-block topSpace taskDiv position-relative'>

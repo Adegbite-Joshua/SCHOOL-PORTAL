@@ -1,0 +1,22 @@
+@media (max-width: 650px) {
+    .OtherStudents, .SubjectSideDiv{
+        // flex-basis: 0% !important;
+        // display: none;
+        transition: 3s;
+        position: absolute;
+        background-color: gold;
+        top: 0;
+        right: 0;
+        padding: 5px 10px;
+        // width: auto;
+    }
+    #toggleIcon{
+        display: inline !important;
+    }
+    .InboxMainDiv{
+        flex-basis: 100%;
+    }
+}
+#toggleIcon{
+    display: none;
+}

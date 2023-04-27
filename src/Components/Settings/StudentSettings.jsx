@@ -1,5 +1,5 @@
 import React from 'react'
-import StudentSideNav from '../StudentSideNav'
+import StudentSideNav from '../StudentNav/StudentSideNav'
 import SettingsMainDiv from './SettingsMainDiv'
 import SettingsOtherDiv from './SettingsOtherDiv'
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import Announcement from './Announcement'
+import './style.scss'
 
 const AnnouncementMainDiv = () => {
   return (

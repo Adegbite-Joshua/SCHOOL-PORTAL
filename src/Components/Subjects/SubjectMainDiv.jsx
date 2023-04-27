@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
 import ReceiverMessage from '../Inbox/ReceiverMessage'
 import SenderMessage from '../Inbox/SenderMessage'
+import ResultsDisplay from './ResultsDisplay'
 import SubjectPerformance from './SubjectPerformance'
+import './style.scss'
 
 
 const SubjectMainDiv = () => {
@@ -18,47 +20,18 @@ const SubjectMainDiv = () => {
     // subjectContainer.scrollTop = subjectContainer.scrollHeight;
   return (
     <>
-        <div className='SubjectMainDiv p-5 position-relative'>
-            <h3 className='position-sticky top-0 text-center'>Mathematics</h3>
-            <div className='w-100 d-flex'>
-                <a>C/A</a>
-                <a>Performance</a>
+        <div className='SubjectMainDiv p-5 topSpace'>
+            <h3 className='top-0 text-center'>Mathematics <span id='toggleIcon' className='float-end border border-2 p-2 rounded-3'><i className='fas fa-bars'></i></span></h3>
+            <div className='w-100 d-flex justify-content-between px-4 mt-3'>
+                <a>C/A & Performance</a>
                 <a>Resources</a>
                 <a>Class</a>
             </div>
-            <div id='subjectContainer' className='subjectContainer w-100 overflow-auto'>
-                <table className='w-100'>
-                    {/* <thead className='w-100 border border-3 text-center'> */}
-                        <tr className=''>
-                            <td className='w-100'>Subjects</td>
-                        </tr>
-                    {/* </thead> */}
-                    {/* <tbody className='w-100'> */}
-                        <tr className='d-flex'>
-                            <td width='70px' className="tdInput border border-2">jk</td>
-                            <td width='70px' className="tdInput border border-2">jkfn</td>
-                            <td width='70px' className="tdInput border border-2">jkfn</td>
-                            <td width='70px' className="tdInput border border-2">jkfn</td>
-                            <td width='70px' className="tdInput border border-2">jkfn</td>
-                            <td width='70px' className="tdInput border border-2">jkfn</td>
-                            <td width='70px' className="tdInput border border-2">jkfn</td>
-                            <td width='70px' className="tdInput border border-2">jkfn</td>
-                            <td width='70px' className="tdInput border border-2">jkfn</td>
-                            <td width='70px' className="tdInput border border-2">jkfn</td>
-                            <td width='70px' className="tdInput border border-2">jkfn</td>
-                            <td width='70px' className="tdInput border border-2">jkfn</td>
-                            <td width='70px' className="tdInput border border-2">jkfn</td>
-                            <td width='70px' className="tdInput border border-2">jkfn</td>
-                            <td width='70px' className="tdInput border border-2">jkfn</td>
-                            <td width='70px' className="tdInput border border-2">jkfn</td>
-                            <td width='70px' className="tdInput border border-2">jkfn</td>
-                            <td width='70px' className="tdInput border border-2">jkfn</td>
-                            
-                        </tr>
-                        
-                    {/* </tbody> */}
-                </table>
-                <div className="d-flex gap-2 text-center">
+            <div id='subjectContainer' className='subjectContainer w-100 mt-3'>
+                <div className="w-100 px-4 resultDiv">
+                    <ResultsDisplay/>
+                </div>
+                <div className="d-flex gap-2 text-center mt-3 performanceDiv">
                     <SubjectPerformance/>
                     <SubjectPerformance/>
                     <SubjectPerformance/>

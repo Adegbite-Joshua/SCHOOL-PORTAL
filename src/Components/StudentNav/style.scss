@@ -1,0 +1,60 @@
+@media (max-width: 820px) {
+    #mySidenav{
+        // width: 150px;
+        flex-basis: 8%;
+        transition: 1s;
+        img {
+            height: 50px !important;
+            width: 50px !important;
+            // aspect-ratio: 1;
+        }
+        h1{
+            font-size: 15px;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+        Link{
+            text-align: center;
+            & span{
+                transform: translateX(30px) !important;
+            }
+        }
+        // &:hover{
+        //     flex-basis: 15% !important;
+        //     Link span{
+        //         transform: translateX(0) !important;
+        //     }
+        // }
+    }
+
+}
+
+@media (max-width: 450px) {
+    #mySidenav{
+        flex-basis: 15%;
+    }
+}
+a{
+    display: flex;
+    flex-direction: column;
+    span[id='icon']{
+        display: block;
+        // margin-left: auto !important;
+        // margin-right: auto !important;
+        text-align: center;
+        font-size: 20px;
+    }
+    span[id='text']{
+        display: block;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: .7s;
+        text-align: center;
+    }
+    &:hover{
+        span[id='text']{
+            opacity: 1;
+            transform: translateY(10px);
+        }
+    }
+}
