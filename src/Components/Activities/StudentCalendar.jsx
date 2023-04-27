@@ -83,7 +83,7 @@ const StudentCalendar = () => {
     });
   return (
     <>
-        <div className='StudentCalendar border border-2'>
+        <div className='StudentCalendar mx-auto my-auto border border-2 topSpace'>
             <header className='d-flex justify-content-between px-5'>
                 <h3 id='header'>September 23</h3>
                 <span>

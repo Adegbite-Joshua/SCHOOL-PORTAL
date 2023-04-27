@@ -51,6 +51,32 @@ $color: red;
     height: 40px !important;
     border: 1px solid black;
 }
+
+@media (max-width: 650px) {
+    .OtherStudents, .SubjectSideDiv, .SettingsOtherDiv{
+        // flex-basis: 0% !important;
+        // display: none;
+        transition: 3s;
+        position: absolute;
+        background-color: gold;
+        top: 0;
+        right: 0;
+        padding: 5px 10px;
+        // width: auto;
+    }
+    #toggleIcon{
+        display: inline !important;
+    }
+    .InboxMainDiv, .SettingsMainDiv{
+        flex-basis: 100% !important;
+        & input, div{
+            width: 100% !important;
+        }
+    }
+}
+#toggleIcon{
+    display: none;
+}
 // @for $i from 1 through 5 {
 
 // }

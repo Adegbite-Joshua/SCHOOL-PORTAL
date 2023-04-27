@@ -1,6 +1,13 @@
+.result{
+    tr{
+        td{
+            border: 1px solid black;
+            width: 180px;
+            text-align: center;
+        }
+    }
+}
 td{
-    border: 1px solid black;
-    width: 180px;
     text-align: center;
 }
 .resultDiv{

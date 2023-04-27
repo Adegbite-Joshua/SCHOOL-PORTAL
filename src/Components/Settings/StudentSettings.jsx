@@ -2,6 +2,7 @@ import React from 'react'
 import StudentSideNav from '../StudentNav/StudentSideNav'
 import SettingsMainDiv from './SettingsMainDiv'
 import SettingsOtherDiv from './SettingsOtherDiv'
+import './style.scss'
 
 
 const StudentSettings = () => {
@@ -12,7 +13,6 @@ const StudentSettings = () => {
           <StudentSideNav/>
           <SettingsMainDiv/>
           <SettingsOtherDiv/>
-          
         </div>
     </>
   )

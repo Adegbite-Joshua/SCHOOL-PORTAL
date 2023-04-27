@@ -26,7 +26,7 @@ const ResultsDisplay = () => {
                     <td>POSITION</td>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id='result'>
                 <tr>
                     <td>00</td>
                     <td>00</td>

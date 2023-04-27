@@ -2,7 +2,7 @@ import React from 'react'
 import StudentSocialMedia from './StudentSocialMedia'
 import StudentSubject from './StudentSubject'
 import StudentProfileUpdate from './StudentProfileUpdate'
-import StudentCalendar from './StudentCalendar'
+import StudentCalendar from '../Activities/StudentCalendar'
 
 const AllSettingsDiv = () => {
   return (
