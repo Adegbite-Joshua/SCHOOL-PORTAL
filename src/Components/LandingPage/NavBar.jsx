@@ -18,6 +18,9 @@ const NavBar = () => {
                 <li className="nav-item">
                 <Link className="nav-link" to='/signup'>Sign Up</Link>
                 </li>
+                <li className="nav-item">
+                <Link className="nav-link" to='http://localhost:5173'>Staff Portal</Link>
+                </li>
                 {/* <li className="nav-item dropdown">
                 <Link className="nav-link dropdown-toggle" to='#' role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Dropdown

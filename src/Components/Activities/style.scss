@@ -1,15 +1,41 @@
 tbody{
     tr{
+        // padding: 4px;
         td{
-            // height: 100px;
-            border: 1px solid red !important;
+            // height: 150px;
+            // border: 1px solid red !important;
             padding-top: 8px;
             padding-bottom: 8px;
             width: 120px;
             text-align: center;
+            margin: 4px 6px;
         }
     }
 }
-// tbody{
-//     width: 100;
-// }
+.ActivityMainDiv{
+    overflow-y: auto !important;
+    &::-webkit-scrollbar{
+        width: 0;
+        height: 0;
+    }
+}
+
+@media (max-width: 900px) {
+    .ActivityOtherSide{
+        // flex-basis: 0% !important;
+        // display: none;
+        transition: 3s;
+        position: absolute;
+        background-color: gold;
+        top: 0;
+        right: 0;
+        padding: 5px 10px;
+        // width: auto;
+    }
+    #toggleIcon{
+        display: inline !important;
+    }
+    .ActivityMainDiv{
+        flex-basis: 100% !important;
+    }
+}

@@ -7,7 +7,7 @@ const StudentCalendar = () => {
     const [date, setdate] = useState(new Date())
     const [currentYear, setcurrentYear] = useState(date.getFullYear())
     const [currentMonth, setcurrentMonth] = useState(date.getMonth()) 
-    console.log(months);
+    // console.log(months);
     // console.log(date.getDate())
     const renderCalendar =()=>{
         // const [daysNumber, setdaysNumber] = useState(new Date(currentYear, currentMonth+1, 0).getDate())
@@ -33,52 +33,30 @@ const StudentCalendar = () => {
         for (let i = lastDayofMonth; i < 6 ; i++) {
             document.getElementById('daysList').innerHTML += `<li className=''>${(i-lastDayofMonth+1)}</li>`
         }
-        console.log(currentMonth);
-        console.log(currentYear);
+        // console.log(currentMonth);
+        // console.log(currentYear);
     }
     
     useEffect(() => {
         renderCalendar()
-    
     },[])
     
     document.querySelectorAll('.icon').forEach(icon => {
         // console.log(icon);
         icon.addEventListener('click', ()=>{
-            if (icon.id==='prev') {
-                // console.log(icon);
-                if (currentMonth==0) {
-                    let newYear = Number(currentYear)-1;
-                    setcurrentYear(newYear)
-                    setcurrentMonth(11)
-                    // setdate(new Date(currentYear, currentMonth))
-                    // currentYear = date.getFullYear();
-                    // currentMonth = date.getMonth();
-
-                    renderCalendar()
-                } else{
-                    let newMonth = currentMonth(currentMonth)-1;
-                    setcurrentMonth(newMonth)
-                    // renderCalendar()
-                }
-            } else if (icon.id==='next') {
-                // console.log(icon);
-                if (currentMonth==11) {
-                    let newYear = Number(currentYear)+1;
-                    setcurrentYear(newYear)
-                    setcurrentMonth(0)
-                    // renderCalendar()
-                    // setdate(new Date(currentYear, currentMonth))
-                } else {
-                    let newMonth = Number(currentMonth)+1;
-                    setcurrentMonth(newMonth)
-                    // renderCalendar()
-                }
-            }// } else{
-                // renderCalendar()
-            // }
-            // console.log(currentMonth)
-            // console.log(currentYear)
+            let newMonth = icon.id=='prev'?currentMonth-1:currentMonth+1;
+            // console.log(newMonth);
+            setcurrentMonth(newMonth)
+            if (currentMonth < 0 || currentMonth > 11) {
+                setdate(new Date(currentYear, currentMonth))
+                setcurrentYear(date.getFullYear())
+                setcurrentMonth(date.getMonth())
+                renderCalendar()
+                console.log(currentMonth);
+            } else{
+                renderCalendar()
+                console.log(currentMonth);
+            }
         })
     });
   return (

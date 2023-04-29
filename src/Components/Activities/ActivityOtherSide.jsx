@@ -4,7 +4,7 @@ import StudentCalendar from './StudentCalendar'
 const ActivityOtherSide = () => {
   return (
     <>
-        <div className='ActivityOtherSide border border-2 border-info'>
+        <div className='ActivityOtherSide d-flex border border-2 border-info'>
             <StudentCalendar/>
         </div>
     </>
