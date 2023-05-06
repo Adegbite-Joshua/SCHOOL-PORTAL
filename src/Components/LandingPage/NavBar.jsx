@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const NavBar = () => {
   return (
     <>
-        <nav style={{position: 'fixed', top: '0', width: '100vw', zIndex: '99999'}} className="navbar navbar-expand-lg bg-warning px-5">
+        <nav style={{position: 'fixed', top: '0', width: '100vw', zIndex: '9999999999999'}} className="navbar navbar-expand-lg px-5">
         <div className="container-fluid">
             <Link className="navbar-brand h4" to='#'>School</Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,7 +16,16 @@ const NavBar = () => {
                 <Link className="nav-link active" aria-current="page" to='/'>Home</Link>
                 </li>
                 <li className="nav-item">
-                <Link className="nav-link" to='/signup'>Sign Up</Link>
+                <Link className="nav-link"></Link>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Sign Up
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><Link class="dropdown-item">Staff</Link></li>
+                        <li><Link class="dropdown-item"  to='/signup'>Student</Link></li>
+                    </ul>
                 </li>
                 <li className="nav-item">
                 <Link className="nav-link" to='http://localhost:5173'>Staff Portal</Link>
@@ -32,8 +41,14 @@ const NavBar = () => {
                     <li><Link className="dropdown-item" to='#'>Something else here</Link></li>
                 </ul>
                 </li> */}
-                <li className="nav-item">
-                <Link className="nav-link" to='/signin'>Sign In</Link>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Sign In
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><Link class="dropdown-item" href="#">Staff</Link></li>
+                        <li><Link class="dropdown-item" to='/signin' href="#">Student</Link></li>
+                    </ul>
                 </li>
                 <li className="nav-item">
                 <Link className="nav-link" to='#'>Contact Us</Link>

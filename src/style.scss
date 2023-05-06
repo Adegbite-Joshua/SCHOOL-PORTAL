@@ -1,9 +1,9 @@
 @use 'sass:math';
 $color: red;
 
-.h4 {
-    background: $color;
-}
+// .h4 {
+//     background: $color;
+// }
 // @for $i from 1 through 10 {
 //     .width#{$i}{
 //         width: calc($i/10)vw;
@@ -45,15 +45,19 @@ $color: red;
 }
 .active{
     color: rgba(252, 2, 252, 0.986);
-    
 }
 .tdInput{
     height: 40px !important;
     border: 1px solid black;
 }
 
+::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+}
+
 @media (max-width: 650px) {
-    .OtherStudents, .SubjectSideDiv, .SettingsOtherDiv{
+    .OtherStudents, .SubjectSideDiv, .SettingsOtherDiv, .ActivityOtherSide{
         // flex-basis: 0% !important;
         // display: none;
         transition: 3s;
@@ -61,6 +65,7 @@ $color: red;
         background-color: gold;
         top: 0;
         right: 0;
+        display: block !important;
         padding: 5px 10px;
         // width: auto;
     }
@@ -76,6 +81,12 @@ $color: red;
 }
 #toggleIcon{
     display: none;
+}
+
+@media (max-width: 768px) {
+    .showNone{
+        display: none;
+    }
 }
 // @for $i from 1 through 5 {
 

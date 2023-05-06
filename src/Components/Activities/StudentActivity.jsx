@@ -9,12 +9,15 @@ const StudentActivity = () => {
     let number = 999
     console.log(number.toLocaleString())
     // console.log(new Date(2023,3))
+    const toggleSideNav =()=>{
+      document.getElementById('ActivityOtherSide').classList.toggle('ActivityOtherSide')
+  }
   return (
     <>
         <div className="d-flex">
             <StudentSideNav/>
-            <ActivityMainDiv/>  
-            <ActivityOtherSide/>
+            <ActivityMainDiv func={toggleSideNav}/>  
+            <ActivityOtherSide func={toggleSideNav}/>
         </div>
 
     </>

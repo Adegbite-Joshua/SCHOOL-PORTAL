@@ -8,12 +8,15 @@ import './style.scss'
 
 const StudentInbox = () => {
     document.querySelector("title").innerText = `Inbox`
+    const toggleSideNav =()=>{
+        document.getElementById('OtherStudents').classList.toggle('OtherStudents')
+    }
   return (
     <>
         <div className='d-flex w-100 overflow-hidden'>
             <StudentSideNav/>
-            <InboxMainDiv/>
-            <OtherStudents/>
+            <InboxMainDiv func={toggleSideNav}/>
+            <OtherStudents func={toggleSideNav}/>
         </div>
     </>
   )

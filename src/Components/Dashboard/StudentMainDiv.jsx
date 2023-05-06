@@ -1,7 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Announcement from './Announcement'
 import SubjectDiv from './SubjectDiv'
-
 const StudentMainDiv = () => {
   return (
     <>
@@ -13,7 +13,7 @@ const StudentMainDiv = () => {
             <button className='btn btn-warning'>Profile</button>
           </div>
           <div className="w-100 p-2">
-            <h4 className='ms-4'>Your Subjects <span className='float-end me-4'>See All</span></h4>
+            <h4 className='ms-4'>Your Subjects <Link className='float-end me-4' to='/subjects'>See All</Link></h4>
             <div className="subjectsDiv">
               <SubjectDiv/>
               <SubjectDiv/>
@@ -21,7 +21,7 @@ const StudentMainDiv = () => {
             </div>
           </div>
           <div className="announcementDiv">
-            <h3>Announcements <span className='float-end'>See All</span></h3>
+            <h3>Announcements <Link className='float-end' to='/announcement'>See All</Link></h3>
             <Announcement/>
             <Announcement/>
           </div>
