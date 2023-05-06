@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import './style.scss'
 import './../node_modules/font-awesome/css/font-awesome.css'
 // import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import LandingPage from './Components/LandingPage/LandingPage'
 import SignUpPage from './Components/Login/SignUpPage'
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useParams } from "react-router-dom";
 import SignInPage from './Components/Login/SignInPage'
 import MessageSchool from './Components/MessageSchool'
 import StudentDashboard from './Components/Dashboard/StudentDashboard'
@@ -17,10 +17,11 @@ import StudentSettings from './Components/Settings/StudentSettings'
 import StudentActivity from './Components/Activities/StudentActivity'
 
 
-
 function App() {
+  
   const [count, setCount] = useState(0);
 
+  
   return (
     <>      
         <Routes>
@@ -28,7 +29,8 @@ function App() {
           <Route path="/home" to="/"/>
           <Route path='/signup' element={<SignUpPage/>}/>
           <Route path='/signin' element={<SignInPage/>}/>
-          <Route path='/dashboard' element={<StudentDashboard/>}/>
+          {/* <Route path='/dashboard' element={<StudentDashboard/>}/> */}
+          <Route path='/dashboard/:name' element={<StudentDashboard/>}/>
           <Route path='/inbox' element={<StudentInbox/>}/>
           <Route path='/subjects' element={<StudentsSubject/>}/>
           <Route path='/announcement' element={<StudentAnnouncement/>}/>

@@ -2,3 +2,29 @@ STUDENTS:  {
     UI - Landing page, signup, signin, dashboard, edit page, subjects page, eachsubject<CA and Exams>,  Announce page
     Logics - signup(), signin(), editInfo(), messageTeacher(), messageSchool(),
 } 
+
+CONTROLLERS - stdentInfo{
+    name,
+    email,
+    phone-number,
+    password,
+    address,
+    class,
+    matricNumber,
+    localGovernment,
+    State,
+    Country,
+    proileUrl,
+    announcement: [],
+    subjects: []
+}
+
+subjects = array [
+    subject
+]
+subject = object {
+    subjectName,
+    subjectInfo,
+    subjectProfileUrl,
+    subjectIndex,
+} 
