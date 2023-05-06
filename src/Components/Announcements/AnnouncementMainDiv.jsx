@@ -12,12 +12,12 @@ const AnnouncementMainDiv = () => {
               <button className='btn btn-info'>Search</button>
             </div>
             <div className='AnnouncementMainDiv' style={{height: '80%', overflowY: 'auto'}}>
-                <Announcement/>
-                <Announcement/>
-                <Announcement/>
-                <Announcement/>
-                <Announcement/>
-                <Announcement/>
+                <Announcement announcement='Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis cum, vel dignissimos illum temporibus nihil molestias.'/>
+                <Announcement announcement='Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis cum, vel dignissimos illum temporibus nihil molestias.'/>
+                <Announcement announcement='Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis cum, vel dignissimos illum temporibus nihil molestias.'/>
+                <Announcement announcement='Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis cum, vel dignissimos illum temporibus nihil molestias.'/>
+                <Announcement announcement='Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis cum, vel dignissimos illum temporibus nihil molestias.'/>
+                <Announcement announcement='Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis cum, vel dignissimos illum temporibus nihil molestias.'/>
             </div>
         </div>
     </>

@@ -1,12 +1,12 @@
 import React from 'react'
 
-const ReceiverMessage = () => {
+const ReceiverMessage = ({message, time}) => {
   return (
     <>
         <div class="container1">
             <img src="/vite.svg" alt="Avatar" />
-            <p>Hello. How are you today?</p>
-            <span class="time-right1">11:00</span>
+            <p>{message}</p>
+            <span class="time-right1">{time}</span>
         </div>
     </>
   )

@@ -17,15 +17,15 @@ const ActivityMainDiv = ({func}) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <Activity/>
-                    <Activity/>
-                    <Activity/>
-                    <Activity/>
-                    <Activity/>
-                    <Activity/>
-                    <Activity/>
-                    <Activity/>
-                    <Activity/>
+                    <Activity name='School Excursion' assignee='Martins Werner' duration='30 mins' date='07/09/2009' status='Pending'/>
+                    <Activity name='School Excursion' assignee='Martins Werner' duration='30 mins' date='07/09/2009' status='Pending'/>
+                    <Activity name='School Excursion' assignee='Martins Werner' duration='30 mins' date='07/09/2009' status='Pending'/>
+                    <Activity name='School Excursion' assignee='Martins Werner' duration='30 mins' date='07/09/2009' status='Pending'/>
+                    <Activity name='School Excursion' assignee='Martins Werner' duration='30 mins' date='07/09/2009' status='Pending'/>
+                    <Activity name='School Excursion' assignee='Martins Werner' duration='30 mins' date='07/09/2009' status='Pending'/>
+                    <Activity name='School Excursion' assignee='Martins Werner' duration='30 mins' date='07/09/2009' status='Pending'/>
+                    <Activity name='School Excursion' assignee='Martins Werner' duration='30 mins' date='07/09/2009' status='Pending'/>
+                    <Activity name='School Excursion' assignee='Martins Werner' duration='30 mins' date='07/09/2009' status='Pending'/>
                 </tbody>
             </table>
         </div>

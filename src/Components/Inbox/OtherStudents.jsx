@@ -15,26 +15,26 @@ const OtherStudents = ({func}) => {
                 <option value="">SSS 3</option>
             </select>
             <div className='w-100 OtherStudentsDiv py-3' style={{height: '80vh', overflowY: 'auto'}}>
-                <OnlineStudents/>
-                <OnlineStudents/>
-                <OnlineStudents/>
-                <OnlineStudents/>
-                <OnlineStudents/>
-                <OnlineStudents/>
-                <OnlineStudents/>
-                <OnlineStudents/>
-                <OnlineStudents/>
-                <OnlineStudents/>
-                <OnlineStudents/>
-                <OnlineStudents/>
-                <OnlineStudents/>
-                <OnlineStudents/>
-                <OnlineStudents/>
-                <OnlineStudents/>
-                <OnlineStudents/>
-                <OnlineStudents/>
-                <OnlineStudents/>
-                <OnlineStudents/>
+                <OnlineStudents name='Adegbite Joshua'/>
+                <OnlineStudents name='Adegbite Joshua'/>
+                <OnlineStudents name='Adegbite Joshua'/>
+                <OnlineStudents name='Adegbite Joshua'/>
+                <OnlineStudents name='Adegbite Joshua'/>
+                <OnlineStudents name='Adegbite Joshua'/>
+                <OnlineStudents name='Adegbite Joshua'/>
+                <OnlineStudents name='Adegbite Joshua'/>
+                <OnlineStudents name='Adegbite Joshua'/>
+                <OnlineStudents name='Adegbite Joshua'/>
+                <OnlineStudents name='Adegbite Joshua'/>
+                <OnlineStudents name='Adegbite Joshua'/>
+                <OnlineStudents name='Adegbite Joshua'/>
+                <OnlineStudents name='Adegbite Joshua'/>
+                <OnlineStudents name='Adegbite Joshua'/>
+                <OnlineStudents name='Adegbite Joshua'/>
+                <OnlineStudents name='Adegbite Joshua'/>
+                <OnlineStudents name='Adegbite Joshua'/>
+                <OnlineStudents name='Adegbite Joshua'/>
+                <OnlineStudents name='Adegbite Joshua'/>
             </div>
         </div>
     </>
