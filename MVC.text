@@ -3,7 +3,10 @@ STUDENTS:  {
     Logics - signup(), signin(), editInfo(), messageTeacher(), messageSchool(),
 } 
 
-CONTROLLERS - stdentInfo{
+CONTROLLERS - 
+
+allStudents = array [studentInfo]
+stdentInfo : object{
     name,
     email,
     phone-number,
@@ -15,10 +18,9 @@ CONTROLLERS - stdentInfo{
     State,
     Country,
     proileUrl,
-    announcement: [],
-    subjects: [subject],
-    messages: [message],
-    announcements: [announcement],
+    subjects: [subject<27>],
+    messages: [message<47>],
+    announcements: [announcement<53>],
 }
 
 
@@ -43,9 +45,7 @@ subject = object {
         lastTest: 0,
         lastExam: 0
     },
-    studentPosts : [
-        
-    ]
+    studentPosts : [post<58>]
 }
 message = object {
     messageSender,
@@ -57,4 +57,9 @@ announcement = {
     announcementMessage,
     announcementDate,
     announcementSender
+}
+post = {
+    postDescription,
+    postDate,
+    postFileUrl
 }

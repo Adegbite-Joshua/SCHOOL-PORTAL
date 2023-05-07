@@ -8,7 +8,7 @@ const StudentSideNav = () => {
   }
   return (
     <>
-        <div id="mySidenav" className="sidenav text-center d-flex w-100 px-5">
+        <div id="mySidenav" className="sidenav blue600 text-center d-flex w-100 px-5">
             <img src="/vite.svg" style={{height: '60px', width: '60px'}} className='' alt="" />
             <h3 className='text-light'>PROADE SCHOOL</h3>
             <Link to='/dashboard'><span id='icon'><i className='fas fa-home '></i>Home</span></Link>

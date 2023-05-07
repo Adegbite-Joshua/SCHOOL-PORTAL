@@ -97,6 +97,21 @@ $color: red;
 .performanceDiv{
     overflow-y: auto;
 }
+.slate400{
+    background-color: #94A3B8 !important;
+}
+.blue600{
+    background-color: #2563EB !important;
+    & *{
+        color: white !important;
+    }
+}
+.blue500{
+    background-color: #3B82F6 !important;
+    & *{
+        color: white !important;
+    }
+}
 // @for $i from 1 through 5 {
 
 // }
