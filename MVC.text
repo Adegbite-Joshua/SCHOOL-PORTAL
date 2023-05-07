@@ -16,8 +16,11 @@ CONTROLLERS - stdentInfo{
     Country,
     proileUrl,
     announcement: [],
-    subjects: []
+    subjects: [subject],
+    messages: [message],
+    announcements: [announcement],
 }
+
 
 subjects = array [
     subject
@@ -27,4 +30,31 @@ subject = object {
     subjectInfo,
     subjectProfileUrl,
     subjectIndex,
+    subjectPerformance: {
+        assessments: {
+            ca1: 0
+            ca2: 1
+            ca2: 1
+            test2: 1
+            test3: 1
+            test4: 1
+        },
+        lastClassWork: 0,
+        lastTest: 0,
+        lastExam: 0
+    },
+    studentPosts : [
+        
+    ]
+}
+message = object {
+    messageSender,
+    messageReceiver,
+    messageTime,
+    message
 } 
+announcement = {
+    announcementMessage,
+    announcementDate,
+    announcementSender
+}

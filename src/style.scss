@@ -88,6 +88,15 @@ $color: red;
         display: none;
     }
 }
+
+.performanceDiv{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.performanceDiv{
+    overflow-y: auto;
+}
 // @for $i from 1 through 5 {
 
 // }
