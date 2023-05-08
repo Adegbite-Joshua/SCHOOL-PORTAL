@@ -1,13 +1,10 @@
 import React from 'react'
-import HeroSection from './HeroSection'
-import NavBar from './NavBar'
+import LandingNav from './LandingNav'
 
 const LandingPage = () => {
   return (
-    <>  
-        <NavBar/>
-        <HeroSection/>
-        
+    <>
+        <LandingNav/>
     </>
   )
 }

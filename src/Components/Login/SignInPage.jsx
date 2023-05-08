@@ -1,5 +1,5 @@
 import React from 'react'
-import NavBar from '../LandingPage/NavBar'
+import NavBar from '../LandingPage/LandingNav'
 
 const SignInPage = () => {
   return (

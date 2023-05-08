@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import NavBar from '../LandingPage/NavBar'
+import NavBar from '../LandingPage/LandingNav'
 import SignInPage from './SignInPage'
 
 const SignUpPage = () => {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css'
 import './style.scss'
 import './../node_modules/font-awesome/css/font-awesome.css'
@@ -18,9 +18,6 @@ import StudentActivity from './Components/Activities/StudentActivity'
 
 
 function App() {
-  
-  const [count, setCount] = useState(0);
-
   
   return (
     <>      

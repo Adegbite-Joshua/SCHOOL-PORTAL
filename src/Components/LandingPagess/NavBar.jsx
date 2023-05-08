@@ -28,19 +28,8 @@ const NavBar = () => {
                     </ul>
                 </li>
                 <li className="nav-item">
-                <Link className="nav-link" to='http://localhost:5173'>Staff Portal</Link>
+                <Link className="nav-link">Staff Portal</Link>
                 </li>
-                {/* <li className="nav-item dropdown">
-                <Link className="nav-link dropdown-toggle" to='#' role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown
-                </Link>
-                <ul className="dropdown-menu">
-                    <li><Link className="dropdown-item" to='#'>Action</Link></li>
-                    <li><Link className="dropdown-item" to='#'>Another action</Link></li>
-                    <li><hr className="dropdown-divider" /></li>
-                    <li><Link className="dropdown-item" to='#'>Something else here</Link></li>
-                </ul>
-                </li> */}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Sign In
