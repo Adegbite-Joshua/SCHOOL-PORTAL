@@ -56,8 +56,14 @@ $color: red;
     height: 0;
 }
 
+@media (min-width: 651px) {
+    #toggleIcon{
+        display: none !important;
+    }
+}
+
 @media (max-width: 650px) {
-    .OtherStudents, .SubjectSideDiv, .SettingsOtherDiv, .ActivityOtherSide{
+    .OtherStudents, .SubjectSideDiv, .SettingsOtherDiv2, .ActivityOtherSide{
         // flex-basis: 0% !important;
         // display: none;
         transition: 3s;
@@ -90,6 +96,7 @@ $color: red;
     .showNoneImp{
         display: none !important;
     }
+    
 }
 
 .performanceDiv{
@@ -111,6 +118,9 @@ $color: red;
 }
 .blue500{
     background-color: #3B82F6 !important;
+    &:hover{
+        background-color: #498efc !important;
+    }
     & *{
         color: white !important;
     }

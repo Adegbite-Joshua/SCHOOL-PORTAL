@@ -59,9 +59,15 @@ const StudentCalendar = () => {
     //         }
     //     })
     // });
+    const showDay =(e)=>{
+        console.log(e.getMonth());
+        console.log(e.getDate());
+    }
   return (
     <>
-        <Calendar/>
+        <div className='w-100 d-flex justify-content-center'>
+            <Calendar onClickDay={(e)=>showDay(e)}/>
+        </div>
         {/* <div className='StudentCalendar mx-auto my-auto border border-2 topSpace'>
             <header className='d-flex justify-content-between px-5'>
                 <h3 id='header'>September 23</h3>

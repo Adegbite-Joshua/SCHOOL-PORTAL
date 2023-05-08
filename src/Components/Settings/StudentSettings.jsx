@@ -1,9 +1,5 @@
 import React, { useState } from 'react'
 import StudentSideNav from '../StudentNav/StudentSideNav'
-import AllSettingsDiv from './AllSettingsDiv'
-import StudentSocialMedia from './StudentSocialMedia'
-import StudentSubject from './StudentSubject'
-import StudentProfileUpdate from './StudentProfileUpdate'
 import SettingsMainDiv from './SettingsMainDiv'
 import SettingsOtherDiv from './SettingsOtherDiv'
 import './style.scss'
@@ -12,13 +8,15 @@ import './style.scss'
 const StudentSettings = () => {
     document.querySelector("title").innerText = `Settings`
     const toggleSideNav =()=>{
-        document.getElementById('OtherStudents').classList.toggle('OtherStudents')
+        document.getElementById('SettingsOtherDiv').classList.toggle('SettingsOtherDiv2')
+        console.log(document.getElementById('SettingsOtherDiv'));
     }
     const [displaying, setdisplaying] = useState('AllSettingsDiv')
     const setSetting =(setting)=>{
       console.log(setting);
         setdisplaying(setting)
     }
+    
   return (
     <>
         <div className='d-flex'>

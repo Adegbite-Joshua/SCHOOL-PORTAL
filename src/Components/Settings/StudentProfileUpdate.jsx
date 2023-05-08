@@ -22,7 +22,7 @@ const ErrorPage = () => {
           <label htmlFor='firstName'>State</label>
           <input type='text' className='form-control' placeholder='State' id='firstName' />
 
-          <button className='btn btn-info w-100'>Update Profile</button>
+          <button className='btn blue500 my-2 w-100'>Update Profile</button>
         </div>
     </>
   )

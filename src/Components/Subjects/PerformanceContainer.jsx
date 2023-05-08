@@ -19,7 +19,7 @@ const PerformanceContainer = () => {
                 <label htmlFor="">File Description</label>
                 <input className='form-control my-2' type="text" placeholder='File Description' />
                 <input className='form-control my-2' type="file" accept='.pdf, .docx, .txt' />
-                <button className='btn btn-info my-1 p-2 w-50 d-block mx-auto'>Send</button>
+                <button className='btn blue500 my-1 p-2 w-50 d-block mx-auto'>Send</button>
             </div>
         </div>
     </>

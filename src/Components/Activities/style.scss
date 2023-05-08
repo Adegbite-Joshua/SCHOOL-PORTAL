@@ -32,10 +32,17 @@
         padding: 5px 10px;
         // width: auto;
     }
-    #toggleIcon{
-        display: inline !important;
-    }
     .ActivityMainDiv{
         flex-basis: 100% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .widthTd{
+        width: 50% !important;
+        display: block !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        background-color: red;
     }
 }

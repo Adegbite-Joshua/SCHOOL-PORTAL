@@ -9,11 +9,11 @@ const ActivityMainDiv = ({func}) => {
             <table className='w-100'>
                 <thead>
                     <tr>
-                        <td>NAME</td>
-                        <td className=' d-none d-sm-block'>ASSIGNEE</td>
-                        <td>DURATION</td>
-                        <td>DUE DATE</td>
-                        <td>STATUS</td>
+                        <td className='widthTd'>NAME</td>
+                        <td className=' d-none d-sm-inline-block'>ASSIGNEE</td>
+                        <td className=' d-none d-sm-inline-block'>DURATION</td>
+                        <td className=' d-none d-sm-inline-block'>DUE DATE</td>
+                        <td className=' d-none d-sm-inline-block'>STATUS</td>
                     </tr>
                 </thead>
                 <tbody className='activity'>

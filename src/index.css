@@ -98,7 +98,7 @@
   /* flex-direction: row;
   align-items: center;
   justify-content: center; */
-  padding: 8px 35px 8px 32px;
+  padding: 8px 15px;
   text-decoration: none;
   font-size: 14px;
   text-align: start;
@@ -130,7 +130,7 @@
   /* width: 70vw !important; */
   flex-basis: 70%;
   height: 100vh;
-  background-color: #0FBBE6;
+  /* background-color: #0FBBE6; */
   padding-top:80px !important;
 }
 

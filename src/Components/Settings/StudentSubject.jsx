@@ -16,7 +16,7 @@ const ErrorPage = () => {
                 <Subject/>
                 <Subject/>
             </select>
-            <button className='btn btn-info my-2 w-100'>Add Subject(s)</button>
+            <button className='btn blue500 my-2 w-100'>Add Subject(s)</button>
             </div>
             <div>
             <h3>Choose The Subject To Remove</h3>
@@ -27,7 +27,7 @@ const ErrorPage = () => {
                 <Subject/>
                 <Subject/>
             </select>
-            <button className='btn btn-info my-2 w-100'>Remove Subject(s)</button>
+            <button className='btn blue500 my-2 w-100'>Remove Subject(s)</button>
             </div>
         </div>
     </>

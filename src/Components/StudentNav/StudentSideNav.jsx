@@ -17,7 +17,7 @@ const StudentSideNav = () => {
             <Link to='/announcement'><span id='icon'><i className='fas fa-bell '></i>Announcements</span></Link>
             <Link to='/activities'><span id='icon'><i className='fas fa-calendar '></i>Activities</span></Link>
             <Link to='/settings'><span id='icon'><i className='fas fa-gear '></i>Settings</span></Link>
-            <Link to='/signout'><span id='icon'><i className='fas fa-sign-out '></i>Sign Out</span></Link>    
+            <Link to='/'><span id='icon'><i className='fas fa-sign-out '></i>Sign Out</span></Link>    
             <span id='openPop' className='p-2 rounded-3 border border-2 border-light d-md-none' onClick={openNavPop}><i className='fas fa-bars text-light'></i></span>
         </div>
     </>

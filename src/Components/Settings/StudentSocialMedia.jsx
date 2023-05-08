@@ -20,7 +20,7 @@ const StudentSocialMedia = () => {
                 <label htmlFor='otherLinks'>Other Link</label>
                 <input type='link' className='form-control' placeholder='Other Link' id='otherLink' />
             </div>
-          <button className='btn btn-success w-100 my-2'>Submit</button>
+          <button className='btn blue500 w-100 my-2'>Submit</button>
           </div>
         </div>
     </>
