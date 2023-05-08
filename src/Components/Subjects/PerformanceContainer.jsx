@@ -5,8 +5,8 @@ import SubjectPerformance from './SubjectPerformance'
 const PerformanceContainer = () => {
   return (
     <>
-        <div>
-            <div className="px-4 resultDiv overflow-auto" style={{minWidth: '100%'}}>
+        <div className='w-100'>
+            <div className="resultDiv overflow-auto" style={{width: '100%'}}>
                 <ResultsDisplay/>
             </div>
             <div className="d-flex gap-2 text-center mt-3 performanceDiv">

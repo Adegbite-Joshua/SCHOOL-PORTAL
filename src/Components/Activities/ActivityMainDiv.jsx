@@ -16,7 +16,7 @@ const ActivityMainDiv = ({func}) => {
                         <td>STATUS</td>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className='activity'>
                     <Activity name='School Excursion' assignee='Martins Werner' duration='30 mins' date='07/09/2009' status='Pending'/>
                     <Activity name='School Excursion' assignee='Martins Werner' duration='30 mins' date='07/09/2009' status='Pending'/>
                     <Activity name='School Excursion' assignee='Martins Werner' duration='30 mins' date='07/09/2009' status='Pending'/>
