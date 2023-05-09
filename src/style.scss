@@ -214,12 +214,40 @@ $color: red;
 
 
 // Landing Page Carousel
-.mySlides {
-    display:none;
+#carouselCenter{
+    // background-color: red;
+    height: 200px;
+    width: 100%;
+    position: relative;
+    
 }
-.displaySlide{
-    display: block !important;
+#carouselCenter::after{
+    position: absolute;
+    content: '';
+    inset: -50%;
+    height: 200px;
+    transform: translateX(-500px);
+    background-image: linear-gradient(to right, green, blue , orange);
+    opacity: .75;
+    z-index: -9999;
+    animation-name: sliding;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
 }
+@keyframes sliding {
+    0%{
+        transform: translateX(-500px);
+    }
+    100%{
+        transform: translateX(500px);
+    }
+}
+// .carouselOverlay{
+//     background-color: aqua;
+//     ba
+// }
+
 
 // @for $i from 1 through 5 {
 
