@@ -15,24 +15,20 @@ const LandingNav = () => {
                 </li>
                 <li class="signUpDropDown">
                     <a>Sign Up</a>
-                    <div>
-                        <li>
-                            <Link>Staff</Link>
-                            <Link>Student</Link>
-                        </li>
-                    </div>
+                    <ul>
+                        <li><Link>Staff</Link></li>
+                        <li><Link>Student</Link></li>
+                    </ul>
                 </li>
                 <li className="">
                     <Link className="">Staff Portal</Link>
                 </li>
                 <li class="signInDropDown">
                     <a>Sign In </a>
-                    <div>
-                        <li>
-                            <Link>Staff</Link>
-                            <Link>Student</Link>
-                        </li>
-                    </div>
+                    <ul>
+                        <li><Link>Staff</Link></li>
+                        <li><Link>Student</Link></li>
+                    </ul>
                 </li>
                 <li className="">
                     <Link className="" to='#'>Contact Us</Link>

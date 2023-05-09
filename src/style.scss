@@ -159,36 +159,48 @@ $color: red;
             font-size: 20px;
             height: calc(100vh - 70px);
             width: 200px;
-            background-color: red;
+            background-color: #3B82F6;
             li{
                 display: block;
+                padding: 1rem;
             }
-            
+            li[class='signUpDropDown'], li[class='signInDropDown']{
+                // background-color: red;
+                overflow: hidden;
+                &:hover ul{
+                    background-color: inherit !important;
+                    position: relative !important;
+                    display: block !important;
+                    padding: 0;
+                    li{
+                        background-color: #f2f2f2;
+                        padding: 5px;
+                        margin: 5px;
+                        margin-left: -10px;
+                        padding: 3px;
+                        a{
+                            color: #3B82F6 !important;
+                        }
+                    }
+                }
+            }
         }
     }    
 }
-li[class='signUpDropDown'], li[class='signInDropDown']{
-    // background-color: red;
-    &:hover div{
-        background-color: inherit !important;
-        position: relative !important;
-        display: block !important;
-        padding: 0;
-    }
-}
 .signUpDropDown, .signInDropDown{
     position: relative;
-    div{
+    ul{
         display: none;
         position: absolute;
         top: 100%;
     }
-    &:hover div{
+    &:hover ul{
         background-color: rgb(216, 116, 35);
         display: block;
         width: 200px;
         left: 0;
         padding: 1rem;
+        height: auto;
         li{
             display: block;
             font-size: 18px;
@@ -201,6 +213,13 @@ li[class='signUpDropDown'], li[class='signInDropDown']{
 }
 
 
+// Landing Page Carousel
+.mySlides {
+    display:none;
+}
+.displaySlide{
+    display: block !important;
+}
 
 // @for $i from 1 through 5 {
 
