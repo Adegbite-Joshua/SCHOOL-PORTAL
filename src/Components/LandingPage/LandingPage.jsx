@@ -5,6 +5,7 @@ const LandingPage = () => {
   return (
     <>
         <LandingNav/>
+        
     </>
   )
 }

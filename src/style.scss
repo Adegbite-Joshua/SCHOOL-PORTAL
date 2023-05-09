@@ -1,6 +1,8 @@
 @use 'sass:math';
 $color: red;
-
+*{
+    text-decoration: none !important;
+}
 // .h4 {
 //     background: $color;
 // }
@@ -125,6 +127,81 @@ $color: red;
         color: white !important;
     }
 }
+
+// Landing Page NavBar
+.LandingNav{
+    height: 70px;
+    justify-content: center;
+    div{
+        flex-basis: 30%;
+    }
+    ul {
+        flex-basis: 60%;
+        list-style: none;
+        display: flex;
+        height: 100%;
+        // gap: 1rem;
+        justify-content: space-between;
+        // align-items: center;
+        li{
+            display: flex;
+            align-items: center;
+            @media (min-width: 820px) {
+                height: 100%;
+            }
+        }
+        @media (max-width: 820px) {
+            display: block;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            // left: 0;
+            font-size: 20px;
+            height: calc(100vh - 70px);
+            width: 200px;
+            background-color: red;
+            li{
+                display: block;
+            }
+            
+        }
+    }    
+}
+li[class='signUpDropDown'], li[class='signInDropDown']{
+    // background-color: red;
+    &:hover div{
+        background-color: inherit !important;
+        position: relative !important;
+        display: block !important;
+        padding: 0;
+    }
+}
+.signUpDropDown, .signInDropDown{
+    position: relative;
+    div{
+        display: none;
+        position: absolute;
+        top: 100%;
+    }
+    &:hover div{
+        background-color: rgb(216, 116, 35);
+        display: block;
+        width: 200px;
+        left: 0;
+        padding: 1rem;
+        li{
+            display: block;
+            font-size: 18px;
+            // padding: 20px 0;
+            a{
+                padding: 10px 0;
+            }
+        }
+    }
+}
+
+
+
 // @for $i from 1 through 5 {
 
 // }
