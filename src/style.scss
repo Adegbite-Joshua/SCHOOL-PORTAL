@@ -380,6 +380,22 @@ $color: red;
 }
 
 
+// Landing Page Footer
+.LandingPageFooter{
+    background-color: #f2f2f2;
+    p{
+        color: black;
+        a{
+            text-decoration: underline !important;
+            text-underline-offset: 4px;
+            color: black;
+            &:hover{
+                color: rgb(60, 57, 57);
+            }
+        }
+    }
+}
+
 
 
 // .carouselOverlay{

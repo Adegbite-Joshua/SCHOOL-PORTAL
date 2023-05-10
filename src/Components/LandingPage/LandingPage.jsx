@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import LandingNav from './LandingNav'
 import LandingPageAlert from './LandingPageAlert'
 import LandingPageCarousel from './LandingPageCarousel'
+import LandingPageFooter from './LandingPageFooter'
 import LandingPageVideoDiv from './LandingPageVideoDiv'
 import ParallaxScrooling from './ParallaxScrooling'
 import SchoolProgramsPage from './SchoolProgramsPage'
@@ -18,8 +19,9 @@ const LandingPage = () => {
         <LandingPageAlert/>
         <SchoolProgramsPage/>
         <LandingPageVideoDiv/>
-        <UpcomingCalendar/>
         <ParallaxScrooling/>
+        <UpcomingCalendar/>
+        <LandingPageFooter/>
         
     </>
   )
