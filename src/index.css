@@ -70,14 +70,11 @@
   background-image: radial-gradient(
     circle at 20% 25% ,
     black 30%,
-    rgb(15, 187, 230) 35%
-  ),
-  url(teachers/gallary4.png);
+    rgb(15, 187, 230) 65%
+  );
+  /* url(teachers/gallary4.png); */
   background-blend-mode: darken;
- 
-
   padding: 1rem;
-  /* height: 90vh; */
 }
 
 .sidenav {

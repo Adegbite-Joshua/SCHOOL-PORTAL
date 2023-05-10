@@ -1,18 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import NavBar from '../LandingPage/LandingNav'
+import LandingNav from '../LandingPage/LandingNav'
 import SignInPage from './SignInPage'
+import { Link } from 'react-router-dom'
+
+
+
 
 const SignUpPage = () => {
   const navigate = useNavigate()
   const signUp =()=>{
     navigate("/signin")
   }
+  const [percentage, setpercentage] = useState(0)
+  window.onscroll=()=>setpercentage((window.scrollY/(document.documentElement.scrollHeight - window.innerHeight))*100)
   return (
     <>  
-        <NavBar/>
-        <div className="d-flex w-100 gap-3 px-4 topSpace">
-          <div className="border signup" style={{flexBasis: "50%"}}>
+        <LandingNav percent={percentage}/>
+        <h3 className='text-center bg-light m-0 p-3'>Sign Up Page</h3>
+        <div className="d-flex w-100 p-4 topSpace bg-light gap-3">
+          <div className="border signup rounded-5" style={{flexBasis: "40%"}}>
               <form action="" method="post">
                   <label htmlFor="firstName">First Name</label>
                   <input className='form-control my-2' type="text" id='firstName' name='firstName' placeholder='First Name' />
@@ -34,9 +41,11 @@ const SignUpPage = () => {
                   </div>
                   <input type="file" name="" className='form-control' id="" />
                   <button className='btn btn-success w-100 d-block my-2' onClick={signUp}>Sign Up</button>
+                  <Link className='d-md-none text-light'>Sign In</Link>
               </form>
           </div>
-          <div className=" signu" style={{flexBasis: "50%"}}>     
+          <div className=" signupOtherDiv rounded-5" style={{flexBasis: "60%"}}>     
+              <span className='px-3 py-2 rounded-pill bg-dark text-light'><Link>Sign In</Link></span>
           </div>
         </div>
     </>
