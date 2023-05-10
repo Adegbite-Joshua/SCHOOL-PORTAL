@@ -19,7 +19,7 @@ const SignUpPage = () => {
         <LandingNav percent={percentage}/>
         <h3 className='text-center bg-light m-0 p-3'>Sign Up Page</h3>
         <div className="d-flex w-100 p-4 topSpace bg-light gap-3">
-          <div className="border signup rounded-5" style={{flexBasis: "40%"}}>
+          <div className="border signup rounded-5">
               <form action="" method="post">
                   <label htmlFor="firstName">First Name</label>
                   <input className='form-control my-2' type="text" id='firstName' name='firstName' placeholder='First Name' />
@@ -44,7 +44,7 @@ const SignUpPage = () => {
                   <Link className='d-md-none text-light'>Sign In</Link>
               </form>
           </div>
-          <div className=" signupOtherDiv rounded-5" style={{flexBasis: "60%"}}>     
+          <div className=" signupOtherDiv rounded-5">     
               <span className='px-3 py-2 rounded-pill bg-dark text-light'><Link>Sign In</Link></span>
           </div>
         </div>

@@ -67,6 +67,7 @@
 }
 
 .signup{
+  flex-basis: 40%;
   background-image: radial-gradient(
     circle at 20% 25% ,
     black 30%,
