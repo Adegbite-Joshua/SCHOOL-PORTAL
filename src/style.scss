@@ -267,7 +267,8 @@ $color: red;
 
 // Upcoming Calendar Design
 .UpcomingCalendar{
-    height: 120vh;
+    min-height: 120vh;
+    // height: auto;
     width: 100vw;
     display: flex;
     // flex-direction: row;
@@ -277,9 +278,30 @@ $color: red;
     //     border: red solid 2px;
     // }
     div{
-        height: 100%;
+        &[name='img']{
+            min-height: 100%;
+            flex-basis: 50%;
+            background-image: url(teachers/gallary4.png);
+            background-size: 100% 100%;
+            background-position: 100% 100%;
+        }
+        min-height: 100%;
         flex-basis: 50%;
-        border: 2px solid green;
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            li{
+                display: flex;
+                justify-content: start;
+                border-top: 1px solid gray;
+                // background-color: white;
+                padding: 2px 5px;
+                span{
+                    margin: 0 3px;
+                }
+            }
+        }
     }
 }
 

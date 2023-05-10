@@ -42,7 +42,7 @@ const LandingPageCarousel = () => {
             <img src="teachers/5.png" className='w-100 position-absolute top-0 bottom-0 start-0 end-0' alt="" />
         </div> */}
 
-            <div style={{height: '80vh'}} className='position-relative border border-2 border-danger' >
+            <div style={{height: '80vh'}} className='position-relative border border-2 border-danger overflow-hidden' >
                 <div id="carouselExampleAutoplaying" style={{zIndex: '-99999'}} class="carousel slide h-100 position-absolute w-100" data-bs-ride="carousel">
                     <div class="carousel-inner w-100 h-100">
                         <div class="carousel-item active w-100 h-100" data-bs-interval="2000">

@@ -1,15 +1,32 @@
 import React from 'react'
+import Calendar from './Calendar'
 
 const UpcomingCalendar = () => {
   return (
     <>
         <div className='UpcomingCalendar'>
-            <div>
-                <img src="teachers/gallary4.png" className='h-100 w-100' alt="" />
+            <div className='' name='img'>
+                {/* <img src="" className='h-100 w-100' alt="" /> */}
             </div>
             <div>
-                <ul>
+                <ul className='bg-light'>
                     
+                    <Calendar range={(<>August 22-26, <br /> 2022</>)}/>
+                    <Calendar/>
+                    <Calendar/>
+                    <Calendar/>
+                    <Calendar/>
+                    <Calendar/>
+                    <Calendar/>
+                    <Calendar/>
+                    <Calendar/>
+                    <Calendar/>
+                    <Calendar/>
+                    <Calendar/>
+                    <Calendar/>
+                    <Calendar/>
+                    <Calendar/>
+                    <Calendar/>
                 </ul>
             </div>
         </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const LandingNav = () => {
+const LandingNav = ({percent}) => {
   return (
     <>
         <div className="position-sticky top-0 w-100" style={{zIndex: '9999999999'}}>
@@ -40,7 +40,7 @@ const LandingNav = () => {
             </ul>
         </div>
         <div className='w-100 bg-danger' style={{height: '8px'}}>
-            <div className='h-100 w-50 bg-warning'>
+            <div style={{width: `${percent}%`}} className='h-100 bg-warning'>
 
             </div>
         </div>
