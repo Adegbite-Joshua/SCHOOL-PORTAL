@@ -2,7 +2,9 @@ import React from 'react'
 import LandingNav from './LandingNav'
 import LandingPageAlert from './LandingPageAlert'
 import LandingPageCarousel from './LandingPageCarousel'
+import LandingPageVideoDiv from './LandingPageVideoDiv'
 import SchoolProgramsPage from './SchoolProgramsPage'
+import UpcomingCalendar from './UpcomingCalendar'
 
 const LandingPage = () => {
   return (
@@ -11,6 +13,8 @@ const LandingPage = () => {
         <LandingPageCarousel/>
         <LandingPageAlert/>
         <SchoolProgramsPage/>
+        <LandingPageVideoDiv/>
+        <UpcomingCalendar/>
         
     </>
   )
