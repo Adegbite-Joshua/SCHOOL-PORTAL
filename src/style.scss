@@ -337,8 +337,12 @@ $color: red;
                 border-top: 1px solid gray;
                 // background-color: white;
                 padding: 2px 5px;
+                &:hover{
+                    background-color: rgb(228, 223, 223);
+                }
                 span{
                     margin: 0 3px;
+                    
                 }
             }
         }
@@ -361,6 +365,20 @@ $color: red;
         }
     }
 }
+
+
+// Landing Page Parralax Scrolling
+.ParallaxScrooling{
+    width: 100%;
+    height: 300px;
+    background-image: url(teachers/caro3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100% 100%;
+    background-attachment: fixed;
+
+}
+
 
 
 

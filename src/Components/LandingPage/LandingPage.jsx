@@ -3,6 +3,7 @@ import LandingNav from './LandingNav'
 import LandingPageAlert from './LandingPageAlert'
 import LandingPageCarousel from './LandingPageCarousel'
 import LandingPageVideoDiv from './LandingPageVideoDiv'
+import ParallaxScrooling from './ParallaxScrooling'
 import SchoolProgramsPage from './SchoolProgramsPage'
 import UpcomingCalendar from './UpcomingCalendar'
 
@@ -18,6 +19,7 @@ const LandingPage = () => {
         <SchoolProgramsPage/>
         <LandingPageVideoDiv/>
         <UpcomingCalendar/>
+        <ParallaxScrooling/>
         
     </>
   )
