@@ -21,7 +21,7 @@ const LandingNav = ({percent}) => {
                     <a>Sign Up</a>
                     <ul>
                         <li><Link>Staff</Link></li>
-                        <li><Link>Student</Link></li>
+                        <li><Link to='/signup'>Student</Link></li>
                     </ul>
                 </li>
                 <li className="">
@@ -31,7 +31,7 @@ const LandingNav = ({percent}) => {
                     <a>Sign In </a>
                     <ul>
                         <li><Link>Staff</Link></li>
-                        <li><Link>Student</Link></li>
+                        <li><Link to='/signin'>Student</Link></li>
                     </ul>
                 </li>
                 <li className="">

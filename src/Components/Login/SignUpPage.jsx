@@ -12,7 +12,7 @@ const SignUpPage = () => {
     <>  
         <NavBar/>
         <div className="d-flex w-100 gap-3 px-4 topSpace">
-          <div className="vh-100 border overflow-auto signup" style={{flexBasis: "50%"}}>
+          <div className="border signup" style={{flexBasis: "50%"}}>
               <form action="" method="post">
                   <label htmlFor="firstName">First Name</label>
                   <input className='form-control my-2' type="text" id='firstName' name='firstName' placeholder='First Name' />
