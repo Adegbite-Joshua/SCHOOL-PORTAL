@@ -410,7 +410,7 @@ $color: red;
 .signupOtherDiv{
     flex-basis: 60%;
     background-image: url(teachers/gallary4.png);
-    background-position: 100% 100%;
+    background-position: cover;
     background-size: 100% 100%;
     display: flex;
     justify-content: end;
@@ -424,8 +424,8 @@ $color: red;
 .signinOtherDiv{
     flex-basis: 60%;
     background-image: url(teachers/bg-image-5.jpeg);
-    background-position: 100% 100%;
-    background-size: 100% 100%;
+    background-position: cover;
+    background-size: cover;
     display: flex;
     justify-content: end;
     align-items: start;
