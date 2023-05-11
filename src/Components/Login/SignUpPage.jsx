@@ -12,11 +12,9 @@ const SignUpPage = () => {
   const signUp =()=>{
     navigate("/signin")
   }
-  const [percentage, setpercentage] = useState(0)
-  window.onscroll=()=>setpercentage((window.scrollY/(document.documentElement.scrollHeight - window.innerHeight))*100)
   return (
     <>  
-        <LandingNav percent={percentage}/>
+        <LandingNav/>
         <h3 className='text-center bg-light m-0 p-3'>Sign Up Page</h3>
         <div className="d-flex w-100 p-4 topSpace bg-light gap-3">
           <div className="border signup rounded-5">

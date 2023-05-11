@@ -13,8 +13,8 @@ const LandingPageFooter = () => {
                 <p className='text-center p-0 m-0'><small> adegbitejoshua07@gmail.com</small></p>
             </div>
             <div className='w-100 bg-light d-flex px-5 justify-content-between'>
-                <p className='ms-5'><small>PROADE SCHOOL | Copyright © 2023</small></p>
-                <p className='me-5'><small>Website by PROADE</small></p>
+                <p className='ms-0 ms-md-5'><small>PROADE SCHOOL | Copyright © 2023</small></p>
+                <p className='me-0 me-md-5'><small>Website by PROADE</small></p>
             </div>
         {/* </div> */}
     </>

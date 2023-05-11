@@ -10,11 +10,9 @@ import UpcomingCalendar from './UpcomingCalendar'
 
 const LandingPage = () => {
   // window.onscroll(()=>showHeight())
-  const [percentage, setpercentage] = useState(0)
-  window.onscroll=()=>setpercentage((window.scrollY/(document.documentElement.scrollHeight - window.innerHeight))*100)
   return (
     <>
-        <LandingNav percent={percentage}/>
+        <LandingNav/>
         <LandingPageCarousel/>
         <LandingPageAlert/>
         <SchoolProgramsPage/>

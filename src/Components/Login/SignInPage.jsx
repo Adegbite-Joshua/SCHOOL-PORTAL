@@ -6,11 +6,9 @@ import { Link } from 'react-router-dom'
 
 
 const SignInPage = () => {
-  const [percentage, setpercentage] = useState(0)
-  window.onscroll=()=>setpercentage((window.scrollY/(document.documentElement.scrollHeight - window.innerHeight))*100)
   return (
     <>
-        <LandingNav percent={percentage} />    
+        <LandingNav/>    
         <h3 className='text-center bg-light m-0'>Sign In Page</h3>
         <div className="d-flex w-100 topSpace px-4 gap-3 bg-light" style={{height: '100vh'}} >
             <div className='signup rounded-4'>

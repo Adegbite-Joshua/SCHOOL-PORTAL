@@ -5,12 +5,14 @@ import ContactUsBoxAndMap from './ContactUsBoxAndMap'
 import ContactUsMainDiv from './ContactUsMainDiv'
 
 const ContactUsPage = () => {
+    
   return (
     <>
         <LandingNav/>
         <ContactUsMainDiv/>
         <ContactUsBoxAndMap/>
         <LandingPageFooter/>
+
     </>
   )
 }

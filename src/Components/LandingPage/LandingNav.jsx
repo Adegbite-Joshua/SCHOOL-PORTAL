@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
+
+
 const LandingNav = ({percent}) => {
+    const [percentage, setpercentage] = useState(0)
+    window.onscroll=()=>setpercentage((window.scrollY/(document.documentElement.scrollHeight - window.innerHeight))*100)
     const showSideBar =()=>{
         document.getElementById('navUl').classList.toggle('responsive')
     }
@@ -35,7 +39,7 @@ const LandingNav = ({percent}) => {
                     </ul>
                 </li>
                 <li className="">
-                    <Link className="" to='#'>Contact Us</Link>
+                    <Link className="" to='contactus'>Contact Us</Link>
                 </li>
                 <li className="">
                     <Link className="" to='#'>About Us</Link>
@@ -44,7 +48,7 @@ const LandingNav = ({percent}) => {
             <span onClick={showSideBar}><i className='fa fa-bars'></i></span>
         </div>
         <div className='w-100 bg-danger' style={{height: '8px'}}>
-            <div style={{width: `${percent}%`}} className='h-100 bg-warning'>
+            <div style={{width: `${percentage}%`}} className='h-100 bg-warning'>
             </div>
         </div>
         </div>
