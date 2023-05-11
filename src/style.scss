@@ -437,6 +437,23 @@ $color: red;
 }
 
 
+// Contact Us Page Design
+.ContactUsMainDiv{
+    height: 100vh;
+
+}
+
+.ContactUsBoxAndMap{
+    width: 80%;
+    height: 600px;
+    display: flex;
+    background-color: red;
+    .ContactUsBox{
+        flex-basis: 50%;
+        border: 2px solid red;
+    }
+}
+
 
 // .carouselOverlay{
 //     background-color: aqua;

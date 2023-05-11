@@ -15,6 +15,7 @@ import StudentsSubject from './Components/Subjects/StudentsSubject'
 import StudentAnnouncement from './Components/Announcements/StudentAnnouncement'
 import StudentSettings from './Components/Settings/StudentSettings'
 import StudentActivity from './Components/Activities/StudentActivity'
+import ContactUsPage from './Components/ContactUs/ContactUsPage'
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           <Route path='/announcement' element={<StudentAnnouncement/>}/>
           <Route path='/activities' element={<StudentActivity/>}/>
           <Route path='/settings' element={<StudentSettings/>} />
+          <Route path='/contactus' element={<ContactUsPage/>} />
           <Route path='*' element={<ErrorPage/>}/>
         </Routes>
         <MessageSchool/>   
