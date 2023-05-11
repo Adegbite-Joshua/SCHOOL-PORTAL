@@ -447,10 +447,14 @@ $color: red;
     width: 80%;
     height: 600px;
     display: flex;
-    background-color: red;
+    background-color: white;
+    .ContactUsMap{
+        flex-basis: 50%;
+        // border: 2px solid blue;
+    }
     .ContactUsBox{
         flex-basis: 50%;
-        border: 2px solid red;
+        // border: 2px solid red;
     }
 }
 
