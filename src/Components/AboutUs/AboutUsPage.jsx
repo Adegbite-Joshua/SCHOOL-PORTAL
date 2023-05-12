@@ -15,7 +15,6 @@ const AboutUsPage = () => {
         <TwoDIvComponents/>
         <TwoDicComponents2/>
         <LandingPageFooter/>
-
     </>
   )
 }
