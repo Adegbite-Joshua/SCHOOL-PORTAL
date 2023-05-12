@@ -39,10 +39,10 @@ const LandingNav = ({percent}) => {
                     </ul>
                 </li>
                 <li className="">
-                    <Link className="" to='contactus'>Contact Us</Link>
+                    <Link className="" to='/contactus'>Contact Us</Link>
                 </li>
                 <li className="">
-                    <Link className="" to='#'>About Us</Link>
+                    <Link className="" to='/aboutus'>About Us</Link>
                 </li>
             </ul>
             <span onClick={showSideBar}><i className='fa fa-bars'></i></span>
