@@ -24,7 +24,7 @@ const LandingNav = ({percent}) => {
                 <li class="signUpDropDown">
                     <a>Sign Up</a>
                     <ul>
-                        <li><Link>Staff</Link></li>
+                        <li><Link to='http://localhost:2000/signup'>Staff</Link></li>
                         <li><Link to='/signup'>Student</Link></li>
                     </ul>
                 </li>
@@ -34,7 +34,7 @@ const LandingNav = ({percent}) => {
                 <li class="signInDropDown">
                     <a>Sign In </a>
                     <ul>
-                        <li><Link>Staff</Link></li>
+                        <li><Link to='http://localhost:2000/signin'>Staff</Link></li>
                         <li><Link to='/signin'>Student</Link></li>
                     </ul>
                 </li>
