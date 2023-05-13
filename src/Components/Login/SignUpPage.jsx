@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import LandingNav from '../LandingPage/LandingNav'
 import SignInPage from './SignInPage'
 import { Link } from 'react-router-dom'
-
+import { useFormik } from 'formik'
 
 
 
@@ -12,6 +12,30 @@ const SignUpPage = () => {
   const signUp =()=>{
     navigate("/signin")
   }
+  const formik = useFormik({
+    initialValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      address: '',
+      class: '',
+      links : {
+          twitter: '',
+          facebook: '',
+          whatsapp: '',
+          other: ''
+      },
+      matricNumber: `HOPE${Math.round(Math.random()*100000)}`,
+      localGovernment: '',
+      State: '',
+      Country: '',
+      proileUrl: '',
+      subjects: [],
+      messages: [],
+      announcements: []
+    }
+  })
   return (
     <>  
         <LandingNav/>
