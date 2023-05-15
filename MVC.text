@@ -27,12 +27,13 @@ stdentInfo : object{
     subjects: [subject<27>],
     messages: [message<47>],
     announcements: [announcement<53>],
+    submits: [submit]
 }
 
-
-subjects = array [
-    subject
-]
+subject = object {
+    subjectIndex,
+    submits: [submit]
+}
 subject = object {
     subjectName,
     subjectInfo,
@@ -68,5 +69,12 @@ post = {
     postDescription,
     postDate,
     studentIndex,
+    studentId,
     postFileUrl
+}
+
+submit: {
+    studentIndex,
+    submitIndex,
+    studentId
 }

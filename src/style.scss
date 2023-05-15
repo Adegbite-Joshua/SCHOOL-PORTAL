@@ -444,6 +444,14 @@ $color: red;
         display: none;
     }
 }
+#subjects{
+    // height: 100px !important;
+    &::-webkit-scrollbar{
+        height: 15px solid blue !important;
+        width: 15px solid blue !important;
+    }
+    border: 2px solid red;
+}
 .signinOtherDiv{
     flex-basis: 60%;
     background-image: url(teachers/bg-image-5.jpeg);

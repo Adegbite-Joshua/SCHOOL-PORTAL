@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Calendar } from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+// import { Calendar } from 'react-calendar';
+// import 'react-calendar/dist/Calendar.css';
 
 const StudentCalendar = () => {
     let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -66,7 +66,7 @@ const StudentCalendar = () => {
   return (
     <>
         <div className='w-100 d-flex justify-content-center'>
-            <Calendar onClickDay={(e)=>showDay(e)}/>
+            {/* <Calendar onClickDay={(e)=>showDay(e)}/> */}
         </div>
         {/* <div className='StudentCalendar mx-auto my-auto border border-2 topSpace'>
             <header className='d-flex justify-content-between px-5'>
