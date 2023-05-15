@@ -12,13 +12,13 @@ const SignUpPage = () => {
   const signUp =()=>{
     navigate("/signin")
   }
-  const formik = useFormik({
-    initialValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: '',
-      address: '',
+  const submit = ({firstName, lastName, email, password, address})=>{
+    const details = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password,
+      address: address,
       class: '',
       pictureUrl: '',
       links : {
@@ -27,7 +27,7 @@ const SignUpPage = () => {
           whatsapp: '',
           other: ''
       },
-      // matricNumber: `HOPE${Math.round(Math.random()*100000)}`,
+      matricNumber: `HOPE${Math.round(Math.random()*100000)}`,
       localGovernment: '',
       state: '',
       country: '',
@@ -36,10 +36,20 @@ const SignUpPage = () => {
       messages: [],
       announcements: []
     }
+    console.log(details);
+  }
+  const formik = useFormik({
+    initialValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      address: ''
+    }
     ,
     onSubmit: (values)=>{
-      console.log(values);
-      console.log(subjects.value);
+      // console.log(values);
+      submit(values)
     }
   })
   return (
@@ -75,15 +85,15 @@ const SignUpPage = () => {
                   </select>
                   {/* <input onChange={formik.handleChange} className='form-control my-2' type="hidden" id='matricNumber' name='matricNumber' placeholder='MatricNumber' value={`PROADESCHOOL${Math.round(Math.random()*10000000)}`} /> */}
                   <label htmlFor='firstName'>Address</label>
-                  <input onChange={formik.handleChange} type='text' className='form-control' placeholder='Address' name='address' id='address' />
+                  <input type='text' className='form-control' placeholder='Address' name='address' id='address' />
                   <label htmlFor='firstName'>Local Goverment</label>
-                  <input onChange={formik.handleChange} type='text' className='form-control' placeholder='Local Goverment' id='localGovernment' name='localGovernment' />
+                  <input type='text' className='form-control' placeholder='Local Goverment' id='localGovernment' name='localGovernment' />
                   <label htmlFor='firstName'>State</label>
-                  <input onChange={formik.handleChange} type='text' className='form-control' placeholder='State' id='state' name='state' />
+                  <input type='text' className='form-control' placeholder='State' id='state' name='state' />
                   <div style={{aspectRatio: '1'}} className='w-50 mx-auto bg-dark opacity-75 my-2 d-flex justify-content-center align-items-center'>
                     <h3 className='text-light'>Profile Picture</h3>
                   </div>
-                  <input onChange={formik.handleChange} type="file" name="pictureUrl" className='form-control' id="" />
+                  <input type="file" name="pictureUrl" className='form-control' id="" />
                   <button type='submit' className='btn btn-success w-100 d-block my-2'>Sign Up</button>
                   <Link className='d-md-none text-light'>Sign In</Link>
               </form>
