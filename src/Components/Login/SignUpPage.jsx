@@ -90,7 +90,6 @@ const SignUpPage = () => {
         <h3 className='text-center bg-light m-0 p-3'>Sign Up Page</h3>
         <div className="d-flex w-100 p-4 topSpace bg-light gap-3">
           <div className="border signup rounded-5">
-
               <form onSubmit={formik.handleSubmit}>
                   <label htmlFor="firstName">First Name</label>
                   <input onChange={formik.handleChange} className='form-control my-2' type="text" id='firstName' name='firstName' placeholder='First Name' />
