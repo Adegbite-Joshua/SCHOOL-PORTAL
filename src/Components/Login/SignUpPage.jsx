@@ -9,20 +9,35 @@ import axios from 'axios'
 
 
 const SignUpPage = () => {
+  const subjects = [
+    'MATHEMATICS',
+    'ENGLISH LANGUAGE',
+    'YORUBA',
+    'CIVIC EDUCATION',
+    'COMPUTER STUDIES',
+    'GEOGRAPHY',
+    'ECONOMICS',
+    'PHYSICS',
+    'CHEMISTRY',
+    'BIOLOGY',
+    'ANIMAL HUSBANDRY',
+    'FURTHER MATHEMATICS',
+    'TECHNICAL DRAWING'
+  ]
   const navigate = useNavigate()
   const signUp =()=>{
     navigate("/signin")
   }
-  const submit = ({firstName, lastName, email, password, address, subjects})=>{
+  const submit = ({firstName, lastName, email, password, address, subjects, clas})=>{
     const details = {
       firstName,
       lastName,
-      email: email,
+      email,
       password,
       address,
-      class: '',
-      pictureUrl: '',
-      links : {
+      class: clas,
+      pictureUrl: 'klkd',
+      links: {
           twitter: '',
           facebook: '',
           whatsapp: '',
@@ -42,6 +57,13 @@ const SignUpPage = () => {
     axios.post(endpoint, details)
     .then((res)=>{
       console.log(res);
+      if(res.status==200){
+        navigate("/signin")
+      } else if(res.status==11000){
+        console.log('email already exixts')
+      } else if(res.status==401){
+        console.log('error in validating')
+      }
     })
     .catch((err)=>{
       console.log(err);
@@ -54,9 +76,9 @@ const SignUpPage = () => {
       email: '',
       password: '',
       address: '',
-      subjects: []
-    }
-    ,
+      subjects: [0,1],
+      clas: 0
+    },
     onSubmit: (values)=>{
       // console.log(values);
       submit(values)
@@ -78,25 +100,33 @@ const SignUpPage = () => {
                   <input onChange={formik.handleChange} className='form-control my-2' id='email' name='email' type="text" placeholder='Email' />
                   <label htmlFor="password">Password</label>
                   <input onChange={formik.handleChange} className='form-control my-2' id='password' name='password' type="text" placeholder='Password' />
+                  <label htmlFor="clas">Class</label>
+                  <select name="clas" id="clas" onChange={formik.handleChange} required className='form-control my-2'>
+                    <option value="0">JSS1</option>
+                    <option value="1">JSS2</option>
+                    <option value="2">JSS3</option>
+                    <option value="3">SSS1</option>
+                    <option value="4">SSS2</option>
+                    <option value="5">SSS3</option>
+                  </select>
                   <label htmlFor="subjects">Subjects</label>
                   <select onChange={formik.handleChange} className='form-control my-2' multiple name='subjects' id="subjects">
-                    <option selected disabled value="MATHEMATICS "> MATHEMATICS </option>
-                    <option selected disabled value="ENGLISH LANGUAGE "> ENGLISH LANGUAGE </option>
-                    <option value="YORUBA "> YORUBA </option>
-                    <option value="CIVIC "> CIVIC </option>
-                    <option value="COMPUTER "> COMPUTER </option>
-                    <option value="GEOGRAPHY "> GEOGRAPHY </option>
-                    <option value="ECONOMICS "> ECONOMICS </option>
-                    <option value="PHYSICS "> PHYSICS </option>
-                    <option value="CHEMISTRY "> CHEMISTRY </option>
-                    <option value="BIOLOGY "> BIOLOGY </option>
-                    <option value="ANIMAL "> ANIMAL </option>
-                    <option value="FURTHER MATHS "> FURTHER MATHS </option>
-                    <option value="TECHNICA "> TECHNICA </option>
+                    <option selected disabled value={subjects.indexOf('MATHEMATICS')}> MATHEMATICS </option>
+                    <option selected disabled value={subjects.indexOf('ENGLISH LANGUAGE')}> ENGLISH LANGUAGE </option>
+                    <option value={subjects.indexOf('YORUBA')}> YORUBA </option>
+                    <option value={subjects.indexOf('CIVIC EDUCATION')}> CIVIC </option>
+                    <option value={subjects.indexOf('COMPUTER STUDIES')}> COMPUTER </option>
+                    <option value={subjects.indexOf('GEOGRAPHY')}> GEOGRAPHY </option>
+                    <option value={subjects.indexOf('ECONOMICS')}> ECONOMICS </option>
+                    <option value={subjects.indexOf('PHYSICS')}> PHYSICS </option>
+                    <option value={subjects.indexOf('CHEMISTRY')}> CHEMISTRY </option>
+                    <option value={subjects.indexOf('BIOLOGY')}> BIOLOGY </option>
+                    <option value={subjects.indexOf('ANIMAL HUSBANDRY')}> ANIMAL </option>
+                    <option value={subjects.indexOf('FURTHER MATHEMATICS')}> FURTHER MATHS </option>
+                    <option value={subjects.indexOf('TECHNICAL DRAWING')}> TECHNICA </option>
                   </select>
-                  {/* <input onChange={formik.handleChange} className='form-control my-2' type="hidden" id='matricNumber' name='matricNumber' placeholder='MatricNumber' value={`PROADESCHOOL${Math.round(Math.random()*10000000)}`} /> */}
-                  <label htmlFor='firstName'>Address</label>
-                  <input type='text' className='form-control' placeholder='Address' name='address' id='address' />
+                  <label htmlFor='address'>Address</label>
+                  <input type='text' className='form-control' onChange={formik.handleChange} placeholder='Address' id='address' name='address' />
                   <label htmlFor='firstName'>Local Goverment</label>
                   <input type='text' className='form-control' placeholder='Local Goverment' id='localGovernment' name='localGovernment' />
                   <label htmlFor='firstName'>State</label>
