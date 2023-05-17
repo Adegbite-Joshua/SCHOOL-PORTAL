@@ -4,6 +4,7 @@ import LandingNav from '../LandingPage/LandingNav'
 import SignInPage from './SignInPage'
 import { Link } from 'react-router-dom'
 import { useFormik } from 'formik'
+import axios from 'axios'
 
 
 
@@ -12,13 +13,13 @@ const SignUpPage = () => {
   const signUp =()=>{
     navigate("/signin")
   }
-  const submit = ({firstName, lastName, email, password, address})=>{
+  const submit = ({firstName, lastName, email, password, address, subjects})=>{
     const details = {
-      firstName: firstName,
-      lastName: lastName,
+      firstName,
+      lastName,
       email: email,
-      password: password,
-      address: address,
+      password,
+      address,
       class: '',
       pictureUrl: '',
       links : {
@@ -32,11 +33,19 @@ const SignUpPage = () => {
       state: '',
       country: '',
       proileUrl: '',
-      subjects: [],
+      subjects,
       messages: [],
       announcements: []
     }
     console.log(details);
+    let endpoint = 'http://localhost:7777/student/signup'
+    axios.post(endpoint, details)
+    .then((res)=>{
+      console.log(res);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
   }
   const formik = useFormik({
     initialValues: {
@@ -44,11 +53,12 @@ const SignUpPage = () => {
       lastName: '',
       email: '',
       password: '',
-      address: ''
+      address: '',
+      subjects: []
     }
     ,
     onSubmit: (values)=>{
-      console.log(values);
+      // console.log(values);
       submit(values)
     }
   })
