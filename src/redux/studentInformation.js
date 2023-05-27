@@ -9,7 +9,7 @@ export const studentInformation = createSlice({
         staffFetchingState: true
     },
     reducers: {
-        fetchStaff: (state, action)=>{
+        fetchStudent: (state, action)=>{
             Object.assign(state.studentInformation = action.payload)  
             console.log(current(state));         
         },

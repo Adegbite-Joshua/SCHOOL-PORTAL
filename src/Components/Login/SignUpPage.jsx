@@ -51,7 +51,8 @@ const SignUpPage = () => {
       proileUrl: '',
       subjects,
       messages: [],
-      announcements: []
+      announcements: [],
+      tasks: []
     }
     console.log(details);
     let endpoint = 'http://localhost:7777/student/signup'
