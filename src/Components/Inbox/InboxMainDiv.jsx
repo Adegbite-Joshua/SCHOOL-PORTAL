@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import ReceiverMessage from './ReceiverMessage'
 import SenderMessage from './SenderMessage'
+import {useSelector, useDispatch} from 'react-redux'
+
 
 
 const InboxMainDiv = ({func}) => {
@@ -8,14 +10,8 @@ const InboxMainDiv = ({func}) => {
         console.log(document.getElementById("messageContainer").scrollHeight)
         document.getElementById("messageContainer").scrollTop = document.getElementById("messageContainer").scrollHeight
     }, [])
-    
-    // const measure =()=>{
-    //     // document.getElementById("messageContainer").scrollTop = document.getElementById("messageContainer").scrollHeight
-    //     // console.log(document.getElementById("messageContainer").scrollBottom)
-    //     // console.log(document.getElementById("messageContainer").scrollHeight)
-    // }
-    // messageContainer.scrollTop = messageContainer.scrollHeight;
-    
+    let allStaffs = useSelector((state)=>state.studentInformation.allStaffs);    
+    let allStudents = useSelector((state)=>state.studentInformation.allStudents);    
   return (
     <>
         <div className='InboxMainDiv p-5 position-relative topSpace'>

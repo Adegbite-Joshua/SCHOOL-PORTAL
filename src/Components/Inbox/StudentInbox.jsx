@@ -6,6 +6,9 @@ import '../../../node_modules/bootstrap/dist/css/bootstrap.css'
 import './style.scss'
 import {useSelector, useDispatch} from 'react-redux'
 import axios from 'axios'
+import { fetchAllStaffs } from '../../redux/studentInformation'
+
+
 
 
 const StudentInbox = () => {
@@ -17,13 +20,28 @@ const StudentInbox = () => {
     let studentInfo = useSelector((state)=>state.studentInformation);
     let allStaffs = useSelector((state)=>state.allStaffs);
     let allStudents = useSelector((state)=>state.allStudents);
-    // const fetchAll =()=>{
-    //   if (allStaffs==[]) {
-    //     axios.get()
-    //   }
-    // }
+    const fetchAll =()=>{
+      if (allStaffs==[]) {
+        axios.get()
+        .then((res)=>{
+          dispatch(fetchAllStaffs(res.data))
+        })
+        .catch((err)=>{
+          console.log(err);
+        })
+      }
+      if (allStudents==[]) {
+        axios.get()
+        .then((res)=>{
+          dispatch(fetchAllStaffs(res.data))
+        })
+        .catch((err)=>{
+          console.log(err);
+        })
+      }
+    }
     useEffect(() => {
-      
+      fetchAll()
     }, [])
     
   return (

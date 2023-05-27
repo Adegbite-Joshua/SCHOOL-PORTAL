@@ -14,14 +14,6 @@ const OtherStudents = ({func}) => {
                 <button className='btn btn-info m-1' onClick={()=>setviewing('staffs')}>Staffs</button>
                 <button className='btn btn-info m-1'>Admin</button>
             </div>
-            <select name="" id="selectClass" className='form-control'>
-                <option value="">JSS 1 </option>
-                <option value="">JSS 2</option>
-                <option value="">JSS 3</option>
-                <option value="">SSS 1</option>
-                <option value="">SSS 2</option>
-                <option value="">SSS 3</option>
-            </select>
             <div className='w-100 OtherStudentsDiv py-3' style={{height: '80vh', overflowY: 'auto'}}>
                 {viewing=='students'?<Students/>:''}
                 {viewing=='staffs'?<Staffs/>:''}
