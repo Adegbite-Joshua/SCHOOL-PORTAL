@@ -28,6 +28,7 @@ const SignUpPage = () => {
   const signUp =()=>{
     navigate("/signin")
   }
+  const [imageBaase64, setimageBaase64] = useState('')
   const submit = ({firstName, lastName, email, password, address, subjects, clas})=>{
     const details = {
       firstName,
@@ -84,6 +85,14 @@ const SignUpPage = () => {
       submit(values)
     }
   })
+  const selectImage =(e)=>{
+    let file = e.target.files[0]
+    let reader = new FileReader();
+    reader.readAsDataURL(file)
+    reader.onload =()=>{
+      setimageBaase64(reader.result)
+    }
+  }
   return (
     <>  
         <LandingNav/>
@@ -132,8 +141,9 @@ const SignUpPage = () => {
                   <input type='text' className='form-control' placeholder='State' id='state' name='state' />
                   <div style={{aspectRatio: '1'}} className='w-50 mx-auto bg-dark opacity-75 my-2 d-flex justify-content-center align-items-center'>
                     <h3 className='text-light'>Profile Picture</h3>
+                    {/* <File */}
                   </div>
-                  <input type="file" name="pictureUrl" className='form-control' id="" />
+                  <input type="file" onChange={(e)=>selectImage(e)} name="pictureUrl" className='form-control' id="" />
                   <button type='submit' className='btn btn-success w-100 d-block my-2'>Sign Up</button>
                   <Link className='d-md-none text-light'>Sign In</Link>
               </form>

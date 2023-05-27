@@ -4,10 +4,14 @@ import StudentSideNav from '../StudentNav/StudentSideNav'
 import Tasks from './Tasks'
 import './style.scss'
 import { useParams } from 'react-router-dom'
+import {useSelector} from 'react-redux'
+
+
 const StudentDashboard = () => {
   document.querySelector("title").innerText = `Dashboard`
     let values = useParams()
     console.log(values);
+    console.log(useSelector((state)=>state));
   return (
     <>
         <div className='d-flex allWrap'>
