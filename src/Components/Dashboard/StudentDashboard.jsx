@@ -6,7 +6,7 @@ import './style.scss'
 import { useParams } from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import axios from 'axios'
-import { fetchStudent } from '../../redux/studentInformation'
+import { fetchStudent, setFetched } from '../../redux/studentInformation'
 
 
 const StudentDashboard = () => {
@@ -22,11 +22,11 @@ const StudentDashboard = () => {
         password: localStorage.getItem('studentpassword'),
         matricNumber: localStorage.getItem('studentmatric')
       }
-      console.log(details);
       axios.post(endpoint, details)
       .then((res)=>{
         if (res.status==200) {
           dispatch(fetchStudent(res.data))
+          dispatch(setFetched(false))
         } else{
           console.log('error');
         }

@@ -3,7 +3,7 @@ import OnlineStudents from './OnlineStudents'
 import Staffs from './Staffs'
 import Students from './Students'
 
-const OtherStudents = ({func}) => {
+const OtherStudents = ({func, func2}) => {
   const [viewing, setviewing] = useState('students')
   return (
     <>
@@ -15,8 +15,8 @@ const OtherStudents = ({func}) => {
                 <button className='btn btn-info m-1'>Admin</button>
             </div>
             <div className='w-100 OtherStudentsDiv py-3' style={{height: '80vh', overflowY: 'auto'}}>
-                {viewing=='students'?<Students/>:''}
-                {viewing=='staffs'?<Staffs/>:''}
+                {viewing=='students'?<Students func={func2}/>:''}
+                {viewing=='staffs'?<Staffs func={func2}/>:''}
             </div>
         </div>
     </>

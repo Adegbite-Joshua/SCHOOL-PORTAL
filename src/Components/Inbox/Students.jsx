@@ -3,7 +3,7 @@ import OnlineStudents from './OnlineStudents'
 import {useSelector} from 'react-redux'
 
 
-const Students = () => {
+const Students = ({func}) => {
     let allStudents = useSelector((state)=>state.studentInformation.allStudents);    
     const [viewing, setviewing] = useState(0)
   return (
@@ -18,7 +18,7 @@ const Students = () => {
             </select>
         {allStudents[viewing]?allStudents[viewing].map((student, index) =>(
             <>
-                <OnlineStudents name='Adegbite Joshua'/>
+                <OnlineStudents func={func} name={`${student.firstName} ${student.lastName}`} email={student.email} clas={viewing}/>
             </>
         )): ''}
     </>

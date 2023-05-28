@@ -7,8 +7,14 @@ import {useSelector} from 'react-redux'
 
 const StudentMainDiv = ({welcomeNote, subjects}) => {
   let studentInfo = useSelector((state)=>state.studentInformation.studentInformation);
-  let subject = studentInfo.subjects.filter((subject, index)=>index <=3)
-  let announcement = studentInfo.announcements.filter((annouce, index)=>index<=3)
+  let fetching = useSelector((state)=>state.staffFetchingState)
+  let subject;
+  let announcement; 
+ if (fetching) {
+  subject = studentInfo?studentInfo.subjects.filter((subject, index)=>index <=3):''
+  announcement = studentInfo?studentInfo.announcements.filter((annouce, index)=>index<=3):''
+ }
+ 
   return (
     <>
         <div className="StudentMainDiv p-4">
@@ -21,20 +27,20 @@ const StudentMainDiv = ({welcomeNote, subjects}) => {
           <div className="w-100 p-2">
             <h4 className='ms-4'>Your Subjects <Link className='float-end me-4' to='/subjects'>See All</Link></h4>
             <div className="subjectsDiv">
-              {subject.map((subject, index) => (
+              {subject?subject.map((subject, index) => (
                 <>
                   <SubjectDiv subject={subjects[subject]}/>
                 </>
-              ))}
+              )):''}
             </div>
           </div>
           <div className="announcementDiv">
             <h3>Announcements <Link className='float-end' to='/announcement'>See All</Link></h3>
-            {announcement.length>0?announcement.map((annouce, index)=>(
+            {fetching?announcement.length>0>0?announcement.map((annouce, index)=>(
               <>
-                <Announcement announce={announce.announcement}/>
+                <Announcement announce={annouce.announcement}/>
               </>
-            )): <Announcement announce='You have no announcement at the moment'/>}
+            )): <Announcement announce='You have no announcement at the moment'/>:''}
             
           </div>
         </div>
