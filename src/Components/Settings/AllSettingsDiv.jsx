@@ -8,9 +8,9 @@ const AllSettingsDiv = () => {
   return (
     <>
         <div className='AllSettingsDiv'>
+            <StudentProfileUpdate/>
             <StudentSocialMedia/>
             <StudentSubject/>
-            <StudentProfileUpdate/>
             <StudentCalendar/>
         </div>
     </>

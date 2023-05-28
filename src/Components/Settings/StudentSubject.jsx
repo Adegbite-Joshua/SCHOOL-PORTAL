@@ -8,26 +8,26 @@ const ErrorPage = () => {
     <>
         <div className='w-100 px-4'>
             <div>
-            <h3>Choose New Subject To Add</h3>
-            <select name='' id='' className='form-control my-2'>
-                <Subject/>
-                <Subject/>
-                <Subject/>
-                <Subject/>
-                <Subject/>
-            </select>
-            <button className='btn blue500 my-2 w-100'>Add Subject(s)</button>
+                <h3>Choose New Subject To Add</h3>
+                <select name='' id='' multiple className='form-control my-2'>
+                    <Subject/>
+                    <Subject/>
+                    <Subject/>
+                    <Subject/>
+                    <Subject/>
+                </select>
+                <button className='btn blue500 my-2 w-100'>Add Subject(s)</button>
             </div>
             <div>
-            <h3>Choose The Subject To Remove</h3>
-            <select name='' id='' className='form-control my-2'>
-                <Subject/>
-                <Subject/>
-                <Subject/>
-                <Subject/>
-                <Subject/>
-            </select>
-            <button className='btn blue500 my-2 w-100'>Remove Subject(s)</button>
+                <h3>Choose The Subject To Remove</h3>
+                <select name='' id='' multiple className='form-control my-2'>
+                    <Subject/>
+                    <Subject/>
+                    <Subject/>
+                    <Subject/>
+                    <Subject/>
+                </select>
+                <button className='btn blue500 my-2 w-100'>Remove Subject(s)</button>
             </div>
         </div>
     </>

@@ -13,7 +13,6 @@ const StudentSettings = () => {
     }
     const [displaying, setdisplaying] = useState('AllSettingsDiv')
     const setSetting =(setting)=>{
-      console.log(setting);
         setdisplaying(setting)
     }
     
