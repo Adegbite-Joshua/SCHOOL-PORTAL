@@ -30,6 +30,31 @@ const SignUpPage = () => {
   }
   const [imageBaase64, setimageBaase64] = useState('')
   const submit = ({firstName, lastName, email, password, address, subjects, clas})=>{
+    let fullsubjects = [];
+    subjects.map((subject, index)=>{
+      let subjectDetails ={
+        subjectIndex: subject,
+        ca1: '',
+        ca2: '',
+        ca3: '',
+        ca4: '',
+        ca5: '',
+        ass1: '',
+        ass2: '',
+        ass3: '',
+        ass4: '',
+        ass5: '',
+        test1: '',
+        test2: '',
+        test3: '',
+        bonus1: '',
+        bonus2: '',
+        total: '',
+        percent: '',
+        position: ''
+      }
+      fullsubjects.push(subjectDetails)
+    })
     const details = {
       firstName,
       lastName,
@@ -49,7 +74,7 @@ const SignUpPage = () => {
       state: '',
       country: '',
       proileUrl: '',
-      subjects,
+      subjects: fullsubjects,
       messages: [],
       announcements: [],
       tasks: []
@@ -71,6 +96,7 @@ const SignUpPage = () => {
       console.log(err);
     })
   }
+
   const formik = useFormik({
     initialValues: {
       firstName: '',

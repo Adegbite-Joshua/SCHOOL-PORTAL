@@ -16,7 +16,6 @@ const SignInPage = () => {
       matricNumber: ''
     },
     onSubmit: (values)=>{
-      // console.log(values);
       let endpoint = 'http://localhost:7777/student/signin'
       axios.post(endpoint, values)
       .then((res)=>{
