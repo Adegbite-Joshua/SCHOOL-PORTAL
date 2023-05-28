@@ -1,8 +1,11 @@
 import React from 'react'
 import Announcement from './Announcement'
 import './style.scss'
+import {useSelector} from 'react-redux'
+
 
 const AnnouncementMainDiv = () => {
+  let studentInfo = useSelector((state)=>state.studentInformation);
   return (
     <>
         <div className="AnnouncementMain px-4 border border-2">
@@ -12,12 +15,11 @@ const AnnouncementMainDiv = () => {
               <button className='btn btn-info'>Search</button>
             </div>
             <div className='AnnouncementMainDiv' style={{height: '80%', overflowY: 'auto'}}>
-                <Announcement announcement='Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis cum, vel dignissimos illum temporibus nihil molestias.'/>
-                <Announcement announcement='Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis cum, vel dignissimos illum temporibus nihil molestias.'/>
-                <Announcement announcement='Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis cum, vel dignissimos illum temporibus nihil molestias.'/>
-                <Announcement announcement='Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis cum, vel dignissimos illum temporibus nihil molestias.'/>
-                <Announcement announcement='Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis cum, vel dignissimos illum temporibus nihil molestias.'/>
-                <Announcement announcement='Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis cum, vel dignissimos illum temporibus nihil molestias.'/>
+                {studentInfo.announcements?studentInfo.announcements.map((announcement, index)=>(
+                  <>
+                    <Announcement announcement='Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis cum, vel dignissimos illum temporibus nihil molestias.'/>
+                  </>
+                )): <Announcement announcement='No Announcement Yet'/>}
             </div>
         </div>
     </>
