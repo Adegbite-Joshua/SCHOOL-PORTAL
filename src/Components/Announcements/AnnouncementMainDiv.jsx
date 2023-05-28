@@ -17,7 +17,7 @@ const AnnouncementMainDiv = () => {
             <div className='AnnouncementMainDiv' style={{height: '80%', overflowY: 'auto'}}>
                 {studentInfo.announcements?studentInfo.announcements.map((announcement, index)=>(
                   <>
-                    <Announcement announcement='Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis cum, vel dignissimos illum temporibus nihil molestias.'/>
+                    <Announcement announcement='Lorem dolor sit amet consectetur adipisicing elit. Corporis cum, vel dignissimos illum temporibus nihil molestias.'/>
                   </>
                 )): <Announcement announcement='No Announcement Yet'/>}
             </div>
