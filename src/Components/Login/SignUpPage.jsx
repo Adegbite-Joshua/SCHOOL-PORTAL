@@ -32,7 +32,7 @@ const SignUpPage = () => {
   const submit = ({firstName, lastName, email, password, address, subjects, clas})=>{
     let fullsubjects = [];
     subjects.map((subject, index)=>{
-      let subjectDetails ={
+      let subjectDetails = {
         subjectIndex: subject,
         ca1: '',
         ca2: '',
@@ -108,7 +108,6 @@ const SignUpPage = () => {
       clas: 0
     },
     onSubmit: (values)=>{
-      // console.log(values);
       submit(values)
     }
   })
