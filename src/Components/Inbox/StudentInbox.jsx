@@ -6,7 +6,7 @@ import '../../../node_modules/bootstrap/dist/css/bootstrap.css'
 import './style.scss'
 import {useSelector, useDispatch} from 'react-redux'
 import axios from 'axios'
-import { fetchAllStaffs, fetchAllStudents } from '../../redux/studentInformation'
+import { fetchAllStaffs, fetchAllStudents, fetchStudent, setFetched } from '../../redux/studentInformation'
 
 
 
@@ -24,6 +24,22 @@ const StudentInbox = () => {
       let studentEndpoint = 'http://localhost:7777/student/allstudents'
       let staffEndPoint = 'http://localhost:7777/student/allstaffs'
       // if (allStaffs==[]) {
+        let endpoint = 'http://localhost:7777/student/dashboard'
+        let details = {
+          class: Number(localStorage.getItem('studentclass')),
+          password: localStorage.getItem('studentpassword'),
+          matricNumber: localStorage.getItem('studentmatric')
+        }
+        axios.post(endpoint, details)
+        .then((res)=>{
+          if (res.status==200) {
+            dispatch(fetchStudent(res.data))
+            dispatch(setFetched(false))
+          } else{
+            console.log('error');
+          }
+        })
+
         axios.get(staffEndPoint)
         .then((res)=>{
           console.log(res);
@@ -44,6 +60,7 @@ const StudentInbox = () => {
         })
       // }
     }
+
     useEffect(() => {
       fetchAll()
     }, [])
