@@ -1,16 +1,45 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux';
 import ResultsDisplay from './ResultsDisplay'
 import SubjectPerformance from './SubjectPerformance'
+import axios from 'axios'
+
 
 const PerformanceContainer = () => {
+    let studentInfo = useSelector((state)=>state.studentInformation);
+    let allStaffs = useSelector((state)=>state.allStaffs);
+    const [fileName, setfileName] = useState('')
+    const [fileBase64, setfileBase64] = useState('')
     const selectFile =(e)=>{
         let file = e.target.files[0]
+        setfileName(file.name)
         let reader = new FileReader();
         reader.readAsDataURL(file)
         reader.onload=()=>{
-            console.log(reader.result);
+            setfileBase64(reader.result)
         }
 
+    }
+    const sendSubmit =()=>{
+        let submitDetails = {
+            studentEmail: studentInfo.email,
+            fileName,
+            fileBase64,
+            staffClass: studentInfo.class,
+            staffEmail: 'ff',
+            fileDescription: document.getElementById('fileDescription').value
+        }
+        console.log(submitDetails);
+        let endpoint = 'http://localhost:7777/student/sendsubmit'
+        // let {fileName, ...rest} = submitDetails
+        axios.post(endpoint, submitDetails)
+        .then((res)=>{
+            console.log(res.data);
+        })
+        .catch((error)=>{
+            console.log(error);
+        })
+        
     }
   return (
     <>
@@ -26,9 +55,9 @@ const PerformanceContainer = () => {
             <div>
                 <h4>Make a submit to your teacher</h4>
                 <label htmlFor="">File Description</label>
-                <input className='form-control my-2' type="text" placeholder='File Description' />
+                <input className='form-control my-2' type="text" id='fileDescription' placeholder='File Description' />
                 <input onChange={(e)=>selectFile(e)}className='form-control my-2' type="file" accept='.pdf, .docx, .txt' />
-                <button className='btn blue500 my-1 p-2 w-50 d-block mx-auto'>Send</button>
+                <button onClick={sendSubmit} className='btn blue500 my-1 p-2 w-50 d-block mx-auto'>Send</button>
             </div>
         </div>
     </>
