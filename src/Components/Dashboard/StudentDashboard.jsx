@@ -68,7 +68,7 @@ const StudentDashboard = () => {
             <div className='d-inline-block topSpace taskDiv position-relative'>
               <h2 className='text-center position-sticky top-0 blue500 p-2 rounded-2 mx-3'>Your Tasks:</h2>
               {studentInfo.tasks?studentInfo.tasks.map((task, index)=>(
-              <Tasks date={task.taskDate} task={task.taskBody}/>
+              <Tasks date={task.taskDate} index={index} task={task.taskBody} wholeTask={task}/>
               )): <Tasks date='07/02/2005' task='No Task Added Yet' empty={true}/>}
               <button className='btn btn-outline-info d-block mx-auto' onClick={openAddToTask}><i className='fas fa-add'></i> Add New</button>
             </div>

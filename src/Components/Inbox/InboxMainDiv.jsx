@@ -19,9 +19,9 @@ const InboxMainDiv = ({func, category, individualEmail, clas}) => {
         <div className='InboxMainDiv p-5 position-relative topSpace'>
             <h3 className='position-sticky top-0 text-center'>Adegbite Joshua <span id='toggleIcon' onClick={func} className='float-end border border-2 p-2 rounded-3'><i className='fas fa-bars'></i></span></h3>
             <div id='messageContainer' className='messageContainer'>                
-                {studentInfo.messages?studentInfo.messages.map(()=>(
+                {studentInfo.messages?studentInfo.messages.map((message, index)=>(
                     <>
-                        <SenderMessage message="Hey! I'm fine. Thanks for asking!" time='11:01PM'/>
+                        <SenderMessage message={message.messageBody} time='11:01PM'/>
                     </>
                 )):<>
                     <div className='d-flex h-100 w-100 bg-light justify-content-center align-items-center'>
