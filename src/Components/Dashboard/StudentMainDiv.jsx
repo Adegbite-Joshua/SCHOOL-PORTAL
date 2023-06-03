@@ -5,15 +5,37 @@ import SubjectDiv from './SubjectDiv'
 import {useSelector} from 'react-redux'
 
 
-const StudentMainDiv = ({welcomeNote, subjects}) => {
+const StudentMainDiv = ({welcomeNote}) => {
+  const subjects = [
+    'MATHEMATICS',
+    'ENGLISH LANGUAGE',
+    'YORUBA',
+    'CIVIC EDUCATION',
+    'COMPUTER STUDIES',
+    'GEOGRAPHY',
+    'ECONOMICS',
+    'PHYSICS',
+    'CHEMISTRY',
+    'BIOLOGY',
+    'ANIMAL HUSBANDRY',
+    'FURTHER MATHEMATICS',
+    'TECHNICAL DRAWING'
+  ]
   let studentInfo = useSelector((state)=>state.studentInformation.studentInformation);
   let fetching = useSelector((state)=>state.staffFetchingState)
-  let subject;
+  let studentSubject = [];
   let announcement; 
- if (fetching) {
-  subject = studentInfo?studentInfo.subjects.filter((subject, index)=>index <=3):''
-  announcement = studentInfo?studentInfo.announcements.filter((annouce, index)=>index<=3):''
- }
+  if (!fetching) {
+    studentInfo?studentInfo.subjects.map((subject, index)=>{
+      if(index<=3){
+        studentSubject.push(subject.subjectIndex)
+      } else{
+        return
+      }
+    }):''
+    console.log(studentSubject)
+    announcement = studentInfo?studentInfo.announcements.filter((annouce, index)=>index<=3):''
+  }
  
   return (
     <>
@@ -27,7 +49,7 @@ const StudentMainDiv = ({welcomeNote, subjects}) => {
           <div className="w-100 p-2">
             <h4 className='ms-4'>Your Subjects <Link className='float-end me-4' to='/subjects'>See All</Link></h4>
             <div className="subjectsDiv">
-              {subject?subject.map((subject, index) => (
+              {studentSubject?studentSubject.map((subject, index) => (
                 <>
                   <SubjectDiv subject={subjects[subject]}/>
                 </>
