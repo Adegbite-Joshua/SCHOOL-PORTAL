@@ -5,7 +5,7 @@ import SubjectPerformance from './SubjectPerformance'
 import axios from 'axios'
 
 
-const PerformanceContainer = () => {
+const PerformanceContainer = ({subjectIndex}) => {
     let studentInfo = useSelector((state)=>state.studentInformation);
     let allStaffs = useSelector((state)=>state.allStaffs);
     const [fileName, setfileName] = useState('')
@@ -45,7 +45,7 @@ const PerformanceContainer = () => {
     <>
         <div className='w-100'>
             <div className="resultDiv overflow-auto" style={{width: '100%'}}>
-                <ResultsDisplay/>
+                <ResultsDisplay subjectIndex={subjectIndex}/>
             </div>
             <div className="d-flex gap-2 text-center mt-3 performanceDiv">
                 <SubjectPerformance/>

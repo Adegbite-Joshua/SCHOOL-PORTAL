@@ -9,7 +9,7 @@ import SubjectResource from './SubjectResource'
 import ResourcesContainer from './ResourcesCOntainer'
 
 
-const SubjectMainDiv = ({func}) => {
+const SubjectMainDiv = ({func, subjectIndex}) => {
     useEffect(() => {
         console.log(document.getElementById("subjectContainer").scrollHeight)
         document.getElementById("subjectContainer").scrollTop = document.getElementById("subjectContainer").scrollHeight
@@ -32,8 +32,8 @@ const SubjectMainDiv = ({func}) => {
                 <a onClick={()=>setviewing('Class')}>Class</a>
             </div>
             <div id='subjectContainer' className='subjectContainer w-100 mt-3'>
-                {viewing==='Performance'?<PerformanceContainer/>:''}
-                {viewing==='Resources'?<ResourcesContainer/>:''}
+                {viewing==='Performance'?<PerformanceContainer subjectIndex={subjectIndex} />:''}
+                {viewing==='Resources'?<ResourcesContainer subjectIndex={subjectIndex}/>:''}
                 {/* {viewing==='Class'?<ResourcesContainer/>:''} */}
                 
             </div>
