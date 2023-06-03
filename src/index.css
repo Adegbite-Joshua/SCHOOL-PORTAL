@@ -216,8 +216,18 @@
 }
 
 .messageContainer{
-  height: 80vh;
+  height: 80%;
+  width: 100%;
   overflow-y: auto;
+}
+.sendContainer{
+  height: 20%;
+  width: 100%;
+}
+#sendContainer div{
+  display: flex;
+  /* padding: 1rem; */
+  /* background-color: red; */
 }
 .messageContainer::-webkit-scrollbar{
   height: 0;

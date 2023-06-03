@@ -47,7 +47,7 @@ const StudentDashboard = () => {
         taskDate: taskTime.value.split('T')[0],
         taskTime: taskTime.value.split('T')[1],
         taskBody: taskBody.value,
-        class: studentInfo.class,
+        class: Number(studentInfo.class),
         email: studentInfo.email
       }
       console.log(taskDetails);

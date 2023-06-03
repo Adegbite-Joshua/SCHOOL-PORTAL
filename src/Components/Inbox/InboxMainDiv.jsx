@@ -40,7 +40,7 @@ const InboxMainDiv = ({func, category, individualEmail, clas}) => {
   return (
     <>
         <div className='InboxMainDiv p-5 position-relative topSpace'>
-            <h3 className='position-sticky top-0 text-center'>Adegbite Joshua <span id='toggleIcon' onClick={func} className='float-end border border-2 p-2 rounded-3'><i className='fas fa-bars'></i></span></h3>
+            <h3 className='position-sticky top-0 text-center'>Adegbite Joshua <span id='toggleIcon' onClick={func} className='float-end border-2 p-2 rounded-3'><i className='fas fa-bars'></i></span></h3>
             <div id='messageContainer' className='messageContainer'>                
                 {studentInfo.messages?studentInfo.messages.map((message, index)=>(
                     <>
@@ -52,10 +52,12 @@ const InboxMainDiv = ({func, category, individualEmail, clas}) => {
                     </div>
                 </>}                    
             </div>
-            <div style={{marginTop: '-50px'}}>
-                <input type="text" id='message' className='form-control my-2' />
-                {/* <button className='btn btn-info my-2'>Send Message</button> */}
-                <button onClick={sendMessage} className='btn btn-info my-2'>Send Message</button>
+            <div id='sendContainer'>
+                <p className='text-center fw-bold'>Adegbite Joshua</p>
+                <div>
+                    <input type="text" id='message' className='form-control my-2' />
+                    <button onClick={sendMessage} className='btn btn-info my-2'>Send Message</button>
+                </div>
             </div>
         {/* {document.getElementById("messageContainer").onscroll = measure} */}
         </div>

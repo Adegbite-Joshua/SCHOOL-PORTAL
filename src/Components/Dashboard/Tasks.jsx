@@ -21,7 +21,7 @@ const Tasks = ({task, date, empty, wholeTask, index}) => {
       taskDate: 'qwertyu',
       taskTime: 'qwertyu',
       taskBody: 'taskBody.value',
-      class: studentInfo.class,
+      class: Number(studentInfo.class),
       email: studentInfo.email,
       index: index
     }
