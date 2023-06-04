@@ -29,7 +29,8 @@ function App() {
           <Route path='/signup' element={<SignUpPage/>}/>
           <Route path='/signin' element={<SignInPage/>}/>
           {/* <Route path='/dashboard' element={<StudentDashboard/>}/> */}
-          <Route path='/dashboard/:name' element={<StudentDashboard/>}/>
+          {/* <Route path='/dashboard/:name' element={<StudentDashboard/>}/> */}
+          <Route path='/dashboard' element={<StudentDashboard/>}/>
           <Route path='/inbox' element={<StudentInbox/>}/>
           <Route path='/subjects' element={<StudentsSubject/>}/>
           <Route path='/announcement' element={<StudentAnnouncement/>}/>

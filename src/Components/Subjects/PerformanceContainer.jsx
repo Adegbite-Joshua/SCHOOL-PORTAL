@@ -41,6 +41,7 @@ const PerformanceContainer = ({subjectIndex}) => {
         })
         
     }
+
   return (
     <>
         <div className='w-100'>

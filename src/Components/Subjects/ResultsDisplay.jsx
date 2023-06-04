@@ -4,7 +4,7 @@ import {useSelector} from 'react-redux'
 
 const ResultsDisplay = ({subjectIndex}) => {
     let studentInfo = useSelector((state)=>state.studentInformation.studentInformation);
-    let viewingSubject = studentInfo.subjects[subjectIndex]
+    let viewingSubject = studentInfo=={}?studentInfo.subjects[subjectIndex]:''
     console.log(viewingSubject)
   return (
     <>
