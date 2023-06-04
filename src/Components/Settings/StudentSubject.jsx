@@ -27,10 +27,11 @@ const ErrorPage = () => {
     //         unAddedSubjects.splice(subject.subjectIndex,1)
     //     }
     // })
-    for (let i = 0; i < 11; i++) {
-        
-        
-    }
+    // for (let i = 0; i < 11; i++) {
+    //     if (addedSubjects[i] && unAddedSubjects.includes(addedSubjects[i].subjectIndex)) {
+    //         unAddedSubjects.splice(i,1)
+    //     }
+    // }
     console.log(addedSubjects);
     console.log(unAddedSubjects);
   return (
