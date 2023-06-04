@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, {useEffect}from 'react'
 import { useSelector } from 'react-redux';
 import subjects from '../../subjectArray';
@@ -20,7 +21,7 @@ const ResourcesContainer = ({subjectIndex}) => {
       .catch((err)=>{
         console.log(err);
       })
-    }
+      // ?
   }
   useEffect(()=>{
     fetchResources()

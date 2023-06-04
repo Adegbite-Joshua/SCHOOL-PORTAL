@@ -4,17 +4,15 @@ import Subject from './Subject'
 
 const ErrorPage = () => {
     // document.querySelector("title").innerText = `404 - Error Page`
+    let studentInfo = useSelector((state)=>state.studentInformation.studentInformation);
+    let su
   return (
     <>
         <div className='w-100 px-4'>
             <div>
                 <h3>Choose New Subject To Add</h3>
                 <select name='' id='' multiple className='form-control my-2'>
-                    <Subject/>
-                    <Subject/>
-                    <Subject/>
-                    <Subject/>
-                    <Subject/>
+                    
                 </select>
                 <button className='btn blue500 my-2 w-100'>Add Subject(s)</button>
             </div>

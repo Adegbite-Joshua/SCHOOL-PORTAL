@@ -1,15 +1,18 @@
 import { useFormik } from 'formik'
 import React from 'react'
 import axios from 'axios'
+import { useSelector } from 'react-redux';
 
 
 const ErrorPage = () => {
     // document.querySelector("title").innerText = `404 - Error Page`
+    let studentInfo = useSelector((state)=>state.studentInformation.studentInformation);
     const formik = useFormik({
       initialValues:{
-        firstName: '',
-        lastName: '',
-        phoneNumber: '',
+        firstName: studentInfo.firstName,
+        lastName: studentInfo.lastName,
+        phoneNumber: studentInfo.phoneNumber,
+        email: studentInfo.email,
         address: '',
         localGovernment: '',
         state: ''
@@ -20,7 +23,7 @@ const ErrorPage = () => {
           const upload = await axios.post(endpoint, values)
           console.log(res);
         } catch (error) {
-          console.log(error);
+          console.log(error)
         }
       }
     })
