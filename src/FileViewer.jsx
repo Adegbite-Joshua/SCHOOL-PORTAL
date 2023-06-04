@@ -16,7 +16,7 @@ const FileViewer = ({fileLink, fileType}) => {
             </>: ''}
             {fileType.includes('.mpeg')?
             <>
-                <video className='w-full aspect-video' src={fileLink} controls></video>
+                <video className='w-100' style={{height: '200px'}} src={fileLink} controls></video>
             </>: ''}
             {fileType.includes('.jpeg')?
             <>
