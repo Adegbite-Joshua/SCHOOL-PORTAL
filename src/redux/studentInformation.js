@@ -6,7 +6,7 @@ export const studentInformation = createSlice({
         studentInformation: {},
         allStaffs: [],
         allStudents: [],
-        staffFetchingState: true
+        studentFetchingState: true
     },
     reducers: {
         fetchStudent: (state, action)=>{
@@ -22,7 +22,7 @@ export const studentInformation = createSlice({
             console.log(current(state)); 
         },
         setFetched: (state, action)=>{
-            Object.assign(state.staffFetchingState = action.payload)  
+            Object.assign(state.studentFetchingState = action.payload)  
             console.log(current(state)); 
         }
     }

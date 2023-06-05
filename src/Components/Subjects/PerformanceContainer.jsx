@@ -36,6 +36,11 @@ const PerformanceContainer = ({subjectIndex}) => {
         // let {fileName, ...rest} = submitDetails
         axios.post(endpoint, submitDetails)
         .then((res)=>{
+            if(res.status==200){
+                alert('submit sent')
+            } else if(res.status==402){
+                alert('an error occurred, try again')
+            }
             console.log(res.data);
         })
         .catch((error)=>{
