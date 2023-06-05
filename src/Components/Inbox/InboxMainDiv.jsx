@@ -37,6 +37,15 @@ const InboxMainDiv = ({func, category, individualEmail, clas}) => {
             console.log(error);
         })
     }
+
+    let chattingWithName = ''
+    if(category==0 && clas!=''){
+    //    let ff = allStaffs[clas].find((individual, index)=>individual.email=individualEmail)
+       console.log(allStaffs[clas])
+    } else if(category==1 && clas!=''){
+        let gg = allStudents[clas].find((individual, index)=>individual.email=individualEmail)
+        console.log(gg)
+     }
   return (
     <>
         <div className='InboxMainDiv p-5 position-relative topSpace'>
@@ -53,7 +62,7 @@ const InboxMainDiv = ({func, category, individualEmail, clas}) => {
                 </>}                    
             </div>
             <div id='sendContainer'>
-                <p className='text-center fw-bold'>Adegbite Joshua</p>
+                <p className='text-center fw-bold'>Ade</p>
                 <div>
                     <input type="text" id='message' className='form-control my-2' />
                     <button onClick={sendMessage} className='btn btn-info my-2'>Send Message</button>

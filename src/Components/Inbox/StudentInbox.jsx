@@ -7,7 +7,7 @@ import './style.scss'
 import {useSelector, useDispatch} from 'react-redux'
 import axios from 'axios'
 import { fetchAllStaffs, fetchAllStudents, fetchStudent, setFetched } from '../../redux/studentInformation'
-
+import Loader from '../../Loader'
 
 
 
@@ -17,15 +17,15 @@ const StudentInbox = () => {
         document.getElementById('OtherStudents').classList.toggle('OtherStudents')
     }
     const dispatch = useDispatch()
-    let studentInfo = useSelector((state)=>state.studentInformation);
-    let allStaffs = useSelector((state)=>state.allStaffs);
-    let allStudents = useSelector((state)=>state.allStudents);
+    let studentInfo = useSelector((state)=>state.studentInformation.studentInformation);
+    let allStaffs = useSelector((state)=>state.studentInformation.allStaffs);
+    let allStudents = useSelector((state)=>state.studentInformation.allStudents);
     let fetching = useSelector((state)=>state.studentInformation.studentFetchingState);
     const fetchAll =()=>{
       let studentEndpoint = 'http://localhost:7777/student/allstudents'
       let staffEndPoint = 'http://localhost:7777/student/allstaffs'
         let endpoint = 'http://localhost:7777/student/dashboard'
-        if(studentInfo=={}){
+        if(Object.keys(studentInfo).length === 0 && studentInfo.constructor === Object){
           dispatch(setFetched(true))
           let details = {
             class: Number(localStorage.getItem('studentclass')),
@@ -43,7 +43,7 @@ const StudentInbox = () => {
           })
         }
 
-        if(allStaffs==[]){
+        if(allStaffs.length==0){
           dispatch(setFetched(true))
           axios.get(staffEndPoint)
           .then((res)=>{
@@ -55,7 +55,7 @@ const StudentInbox = () => {
             console.log(err);
           })
         }
-        if (allStudents==[]) {
+        if (allStudents.length==0) {
           dispatch(setFetched(true))
           axios.get(studentEndpoint)
           .then((res)=>{
@@ -86,10 +86,10 @@ const StudentInbox = () => {
     <>
         <div className='d-flex w-100 overflow-hidden'>
             <StudentSideNav/>
-            {fetching && <Loader/>}
-            {fetching==false && <>
+            {fetching==true && (<Loader/>)}
+            {fetching==false && (<>
             <InboxMainDiv category={category} mainindex={mainindex} individualEmail={individualEmail} func={toggleSideNav}/>
-            <OtherStudents  func={toggleSideNav} func2={setAll}/></>}
+            <OtherStudents  func={toggleSideNav} func2={setAll}/></>)}
         </div>
     </>
   )

@@ -26,24 +26,25 @@ const StudentDashboard = () => {
     }, [])
 
     const fetchStudentInformation =()=>{
-      if(studentInfo=={}){
+      if(Object.keys(studentInfo).length === 0 && studentInfo.constructor === Object){
+        alert('okay')
         dispatch(setFetched(true))
         let endpoint = 'http://localhost:7777/student/dashboard'
-      let details = {
-        class: Number(localStorage.getItem('studentclass')),
-        password: localStorage.getItem('studentpassword'),
-        matricNumber: localStorage.getItem('studentmatric')
-      }
-      axios.post(endpoint, details)
-      .then((res)=>{
-        if (res.status==200) {
-          dispatch(fetchStudent(res.data))
-          dispatch(setFetched(false))
-          // fetching = false
-        } else{
-          console.log('error');
+        let details = {
+          class: Number(localStorage.getItem('studentclass')),
+          password: localStorage.getItem('studentpassword'),
+          matricNumber: localStorage.getItem('studentmatric')
         }
-      })
+        axios.post(endpoint, details)
+        .then((res)=>{
+          if (res.status==200) {
+            dispatch(fetchStudent(res.data))
+            dispatch(setFetched(false))
+            // fetching = false
+          } else{
+            console.log('error');
+          }
+        })
       }
     }
 
