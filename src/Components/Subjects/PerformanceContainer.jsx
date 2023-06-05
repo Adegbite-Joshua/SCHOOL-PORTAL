@@ -3,10 +3,11 @@ import { useSelector } from 'react-redux';
 import ResultsDisplay from './ResultsDisplay'
 import SubjectPerformance from './SubjectPerformance'
 import axios from 'axios'
+import subjects from '../../subjectArray';
 
 
 const PerformanceContainer = ({subjectIndex}) => {
-    let studentInfo = useSelector((state)=>state.studentInformation);
+    let studentInfo = useSelector((state)=>state.studentInformation.studentInformation);
     let allStaffs = useSelector((state)=>state.allStaffs);
     const [fileName, setfileName] = useState('')
     const [fileBase64, setfileBase64] = useState('')
@@ -25,8 +26,9 @@ const PerformanceContainer = ({subjectIndex}) => {
             studentEmail: studentInfo.email,
             fileName,
             fileBase64,
-            staffClass: studentInfo.class,
-            staffEmail: 'ff',
+            staffClass: Number(studentInfo.class),
+            // staffEmail: '',
+            subjectName: subjects[subjectIndex],
             fileDescription: document.getElementById('fileDescription').value
         }
         console.log(submitDetails);
