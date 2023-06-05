@@ -6,10 +6,11 @@ import axios from 'axios'
 
 
 
-const InboxMainDiv = ({func, category, individualEmail, clas}) => {
+const InboxMainDiv = ({func, category, individualEmail, mainindex, partner}) => {
     useEffect(() => {
-        console.log(document.getElementById("messageContainer").scrollHeight)
+        // console.log(document.getElementById("messageContainer").scrollHeight)
         document.getElementById("messageContainer").scrollTop = document.getElementById("messageContainer").scrollHeight
+        // showPartnerName()
     }, [])
     let studentInfo = useSelector((state)=>state.studentInformation.studentInformation);    
     let allStaffs = useSelector((state)=>state.studentInformation.allStaffs);    
@@ -22,7 +23,7 @@ const InboxMainDiv = ({func, category, individualEmail, clas}) => {
             messageSenderClass: studentInfo.class,
             messageSenderEmail: studentInfo.email,
             receiverRelationship: category==1?'staff':'student',
-            receiverClass: clas,
+            receiverClass: mainindex,
             receiverEmail: individualEmail,
             senderRelationship: 'student',
             messageBody: document.getElementById('message').value
@@ -39,13 +40,17 @@ const InboxMainDiv = ({func, category, individualEmail, clas}) => {
     }
 
     let chattingWithName = ''
-    if(category==0 && clas!=''){
-    //    let ff = allStaffs[clas].find((individual, index)=>individual.email=individualEmail)
-       console.log(allStaffs[clas])
-    } else if(category==1 && clas!=''){
-        let gg = allStudents[clas].find((individual, index)=>individual.email=individualEmail)
-        console.log(gg)
-     }
+    // const showPartnerName =()=>{
+    //     if(category==0 && mainindex!=''){
+    //         alert('yes')
+    //         let ff = allStaffs[mainindex].find((individual, index)=>individual.email=individualEmail)
+    //         console.log(allStaffs[mainindex])
+    //      } else if(category==1 && mainindex!=''){
+    //         alert('no')
+    //          let gg = allStudents[mainindex].find((individual, index)=>individual.email=individualEmail)
+    //          console.log(gg)
+    //       }
+    // }
   return (
     <>
         <div className='InboxMainDiv p-5 position-relative topSpace'>
@@ -62,7 +67,7 @@ const InboxMainDiv = ({func, category, individualEmail, clas}) => {
                 </>}                    
             </div>
             <div id='sendContainer'>
-                <p className='text-center fw-bold'>Ade</p>
+                <p className='text-center fw-bold'>{partner?partner:'Select A Name'}</p>
                 <div>
                     <input type="text" id='message' className='form-control my-2' />
                     <button onClick={sendMessage} className='btn btn-info my-2'>Send Message</button>

@@ -25,7 +25,7 @@ const StudentMainDiv = ({welcomeNote}) => {
   let fetching = useSelector((state)=>state.staffFetchingState)
   let studentSubject = [];
   let announcement; 
-  if (fetching) {
+  if (!fetching) {
     studentInfo?studentInfo.subjects.map((subject, index)=>{
       if(index<=3){
         studentSubject.push(subject.subjectIndex)
