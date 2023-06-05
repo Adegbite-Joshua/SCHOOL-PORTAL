@@ -5,27 +5,26 @@ import FileViewer from '../../FileViewer';
 import subjects from '../../subjectArray';
 import SubjectResource from './SubjectResource'
 
-const ResourcesContainer = ({subjectIndex}) => {
+const ResourcesContainer = ({subjectIndex, func, studentResources}) => {
   let studentInfo = useSelector((state)=>state.studentInformation.studentInformation);
   let fetching = useSelector((state)=>state.studentInformation.staffFetchingState);
-  const [studentResources, setstudentResources] = useState([])
   const fetchResources = ()=>{
-    // if(subjectIndex){
-      let endpoint = 'http://localhost:7777/student/fetchsubjectresources'
-      let payload = {
-        class: studentInfo.class,
-        subject: subjects[subjectIndex]
-      }
+    let endpoint = 'http://localhost:7777/student/fetchsubjectresources'
+    let payload = {
+      class: studentInfo.class,
+      subject: subjects[subjectIndex]
+    }
+    if (studentResources.length==0) {
       console.log(payload);
       axios.post(endpoint, payload)
       .then((res)=>{
         console.log(res)
-        setstudentResources(res.data)
+        func(res.data)
       })
       .catch((err)=>{
         console.log(err);
       })
-      // ?
+    }
   }
   useEffect(()=>{
     fetchResources()

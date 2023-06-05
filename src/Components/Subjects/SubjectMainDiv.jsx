@@ -18,12 +18,17 @@ const SubjectMainDiv = ({func, subjectIndex}) => {
     }, [])
     
     const [viewing, setviewing] = useState('Performance')
+    const [studentResources, setstudentResources] = useState([])
+
     // const measure =()=>{
     //     // document.getElementById("subjectContainer").scrollTop = document.getElementById("subjectContainer").scrollHeight
     //     // console.log(document.getElementById("subjectContainer").scrollBottom)
     //     // console.log(document.getElementById("subjectContainer").scrollHeight)
     // }
     // subjectContainer.scrollTop = subjectContainer.scrollHeight;
+    const setresources =(resources)=>{
+        setstudentResources(resources)
+    }
   return (
     <>
         <div className='SubjectMainDiv p-5 topSpace overflow-scroll'>
@@ -35,7 +40,7 @@ const SubjectMainDiv = ({func, subjectIndex}) => {
             </div>
             <div id='subjectContainer' className='subjectContainer w-100 mt-3'>
                 {viewing==='Performance'?<PerformanceContainer subjectIndex={subjectIndex} />:''}
-                {viewing==='Resources'?<ResourcesContainer subjectIndex={subjectIndex}/>:''}
+                {viewing==='Resources'?<ResourcesContainer func={setresources}  studentResources={studentResources} subjectIndex={subjectIndex}/>:''}
                 {/* {viewing==='Class'?<ResourcesContainer/>:''} */}
                 
             </div>

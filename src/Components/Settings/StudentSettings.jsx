@@ -1,4 +1,8 @@
-import React, { useState } from 'react'
+import axios from 'axios'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import Loader from '../../Loader'
+import { fetchStudent, setFetched } from '../../redux/studentInformation'
 import StudentSideNav from '../StudentNav/StudentSideNav'
 import SettingsMainDiv from './SettingsMainDiv'
 import SettingsOtherDiv from './SettingsOtherDiv'
@@ -16,12 +20,44 @@ const StudentSettings = () => {
         setdisplaying(setting)
     }
     
+    let studentInfo = useSelector((state)=>state.studentInformation.studentInformation);
+    let fetching = useSelector((state)=>state.studentInformation.studentFetchingState);
+    const getInfo =()=>{
+      fetchStudentInformation()
+    }
+    useEffect(() => {
+      getInfo()
+    }, [])
+    const dispatch = useDispatch()
+    const fetchStudentInformation =()=>{
+      if(Object.keys(studentInfo).length === 0 && studentInfo.constructor === Object){
+        dispatch(setFetched(true))
+        let endpoint = 'http://localhost:7777/student/dashboard'
+        let details = {
+          class: Number(localStorage.getItem('studentclass')),
+          password: localStorage.getItem('studentpassword'),
+          matricNumber: localStorage.getItem('studentmatric')
+        }
+        axios.post(endpoint, details)
+        .then((res)=>{
+          if (res.status==200) {
+            dispatch(fetchStudent(res.data))
+            dispatch(setFetched(false))
+          } else{
+            console.log('error');
+          }
+        })
+      }
+    }
   return (
     <>
         <div className='d-flex'>
           <StudentSideNav/>
-          <SettingsMainDiv func={toggleSideNav} disp={displaying}/>
-          <SettingsOtherDiv func={toggleSideNav} func2={setSetting}/>
+          {fetching && <Loader/>}
+          {fetching==false && <>
+            <SettingsMainDiv func={toggleSideNav} disp={displaying}/>
+            <SettingsOtherDiv func={toggleSideNav} func2={setSetting}/>
+          </>}
         </div>
     </>
   )
