@@ -12,14 +12,23 @@ import Loader from '../../Loader'
 
 const StudentDashboard = () => {
   let dispatch = useDispatch();
+  const [addingTask, setaddingTask] = useState(false)
   document.querySelector("title").innerText = `Dashboard`
     let values = useParams()
     console.log(values);
     let studentInfo = useSelector((state)=>state.studentInformation.studentInformation);
     let fetching = useSelector((state)=>state.studentInformation.studentFetchingState);
     const getInfo =()=>{
-      dispatch(setFetched(true))
-      let endpoint = 'http://localhost:7777/student/dashboard'
+      fetchStudentInformation()
+    }
+    useEffect(() => {
+      getInfo()
+    }, [])
+
+    const fetchStudentInformation =()=>{
+      if(studentInfo=={}){
+        dispatch(setFetched(true))
+        let endpoint = 'http://localhost:7777/student/dashboard'
       let details = {
         class: Number(localStorage.getItem('studentclass')),
         password: localStorage.getItem('studentpassword'),
@@ -35,10 +44,9 @@ const StudentDashboard = () => {
           console.log('error');
         }
       })
+      }
     }
-    useEffect(() => {
-      getInfo()
-    }, [])
+
     const closeAddToTask = () => {
       document.getElementById('popup').classList.remove("open-popup")
     }
@@ -47,6 +55,7 @@ const StudentDashboard = () => {
     }
     const addToTasks =()=>{
       // console.log(studentInfo);
+      setaddingTask(true)
       let taskDetails = {
         taskDate: taskTime.value.split('T')[0],
         taskTime: taskTime.value.split('T')[1],
@@ -58,9 +67,15 @@ const StudentDashboard = () => {
       let endpoint = 'http://localhost:7777/student/addtotask'
       axios.post(endpoint, taskDetails)
       .then((res)=>{
+        setaddingTask(false)
+        alert('task added')
+        closeAddToTask()
         console.log(res.data);
       })
       .catch((error)=>{
+        setaddingTask(false)
+        alert('error in adding task')
+        closeAddToTask()
         console.log(error);
       })
     }
@@ -86,7 +101,7 @@ const StudentDashboard = () => {
                     <button type="button" class="btn-close ms-auto d-block my-2" onClick={closeAddToTask} aria-label="Close"></button>
                     <textarea name="taskBody" id="taskBody" className='w-100' rows="10" placeholder='Add Task ...'></textarea>
                     <input type="datetime-local" name="" className='form-control' id="taskTime" />
-                    <button type="button" id="button1" onClick={addToTasks}>Add Task</button>
+                    <button type="button" disabled={addingTask?true:false} id="button1" onClick={addToTasks}>{addingTask?'Adding':'Add Task'}</button>
                 </div>
               </div>
               </>)}

@@ -20,45 +20,53 @@ const StudentInbox = () => {
     let studentInfo = useSelector((state)=>state.studentInformation);
     let allStaffs = useSelector((state)=>state.allStaffs);
     let allStudents = useSelector((state)=>state.allStudents);
+    let fetching = useSelector((state)=>state.studentInformation.studentFetchingState);
     const fetchAll =()=>{
       let studentEndpoint = 'http://localhost:7777/student/allstudents'
       let staffEndPoint = 'http://localhost:7777/student/allstaffs'
-      // if (allStaffs==[]) {
         let endpoint = 'http://localhost:7777/student/dashboard'
-        let details = {
-          class: Number(localStorage.getItem('studentclass')),
-          password: localStorage.getItem('studentpassword'),
-          matricNumber: localStorage.getItem('studentmatric')
-        }
-        axios.post(endpoint, details)
-        .then((res)=>{
-          if (res.status==200) {
-            dispatch(fetchStudent(res.data))
-            dispatch(setFetched(false))
-          } else{
-            console.log('error');
+        if(studentInfo=={}){
+          dispatch(setFetched(true))
+          let details = {
+            class: Number(localStorage.getItem('studentclass')),
+            password: localStorage.getItem('studentpassword'),
+            matricNumber: localStorage.getItem('studentmatric')
           }
-        })
+          axios.post(endpoint, details)
+          .then((res)=>{
+            if (res.status==200) {
+              dispatch(fetchStudent(res.data))
+              dispatch(setFetched(false))
+            } else{
+              console.log('error');
+            }
+          })
+        }
 
-        axios.get(staffEndPoint)
-        .then((res)=>{
-          console.log(res);
-          dispatch(fetchAllStaffs(res.data))
-        })
-        .catch((err)=>{
-          console.log(err);
-        })
-      // }
-      // if (allStudents==[]) {
-        axios.get(studentEndpoint)
-        .then((res)=>{
-          console.log(res);
-          dispatch(fetchAllStudents(res.data))
-        })
-        .catch((err)=>{
-          console.log(err);
-        })
-      // }
+        if(allStaffs==[]){
+          dispatch(setFetched(true))
+          axios.get(staffEndPoint)
+          .then((res)=>{
+            console.log(res);
+            dispatch(fetchAllStaffs(res.data))
+            dispatch(setFetched(false))
+          })
+          .catch((err)=>{
+            console.log(err);
+          })
+        }
+        if (allStudents==[]) {
+          dispatch(setFetched(true))
+          axios.get(studentEndpoint)
+          .then((res)=>{
+            console.log(res);
+            dispatch(fetchAllStudents(res.data))
+            dispatch(setFetched(false))
+          })
+          .catch((err)=>{
+            console.log(err);
+          })
+        }
     }
 
     useEffect(() => {
@@ -78,8 +86,10 @@ const StudentInbox = () => {
     <>
         <div className='d-flex w-100 overflow-hidden'>
             <StudentSideNav/>
+            {fetching && <Loader/>}
+            {fetching==false && <>
             <InboxMainDiv category={category} mainindex={mainindex} individualEmail={individualEmail} func={toggleSideNav}/>
-            <OtherStudents  func={toggleSideNav} func2={setAll}/>
+            <OtherStudents  func={toggleSideNav} func2={setAll}/></>}
         </div>
     </>
   )
