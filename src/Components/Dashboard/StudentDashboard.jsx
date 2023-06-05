@@ -27,7 +27,6 @@ const StudentDashboard = () => {
 
     const fetchStudentInformation =()=>{
       if(Object.keys(studentInfo).length === 0 && studentInfo.constructor === Object){
-        alert('okay')
         dispatch(setFetched(true))
         let endpoint = 'http://localhost:7777/student/dashboard'
         let details = {
@@ -40,7 +39,6 @@ const StudentDashboard = () => {
           if (res.status==200) {
             dispatch(fetchStudent(res.data))
             dispatch(setFetched(false))
-            // fetching = false
           } else{
             console.log('error');
           }

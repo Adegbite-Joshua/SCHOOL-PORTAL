@@ -1,4 +1,8 @@
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import Loader from '../../Loader'
+import { fetchStudent, setFetched } from '../../redux/studentInformation'
 import StudentSideNav from '../StudentNav/StudentSideNav'
 import SubjectMainDiv from './SubjectMainDiv'
 import SubjectSideDiv from './SubjectSideDiv'
@@ -7,20 +11,54 @@ import SubjectSideDiv from './SubjectSideDiv'
 const StudentsSubject = () => {
     document.querySelector("title").innerText = `Subjects`
     const [viewingSubject,setviewingSubject ] = useState(null)
+    const dispatch = useDispatch();
     const toggleSideNav =()=>{
         document.getElementById('SubjectSideDiv').classList.toggle('SubjectSideDiv')
     }
 
     const setVieingSubject =(subjectIndex)=>{
-      // console.log(subjectIndex)
       setviewingSubject(subjectIndex)
+    }
+
+    let studentInfo = useSelector((state)=>state.studentInformation.studentInformation);
+    let fetching = useSelector((state)=>state.studentInformation.studentFetchingState);
+    // const getInfo =()=>{
+    //   fetchStudentInformation()
+    // }
+    useEffect(() => {
+      // getInfo()
+      fetchStudentInformation()
+    }, [])
+
+    const fetchStudentInformation =()=>{
+      if(Object.keys(studentInfo).length === 0 && studentInfo.constructor === Object){
+        dispatch(setFetched(true))
+        let endpoint = 'http://localhost:7777/student/dashboard'
+        let details = {
+          class: Number(localStorage.getItem('studentclass')),
+          password: localStorage.getItem('studentpassword'),
+          matricNumber: localStorage.getItem('studentmatric')
+        }
+        axios.post(endpoint, details)
+        .then((res)=>{
+          if (res.status==200) {
+            dispatch(fetchStudent(res.data))
+            dispatch(setFetched(false))
+          } else{
+            console.log('error');
+          }
+        })
+      }
     }
   return (
     <>
         <div className='d-flex w-100'>
             <StudentSideNav/>
-            <SubjectMainDiv subjectIndex={viewingSubject} func={toggleSideNav}/>
-            <SubjectSideDiv func={toggleSideNav} func2={setVieingSubject}/>
+            {fetching && <Loader/>}
+            {fetching==false && <>
+              <SubjectMainDiv subjectIndex={viewingSubject} func={toggleSideNav}/>
+              <SubjectSideDiv func={toggleSideNav} func2={setVieingSubject}/>
+            </>}
         </div>
     </>
   )

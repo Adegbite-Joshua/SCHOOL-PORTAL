@@ -8,7 +8,7 @@ import subjects from '../../subjectArray';
 
 const PerformanceContainer = ({subjectIndex}) => {
     let studentInfo = useSelector((state)=>state.studentInformation.studentInformation);
-    let allStaffs = useSelector((state)=>state.allStaffs);
+    let allStaffs = useSelector((state)=>state.studentInformation.allStaffs);
     const [fileName, setfileName] = useState('')
     const [fileBase64, setfileBase64] = useState('')
     const selectFile =(e)=>{

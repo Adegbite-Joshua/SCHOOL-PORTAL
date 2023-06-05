@@ -7,9 +7,11 @@ import './style.scss'
 import PerformanceContainer from './PerformanceContainer'
 import SubjectResource from './SubjectResource'
 import ResourcesContainer from './ResourcesCOntainer'
+import {useSelector} from 'react-redux'
 
 
 const SubjectMainDiv = ({func, subjectIndex}) => {
+    let allStaffs = useSelector((state)=>state.studentInformation.allStaffs);
     useEffect(() => {
         console.log(document.getElementById("subjectContainer").scrollHeight)
         document.getElementById("subjectContainer").scrollTop = document.getElementById("subjectContainer").scrollHeight
@@ -25,7 +27,7 @@ const SubjectMainDiv = ({func, subjectIndex}) => {
   return (
     <>
         <div className='SubjectMainDiv p-5 topSpace overflow-scroll'>
-            <h3 className='top-0 text-center'>Mathematics <span id='toggleIcon' onClick={func} className='float-end border border-2 p-2 rounded-3'><i className='fas fa-bars'></i></span></h3>
+            <h3 className='top-0 text-center'>{subjectIndex?allStaffs[subjectIndex].subjectInfo.subjectName:''}<span id='toggleIcon' onClick={func} className='float-end border border-2 p-2 rounded-3'><i className='fas fa-bars'></i></span></h3>
             <div className='w-100 d-flex justify-content-between px-4 mt-3'>
                 <a onClick={()=>setviewing('Performance')}>C/A & Performance</a>
                 <a onClick={()=>setviewing('Resources')}>Resources</a>
