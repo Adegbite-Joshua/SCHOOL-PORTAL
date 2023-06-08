@@ -14,6 +14,9 @@
     #mySidenav a:not(:first-child){
        display: none;
     }
+    #mySidenav ~ a.active{
+        background-color: red;
+    }
     #openPop{
         position: absolute;
         right: 0;
