@@ -10,12 +10,18 @@
         }
     }
 }
+#mySidenav > a.active{
+    background-color: white;
+    i{
+        color: blue !important;
+    }
+    span{
+        color: blue !important;
+    }
+}
 @media (max-width: 900px) {
     #mySidenav a:not(:first-child){
        display: none;
-    }
-    #mySidenav ~ a.active{
-        background-color: red;
     }
     #openPop{
         position: absolute;
