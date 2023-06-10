@@ -10,7 +10,7 @@ import SubjectSideDiv from './SubjectSideDiv'
 
 const StudentsSubject = () => {
     document.querySelector("title").innerText = `Subjects`
-    const [viewingSubject,setviewingSubject ] = useState(null)
+    const [viewingSubject,setviewingSubject ] = useState(0)
     const dispatch = useDispatch();
     const toggleSideNav =()=>{
         document.getElementById('SubjectSideDiv').classList.toggle('SubjectSideDiv')
