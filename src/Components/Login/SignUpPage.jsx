@@ -29,7 +29,8 @@ const SignUpPage = () => {
   ]
   const navigate = useNavigate()
   
-  const [imageBaase64, setimageBaase64] = useState('')
+  const [signingUp, setsigningUp] = useState(false)
+  const [imageBase64, setimageBase64] = useState('')
   const submit = ({firstName, lastName, email, password, address, subjects, clas})=>{
     let fullsubjects = [];
     subjects.map((subject, index)=>{
@@ -63,7 +64,7 @@ const SignUpPage = () => {
       password,
       address,
       class: clas,
-      imageBaase64,
+      imageBase64,
       links: {
           twitter: '',
           facebook: '',
@@ -82,26 +83,34 @@ const SignUpPage = () => {
     }
     console.log(details);
     let endpoint = 'http://localhost:7777/student/signup'
-    if (imageBaase64!='') {
-      // axios.post(endpoint, details)
-      // .then((res)=>{
-      //   console.log(res);
-      //   if(res.status==200){
-      //     setsnacksBarBody('Account Successfully Created')
-      //     showSnackBar()
-      //     setTimeout(() =>navigate("/signin"), 1500);
-      //   } else if(res.status==11000){
-      //     setsnacksBarBody('Email Entered Already Exists')
-      //     // console.log('email already exixts')
-      //   } else if(res.status==401){
-      //     setsnacksBarBody('Error! Ensure You Fill All Reqired Informations Correctly')
-      //     // console.log('error in validating')
-      //   }
-      // })
-      // .catch((err)=>{
-      //   console.log(err);
-      // })
-      alert('okay')
+    if (imageBase64!='') {
+      setsigningUp(true)
+      axios.post(endpoint, details)
+      .then((res)=>{
+        console.log(res);
+        if(res.status==200){
+          setsnacksBarBody('Account Successfully Created')
+          setsnacksBarType('info')
+          showSnackBar()
+          setTimeout(() =>navigate("/signin"), 1500);
+        } else if(res.status==11000){
+          setsnacksBarBody('Email Entered Already Exists')
+          setsnacksBarType('error')
+          showSnackBar()
+          setsigningUp(false)
+          // console.log('email already exixts')
+        } else if(res.status==401){
+          setsnacksBarBody('Error! Ensure You Fill All Reqired Informations Correctly')
+          setsnacksBarType('error')
+          showSnackBar()
+          setsigningUp(false)
+          // console.log('error in validating')
+        }
+      })
+      .catch((err)=>{
+        setsigningUp(false)
+        console.log(err);
+      })
     } else{
       setsnacksBarBody('Please Select An Image')
       setsnacksBarType('error')
@@ -159,7 +168,7 @@ const SignUpPage = () => {
     let reader = new FileReader();
     reader.readAsDataURL(file)
     reader.onload =()=>{
-      setimageBaase64(reader.result)
+      setimageBase64(reader.result)
     }
   }
   const [snacksBarBody, setsnacksBarBody] = useState('')
@@ -229,7 +238,7 @@ const SignUpPage = () => {
                     <h3 className='text-light'>Profile Picture</h3>
                   </div>
                   <input type="file" onChange={(e)=>selectImage(e)} name="pictureUrl" className='form-control' id="" />
-                  <button type='submit' className='btn btn-success w-100 d-block my-2'>Sign Up</button>
+                  <button type='submit' className='btn btn-success w-100 d-block my-2' disabled={signingUp?true:false}>{signingUp?'Signing Up':'Sign Up'}</button>
                   <Link className='d-md-none text-light'>Sign In</Link>
               </form>
           </div>
