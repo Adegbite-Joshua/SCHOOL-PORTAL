@@ -5,6 +5,9 @@ import SignInPage from './SignInPage'
 import { Link } from 'react-router-dom'
 import { useFormik } from 'formik'
 import axios from 'axios'
+import SnackBar from '../../SnackBar'
+import * as Yup from 'yup';
+
 
 
 
@@ -25,9 +28,7 @@ const SignUpPage = () => {
     'TECHNICAL DRAWING'
   ]
   const navigate = useNavigate()
-  const signUp =()=>{
-    navigate("/signin")
-  }
+  
   const [imageBaase64, setimageBaase64] = useState('')
   const submit = ({firstName, lastName, email, password, address, subjects, clas})=>{
     let fullsubjects = [];
@@ -62,7 +63,7 @@ const SignUpPage = () => {
       password,
       address,
       class: clas,
-      pictureUrl: 'klkd',
+      imageBaase64,
       links: {
           twitter: '',
           facebook: '',
@@ -81,20 +82,31 @@ const SignUpPage = () => {
     }
     console.log(details);
     let endpoint = 'http://localhost:7777/student/signup'
-    axios.post(endpoint, details)
-    .then((res)=>{
-      console.log(res);
-      if(res.status==200){
-        navigate("/signin")
-      } else if(res.status==11000){
-        console.log('email already exixts')
-      } else if(res.status==401){
-        console.log('error in validating')
-      }
-    })
-    .catch((err)=>{
-      console.log(err);
-    })
+    if (imageBaase64!='') {
+      // axios.post(endpoint, details)
+      // .then((res)=>{
+      //   console.log(res);
+      //   if(res.status==200){
+      //     setsnacksBarBody('Account Successfully Created')
+      //     showSnackBar()
+      //     setTimeout(() =>navigate("/signin"), 1500);
+      //   } else if(res.status==11000){
+      //     setsnacksBarBody('Email Entered Already Exists')
+      //     // console.log('email already exixts')
+      //   } else if(res.status==401){
+      //     setsnacksBarBody('Error! Ensure You Fill All Reqired Informations Correctly')
+      //     // console.log('error in validating')
+      //   }
+      // })
+      // .catch((err)=>{
+      //   console.log(err);
+      // })
+      alert('okay')
+    } else{
+      setsnacksBarBody('Please Select An Image')
+      setsnacksBarType('error')
+      showSnackBar()
+    }
   }
 
   const formik = useFormik({
@@ -104,9 +116,40 @@ const SignUpPage = () => {
       email: '',
       password: '',
       address: '',
+      state: '',
+      localGovernment: '',
       subjects: [0,1],
       clas: 0
     },
+    validationSchema: Yup.object({
+      firstName: Yup.string()
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
+        .required('Required'),
+      lastName: Yup.string()
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
+        .required('Required'),
+      email: Yup.string()
+        .email('Invalid email')
+        .required('Required'),
+      password: Yup.string()
+        .min(5, 'Too Short')
+        .max(40, 'Too Long')
+        .required('Required'),
+      address: Yup.string()
+        .min(2, 'Too Short')
+        .max(230, 'Too Long')
+        .required('Required'),
+      localGovernment: Yup.string()
+        .min(2, 'Too Short')
+        .max(230, 'Too Long')
+        .required('Required'),
+      state: Yup.string()
+        .min(2, 'Too Short')
+        .max(230, 'Too Long')
+        .required('Required')
+    }),
     onSubmit: (values)=>{
       submit(values)
     }
@@ -119,6 +162,16 @@ const SignUpPage = () => {
       setimageBaase64(reader.result)
     }
   }
+  const [snacksBarBody, setsnacksBarBody] = useState('')
+  const [snacksBarType, setsnacksBarType] = useState('info')
+
+  const showSnackBar = () => {
+    // Get the snackbar DIV
+    var x = document.getElementById("snackbarContainer");
+    x.className = "show";
+  
+    setTimeout(()=>{ x.className = x.className.replace("show", ""); }, 3000);
+}
   return (
     <>  
         <LandingNav/>
@@ -127,13 +180,17 @@ const SignUpPage = () => {
           <div className="border signup rounded-5">
               <form onSubmit={formik.handleSubmit}>
                   <label htmlFor="firstName">First Name</label>
-                  <input onChange={formik.handleChange} className='form-control my-2' type="text" id='firstName' name='firstName' placeholder='First Name' />
+                  <input {...formik.getFieldProps('firstName')} className='form-control my-2' type="text" id='firstName' name='firstName' placeholder='First Name' />
+                  <small className='text-danger'>{formik.touched.firstName && formik.errors.firstName}</small><br />
                   <label htmlFor="lastName">Last Name</label>
-                  <input onChange={formik.handleChange} className='form-control my-2' id='lastName' name='lastName' type="text" placeholder='Last Name' />
+                  <input {...formik.getFieldProps('lastName')} className='form-control my-2' id='lastName' name='lastName' type="text" placeholder='Last Name' />
+                  <small className='text-danger'>{formik.touched.lastName && formik.errors.lastName}</small><br />
                   <label htmlFor="email">Email</label>
-                  <input onChange={formik.handleChange} className='form-control my-2' id='email' name='email' type="text" placeholder='Email' />
+                  <input {...formik.getFieldProps('email')} className='form-control my-2' id='email' name='email' type="text" placeholder='Email' />
+                  <small className='text-danger'>{formik.touched.email && formik.errors.email}</small><br />
                   <label htmlFor="password">Password</label>
-                  <input onChange={formik.handleChange} className='form-control my-2' id='password' name='password' type="text" placeholder='Password' />
+                  <input {...formik.getFieldProps('password')} className='form-control my-2' id='password' name='password' type="text" placeholder='Password' />
+                  <small className='text-danger'>{formik.touched.password && formik.errors.password}</small><br />
                   <label htmlFor="clas">Class</label>
                   <select name="clas" id="clas" onChange={formik.handleChange} required className='form-control my-2'>
                     <option value="0">JSS1</option>
@@ -160,14 +217,16 @@ const SignUpPage = () => {
                     <option value={subjects.indexOf('TECHNICAL DRAWING')}> TECHNICA </option>
                   </select>
                   <label htmlFor='address'>Address</label>
-                  <input type='text' className='form-control' onChange={formik.handleChange} placeholder='Address' id='address' name='address' />
-                  <label htmlFor='firstName'>Local Goverment</label>
-                  <input type='text' className='form-control' placeholder='Local Goverment' id='localGovernment' name='localGovernment' />
-                  <label htmlFor='firstName'>State</label>
-                  <input type='text' className='form-control' placeholder='State' id='state' name='state' />
+                  <input type='text' className='form-control' {...formik.getFieldProps('address')} placeholder='Address' id='address' name='address' />
+                  <small className='text-danger'>{formik.touched.address && formik.errors.address}</small><br />
+                  <label htmlFor='localGovernment'>Local Goverment</label>
+                  <input type='text' className='form-control' {...formik.getFieldProps('localGovernment')} placeholder='Local Goverment' id='localGovernment' name='localGovernment' />
+                  <small className='text-danger'>{formik.touched.localGovernment && formik.errors.localGovernment}</small><br />
+                  <label htmlFor='state'>State</label>
+                  <input type='text' className='form-control' {...formik.getFieldProps('state')} placeholder='State' id='state' name='state' />
+                  <small className='text-danger'>{formik.touched.state && formik.errors.state}</small><br />
                   <div style={{aspectRatio: '1'}} className='w-50 mx-auto bg-dark opacity-75 my-2 d-flex justify-content-center align-items-center'>
                     <h3 className='text-light'>Profile Picture</h3>
-                    {/* <File */}
                   </div>
                   <input type="file" onChange={(e)=>selectImage(e)} name="pictureUrl" className='form-control' id="" />
                   <button type='submit' className='btn btn-success w-100 d-block my-2'>Sign Up</button>
@@ -178,6 +237,7 @@ const SignUpPage = () => {
               <span className='px-3 py-2 rounded-pill bg-dark text-light'><Link>Sign In</Link></span>
           </div>
         </div>
+        <div id='snackbarContainer'><SnackBar body={snacksBarBody} type={snacksBarType}/></div>
     </>
   )
 }

@@ -16,7 +16,7 @@ const SnackBar = ({type, body, display}) => {
     
   return (
     <>
-        <div id="snackbar" className={type=='info'?'bg-success':'bg-danger'}> <i className={type=='info'?'fa fa-mark':'fas fa-warning'}></i> {body}</div>
+        <div id="snackbar" className={type=='info'?'bg-success':'bg-danger'}> <i className={type=='info'?'fas fa-circle-check':'fas fa-warning'}></i>{body}</div>
     </>
   )
 }

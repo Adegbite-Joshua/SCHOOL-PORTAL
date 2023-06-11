@@ -15,6 +15,19 @@ const SignInPage = () => {
       class: 0,
       matricNumber: ''
     },
+    // validationSchema: Yup.object({
+    //   firstName: Yup.string()
+    //     .min(2, 'Too Short!')
+    //     .max(50, 'Too Long!')
+    //     // .type(!string, 'String required')
+    //     .required('Required'),
+    //   lastName: Yup.string()
+    //     .min(2, 'Too Short!')
+    //     .max(50, 'Too Long!')
+    //     // .type(!string, 'String required')
+    //     .required('Required'),
+    //   email: Yup.string().email('Invalid email').required('Required'),
+    // }),
     onSubmit: (values)=>{
       let endpoint = 'http://localhost:7777/student/signin'
       axios.post(endpoint, values)

@@ -42,9 +42,7 @@ const SubjectMainDiv = ({func, subjectIndex}) => {
             <div id='subjectContainer' className='subjectContainer w-100 mt-3'>
                 {viewing==='Performance'?<PerformanceContainer subjectIndex={subjectIndex} />:''}
                 {viewing==='Resources'?<ResourcesContainer func={setresources}  studentResources={studentResources} subjectIndex={subjectIndex}/>:''}
-                {/* {viewing==='Class'?<ResourcesContainer/>:''} */}
-                <SnackBar/>
-                
+                {/* {viewing==='Class'?<ResourcesContainer/>:''} */}                
             </div>
         {/* {document.getElementById("subjectContainer").onscroll = measure} */}
         </div>
