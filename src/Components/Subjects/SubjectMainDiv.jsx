@@ -8,6 +8,7 @@ import PerformanceContainer from './PerformanceContainer'
 import SubjectResource from './SubjectResource'
 import ResourcesContainer from './ResourcesCOntainer'
 import {useSelector} from 'react-redux'
+import SnackBar from '../../SnackBar'
 
 
 const SubjectMainDiv = ({func, subjectIndex}) => {
@@ -36,12 +37,13 @@ const SubjectMainDiv = ({func, subjectIndex}) => {
             <div className='w-100 d-flex justify-content-between px-4 mt-3'>
                 <a onClick={()=>setviewing('Performance')}>C/A & Performance</a>
                 <a onClick={()=>setviewing('Resources')}>Resources</a>
-                <a onClick={()=>setviewing('Class')}>Class</a>
+                <a>Class</a>
             </div>
             <div id='subjectContainer' className='subjectContainer w-100 mt-3'>
                 {viewing==='Performance'?<PerformanceContainer subjectIndex={subjectIndex} />:''}
                 {viewing==='Resources'?<ResourcesContainer func={setresources}  studentResources={studentResources} subjectIndex={subjectIndex}/>:''}
                 {/* {viewing==='Class'?<ResourcesContainer/>:''} */}
+                <SnackBar/>
                 
             </div>
         {/* {document.getElementById("subjectContainer").onscroll = measure} */}
