@@ -98,13 +98,11 @@ const SignUpPage = () => {
           setsnacksBarType('error')
           showSnackBar()
           setsigningUp(false)
-          // console.log('email already exixts')
         } else if(res.status==401){
           setsnacksBarBody('Error! Ensure You Fill All Reqired Informations Correctly')
           setsnacksBarType('error')
           showSnackBar()
           setsigningUp(false)
-          // console.log('error in validating')
         }
       })
       .catch((err)=>{

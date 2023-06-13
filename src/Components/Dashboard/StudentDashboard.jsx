@@ -46,6 +46,13 @@ const StudentDashboard = () => {
       }
     }
 
+    const validateStudent =()=>{
+      let token = localStorage.token
+      axios.post(endpoint, {headers : {
+        "Authorization": `Bearer ${token}`
+      }})
+    }
+
     const closeAddToTask = () => {
       document.getElementById('popup').classList.remove("open-popup")
     }
