@@ -37,6 +37,7 @@ const SignInPage = () => {
           localStorage.setItem('studentclass', values.class)
           localStorage.setItem('studentpassword', values.password)
           localStorage.setItem('studentmatric', values.matricNumber)
+          localStorage.setItem('token', res.data.token)
           localStorage.token = res.data.token
           navigate("/dashboard/uhjhj")
         } else if(res.status==11000){

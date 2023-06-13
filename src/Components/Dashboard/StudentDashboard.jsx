@@ -3,7 +3,7 @@ import StudentMainDiv from './StudentMainDiv'
 import StudentSideNav from '../StudentNav/StudentSideNav'
 import Tasks from './Tasks'
 import './style.scss'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import axios from 'axios'
 import { fetchStudent, setFetched } from '../../redux/studentInformation'
@@ -12,6 +12,7 @@ import Loader from '../../Loader'
 
 const StudentDashboard = () => {
   let dispatch = useDispatch();
+  const navigate = useNavigate();
   const [addingTask, setaddingTask] = useState(false)
   document.querySelector("title").innerText = `Dashboard`
     let values = useParams()
@@ -23,6 +24,7 @@ const StudentDashboard = () => {
     }
     useEffect(() => {
       getInfo()
+      validateStudent()
     }, [])
 
     const fetchStudentInformation =()=>{
@@ -48,9 +50,22 @@ const StudentDashboard = () => {
 
     const validateStudent =()=>{
       let token = localStorage.token
-      axios.post(endpoint, {headers : {
-        "Authorization": `Bearer ${token}`
+      let validateEndpoint = 'http://localhost:7777/student/validatedashboard'
+      axios.get(validateEndpoint, {headers : {
+        "Authorization": `Bearer ${token}`,
+        "Content-Toe": "application/json",
+        "Accept": "application/json"
       }})
+      .then((res)=>{
+        console.log(res);
+        if (res.status != 200) {
+          navigate('/signin')
+        }
+      })
+      .catch((error)=>{
+        navigate('/signin')
+        console.log(error);
+      })
     }
 
     const closeAddToTask = () => {

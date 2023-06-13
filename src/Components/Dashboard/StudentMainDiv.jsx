@@ -33,7 +33,7 @@ const StudentMainDiv = ({welcomeNote}) => {
         return
       }
     }):''
-    console.log(studentSubject)
+    // console.log(studentSubject)
     announcement = studentInfo?studentInfo.announcements.filter((annouce, index)=>index<=3):''
   }
  
