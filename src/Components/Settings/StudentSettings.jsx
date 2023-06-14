@@ -22,11 +22,10 @@ const StudentSettings = () => {
     
     let studentInfo = useSelector((state)=>state.studentInformation.studentInformation);
     let fetching = useSelector((state)=>state.studentInformation.studentFetchingState);
-    const getInfo =()=>{
-      fetchStudentInformation()
-    }
+
     useEffect(() => {
-      getInfo()
+      fetchStudentInformation()
+      validateStudent()
     }, [])
     const dispatch = useDispatch()
     const fetchStudentInformation =()=>{
@@ -48,6 +47,25 @@ const StudentSettings = () => {
           }
         })
       }
+    }
+    const validateStudent =()=>{
+      let token = localStorage.token
+      let validateEndpoint = 'http://localhost:7777/student/validatedashboard'
+      axios.get(validateEndpoint, {headers : {
+        "Authorization": `Bearer ${token}`,
+        "Content-Toe": "application/json",
+        "Accept": "application/json"
+      }})
+      .then((res)=>{
+        console.log(res);
+        if (res.status != 200) {
+          navigate('/signin')
+        }
+      })
+      .catch((error)=>{
+        navigate('/signin')
+        console.log(error);
+      })
     }
   return (
     <>

@@ -68,8 +68,27 @@ const StudentInbox = () => {
           })
         }
     }
-
+    const validateStudent =()=>{
+      let token = localStorage.token
+      let validateEndpoint = 'http://localhost:7777/student/validatedashboard'
+      axios.get(validateEndpoint, {headers : {
+        "Authorization": `Bearer ${token}`,
+        "Content-Toe": "application/json",
+        "Accept": "application/json"
+      }})
+      .then((res)=>{
+        console.log(res);
+        if (res.status != 200) {
+          navigate('/signin')
+        }
+      })
+      .catch((error)=>{
+        navigate('/signin')
+        console.log(error);
+      })
+    }
     useEffect(() => {
+      validateStudent()
       fetchAll()
     }, [])
     const [category, setcategory] = useState('')
