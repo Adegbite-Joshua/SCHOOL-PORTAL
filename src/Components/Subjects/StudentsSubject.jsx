@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../../Loader'
-import { fetchStudent, setFetched } from '../../redux/studentInformation'
+import { fetchAllStaffs, fetchStudent, setFetched } from '../../redux/studentInformation'
 import StudentSideNav from '../StudentNav/StudentSideNav'
 import SubjectMainDiv from './SubjectMainDiv'
 import SubjectSideDiv from './SubjectSideDiv'
@@ -22,6 +22,7 @@ const StudentsSubject = () => {
 
     let studentInfo = useSelector((state)=>state.studentInformation.studentInformation);
     let fetching = useSelector((state)=>state.studentInformation.studentFetchingState);
+    let allStaffs = useSelector((state)=>state.studentInformation.allStaffs);
     
     useEffect(() => {
       fetchStudentInformation()
@@ -63,6 +64,19 @@ const StudentsSubject = () => {
           } else{
             console.log('error');
           }
+        })
+      }
+      if(allStaffs.length==0){
+        let staffEndPoint = 'http://localhost:7777/student/allstaffs'
+        dispatch(setFetched(true))
+        axios.get(staffEndPoint)
+        .then((res)=>{
+          console.log(res);
+          dispatch(fetchAllStaffs(res.data))
+          dispatch(setFetched(false))
+        })
+        .catch((err)=>{
+          console.log(err);
         })
       }
     }

@@ -27,7 +27,7 @@ const StudentMainDiv = ({welcomeNote}) => {
   let announcement; 
   if (!fetching) {
     studentInfo?studentInfo.subjects.map((subject, index)=>{
-      if(index<=3){
+      if(index<=2){
         studentSubject.push(subject.subjectIndex)
       } else{
         return

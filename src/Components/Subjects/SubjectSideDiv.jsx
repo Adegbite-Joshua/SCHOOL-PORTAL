@@ -9,7 +9,7 @@ const SubjectSideDiv = ({func, func2}) => {
   let studentSubject = [];
   if (!fetching) {
     studentInfo?studentInfo.subjects.map((subject, index)=>{
-        studentSubject.push({subject:subject.subjectIndex, index:index})
+        studentSubject.push({subject:Number(subject.subjectIndex), index:Number(index)})
     }):''
     console.log(studentSubject)
   }
