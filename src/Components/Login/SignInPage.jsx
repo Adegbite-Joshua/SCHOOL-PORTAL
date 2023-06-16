@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import {useFormik} from 'formik'
  import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
+import SnackBar from '../../SnackBar'
 
 
 
@@ -40,10 +41,19 @@ const SignInPage = () => {
           localStorage.setItem('token', res.data.token)
           localStorage.token = res.data.token
           navigate("/dashboard/uhjhj")
+          setsnacksBarBody('Successfully Signed In')
+          setsnacksBarType('info')
+          showSnackBar()
         } else if(res.status==11000){
-          console.log('email already exixts')
+          // console.log('email already exixts')
+          setsnacksBarBody('Email Already Exixts')
+          setsnacksBarType('error')
+          showSnackBar()
         } else if(res.status==401){
-          console.log('error in validating')
+          setsnacksBarBody('Error Logging You In')
+          setsnacksBarType('error')
+          showSnackBar()
+          // console.log('error in validating')
         }
       })
       .catch((err)=>{
@@ -51,6 +61,17 @@ const SignInPage = () => {
       })
     }
   })
+
+  const [snacksBarBody, setsnacksBarBody] = useState('')
+  const [snacksBarType, setsnacksBarType] = useState('info')
+
+  const showSnackBar = () => {
+    // Get the snackbar DIV
+    var x = document.getElementById("snackbarContainer");
+    x.className = "show";
+  
+    setTimeout(()=>{ x.className = x.className.replace("show", ""); }, 3000);
+}
   return (
     <>
         <LandingNav/>    
@@ -80,6 +101,7 @@ const SignInPage = () => {
             <span className='px-3 py-2 rounded-pill bg-dark text-light'><Link>Sign Up</Link></span>
             </div>
         </div>
+        <div id='snackbarContainer'><SnackBar body='qwertyuiopdsasdf' type='info'/></div>
     </>
   )
 }

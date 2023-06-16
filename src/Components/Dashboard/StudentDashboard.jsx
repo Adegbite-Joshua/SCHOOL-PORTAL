@@ -8,6 +8,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import axios from 'axios'
 import { fetchStudent, setFetched } from '../../redux/studentInformation'
 import Loader from '../../Loader'
+import SnackBar from '../../SnackBar'
 
 
 const StudentDashboard = () => {
@@ -74,8 +75,16 @@ const StudentDashboard = () => {
     const openAddToTask = () => {
       document.getElementById('popup').classList.add("open-popup")
     }
+
+    const showSnackBar = () => {
+      // Get the snackbar DIV
+      var x = document.getElementById("snackbarContainer");
+      x.className = "show";
+    
+      setTimeout(()=>{ x.className = x.className.replace("show", ""); }, 3000);
+    }
+
     const addToTasks =()=>{
-      // console.log(studentInfo);
       setaddingTask(true)
       let taskDetails = {
         taskDate: taskTime.value.split('T')[0],
@@ -89,17 +98,26 @@ const StudentDashboard = () => {
       axios.post(endpoint, taskDetails)
       .then((res)=>{
         setaddingTask(false)
-        alert('task added')
         closeAddToTask()
-        console.log(res.data);
+        setsnacksBarBody('Task Added Successfully!')
+        setsnacksBarType('info')
+        showSnackBar()
+        // console.log(res.data);
       })
       .catch((error)=>{
         setaddingTask(false)
         alert('error in adding task')
         closeAddToTask()
-        console.log(error);
+        setsnacksBarBody('Error Saving Your Task')
+        setsnacksBarType('error')
+        showSnackBar()
+        // console.log(error);
       })
     }
+
+    const [snacksBarBody, setsnacksBarBody] = useState('')
+    const [snacksBarType, setsnacksBarType] = useState('info')
+
   return (
     <>
       
@@ -126,6 +144,7 @@ const StudentDashboard = () => {
                 </div>
               </div>
               </>)}
+              <div id='snackbarContainer'><SnackBar body='qwertyuiopdsasdf' type='info'/></div>
         </div>
      
     </>

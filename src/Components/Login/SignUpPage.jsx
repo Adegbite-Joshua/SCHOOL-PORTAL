@@ -196,7 +196,7 @@ const SignUpPage = () => {
                   <input {...formik.getFieldProps('email')} className='form-control my-2' id='email' name='email' type="text" placeholder='Email' />
                   <small className='text-danger'>{formik.touched.email && formik.errors.email}</small><br />
                   <label htmlFor="password">Password</label>
-                  <input {...formik.getFieldProps('password')} className='form-control my-2' id='password' name='password' type="text" placeholder='Password' />
+                  <input {...formik.getFieldProps('password')} className='form-control my-2' id='password' name='password' type="password" placeholder='Password' />
                   <small className='text-danger'>{formik.touched.password && formik.errors.password}</small><br />
                   <label htmlFor="clas">Class</label>
                   <select name="clas" id="clas" onChange={formik.handleChange} required className='form-control my-2'>
