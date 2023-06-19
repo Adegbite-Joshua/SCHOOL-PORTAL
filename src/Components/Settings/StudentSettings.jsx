@@ -24,7 +24,7 @@ const StudentSettings = () => {
     let fetching = useSelector((state)=>state.studentInformation.studentFetchingState);
 
     useEffect(() => {
-      fetchStudentInformation()
+      // fetchStudentInformation()
       validateStudent()
     }, [])
     const dispatch = useDispatch()
@@ -57,9 +57,11 @@ const StudentSettings = () => {
         "Accept": "application/json"
       }})
       .then((res)=>{
-        console.log(res);
+        // console.log(res);
         if (res.status != 200) {
           navigate('/signin')
+        } else{
+          fetchStudentInformation()
         }
       })
       .catch((error)=>{

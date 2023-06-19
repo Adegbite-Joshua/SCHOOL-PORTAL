@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import LandingNav from '../LandingPage/LandingNav'
 import { Link } from 'react-router-dom'
 import {useFormik} from 'formik'
- import axios from 'axios'
+import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import SnackBar from '../../SnackBar'
 
@@ -17,17 +17,16 @@ const SignInPage = () => {
       matricNumber: ''
     },
     // validationSchema: Yup.object({
-    //   firstName: Yup.string()
+    //   matricNumber: Yup.string()
     //     .min(2, 'Too Short!')
     //     .max(50, 'Too Long!')
     //     // .type(!string, 'String required')
     //     .required('Required'),
-    //   lastName: Yup.string()
+    //     password: Yup.string()
     //     .min(2, 'Too Short!')
     //     .max(50, 'Too Long!')
     //     // .type(!string, 'String required')
-    //     .required('Required'),
-    //   email: Yup.string().email('Invalid email').required('Required'),
+    //     .required('Required')
     // }),
     onSubmit: (values)=>{
       let endpoint = 'http://localhost:7777/student/signin'
@@ -40,12 +39,11 @@ const SignInPage = () => {
           localStorage.setItem('studentmatric', values.matricNumber)
           localStorage.setItem('token', res.data.token)
           localStorage.token = res.data.token
-          navigate("/dashboard/uhjhj")
+          setTimeout(() => navigate("/dashboard"), 3000);
           setsnacksBarBody('Successfully Signed In')
           setsnacksBarType('info')
           showSnackBar()
         } else if(res.status==11000){
-          // console.log('email already exixts')
           setsnacksBarBody('Email Already Exixts')
           setsnacksBarType('error')
           showSnackBar()
@@ -53,11 +51,13 @@ const SignInPage = () => {
           setsnacksBarBody('Error Logging You In')
           setsnacksBarType('error')
           showSnackBar()
-          // console.log('error in validating')
         }
       })
       .catch((err)=>{
         console.log(err);
+        setsnacksBarBody('Error Logging You In')
+        setsnacksBarType('error')
+        showSnackBar()
       })
     }
   })
