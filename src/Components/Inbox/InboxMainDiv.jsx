@@ -26,6 +26,7 @@ const InboxMainDiv = ({func, category, individualEmail, mainindex, partner}) => 
             receiverClass: mainindex,
             receiverEmail: individualEmail,
             senderRelationship: 'student',
+            staffStudentNumber: category,
             messageBody: document.getElementById('message').value
         }
         console.log(messageDetails);

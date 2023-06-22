@@ -5,7 +5,7 @@ import {useSelector} from 'react-redux'
 import SnackBar from '../../SnackBar'
 
 
-const AnnouncementMainDiv = () => {
+const AnnouncementMainDiv = ({socket}) => {
   let studentInfo = useSelector((state)=>state.studentInformation);
   let filtered = [];
   const findAnnouncement=(search)=>{
@@ -24,6 +24,9 @@ const AnnouncementMainDiv = () => {
   useEffect(() => {
     fetchStudentInformation()
     validateStudent()
+    // if(socket){
+    //   soc
+    // }
   }, [])
 
   const fetchStudentInformation =()=>{
