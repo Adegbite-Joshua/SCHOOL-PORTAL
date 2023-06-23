@@ -62,7 +62,7 @@ const InboxMainDiv = ({func, category, individualEmail, mainindex, partner}) => 
             <div id='messageContainer' className='messageContainer'>                
                 {studentInfo.messages?studentInfo.messages.map((message, index)=>(
                     <>
-                        <SenderMessage message={message.messageBody} time={`Date: ${message.messageDate} Time: ${message.messageTime}`}/> {/* src={message.senderRelationship=='student'?allStudents[0].find((student)=>student.class==message.senderClass):'vite.svg'} */}
+                        <SenderMessage messageBody={message} message={message.messageBody} time={`Date: ${message.messageDate} Time: ${message.messageTime}`}/> {/* src={message.senderRelationship=='student'?allStudents[0].find((student)=>student.class==message.senderClass):'vite.svg'} */}
                     </>
                 )):<>
                     <div className='d-flex h-100 w-100 bg-light justify-content-center align-items-center'>
