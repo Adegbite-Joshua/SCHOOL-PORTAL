@@ -76,6 +76,11 @@ const StudentDashboard = () => {
       document.getElementById('popup').classList.add("open-popup")
     }
 
+    const showLink =()=>{
+      console.log(`${studentInfo.pictureUrl.split('upload/')[0]}upload/r_max,q_50/${studentInfo.pictureUrl.split('upload/')[1]}`)
+    }
+    window.showLink = showLink
+
     const showSnackBar = () => {
       // Get the snackbar DIV
       var x = document.getElementById("snackbarContainer");

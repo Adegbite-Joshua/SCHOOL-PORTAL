@@ -44,6 +44,7 @@ const StudentMainDiv = ({welcomeNote}) => {
             <h3>Your Profile</h3>
             {/* <img src="/vite.svg"  alt="" /> */}
             <p><h4 className='d-inline'>Hi {studentInfo.firstName}</h4> {welcomeNote}</p>
+            <img style={{height:"100px", width: '100px'}} src={`${studentInfo.pictureUrl.split('upload/')[0]}upload/r_max,q_50/${studentInfo.pictureUrl.split('upload/')[1]}`} alt="" />
             <button className='btn btn-warning'>Profile</button>
           </div>
           <div className="w-100 p-2">
