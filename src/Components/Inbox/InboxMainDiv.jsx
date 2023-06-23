@@ -22,11 +22,14 @@ const InboxMainDiv = ({func, category, individualEmail, mainindex, partner}) => 
         let messageDetails = {
             messageSenderClass: studentInfo.class,
             messageSenderEmail: studentInfo.email,
+            messageSenderName: `${studentInfo.firstName} ${studentInfo.lastName}`,
             receiverRelationship: category==1?'staff':'student',
             receiverClass: mainindex,
             receiverEmail: individualEmail,
             senderRelationship: 'student',
-            staffStudentNumber: category,
+            senderClass: staffInfo.class,
+            messageDate: new Date().toLocaleDateString(),
+            messageTime: new Date().toLocaleTimeString(),
             messageBody: document.getElementById('message').value
         }
         console.log(messageDetails);
@@ -59,11 +62,11 @@ const InboxMainDiv = ({func, category, individualEmail, mainindex, partner}) => 
             <div id='messageContainer' className='messageContainer'>                
                 {studentInfo.messages?studentInfo.messages.map((message, index)=>(
                     <>
-                        <SenderMessage message={message.messageBody} time='11:01PM'/>
+                        <SenderMessage message={message.messageBody} time={`Date: ${message.messageDate} Time: ${message.messageTime}`}/> {/* src={message.senderRelationship=='student'?allStudents[0].find((student)=>student.class==message.senderClass):'vite.svg'} */}
                     </>
                 )):<>
                     <div className='d-flex h-100 w-100 bg-light justify-content-center align-items-center'>
-                        <p>Click on a name</p>
+                        <p>You do not have any message currently</p>
                     </div>
                 </>}                    
             </div>

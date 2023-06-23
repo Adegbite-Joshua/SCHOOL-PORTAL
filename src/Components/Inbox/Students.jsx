@@ -17,9 +17,7 @@ const Students = ({func}) => {
                 <option value="5">SSS 3</option>
             </select>
         {allStudents[viewing]?allStudents[viewing].map((student, index) =>(
-            <>
-                <OnlineStudents func={func} name={`${student.firstName} ${student.lastName}`} email={student.email} clas={viewing}/>
-            </>
+            <OnlineStudents func={func} name={`${student.firstName} ${student.lastName}`} email={student.email} clas={viewing}/>
         )): ''}
     </>
   )
