@@ -10,12 +10,11 @@ const ContactUsMap = () => {
             <h2>HOPE Academy</h2>
             <small>89 Marsh Hill Road</small>
             <small>Orange, CT 06477</small>
-            <p>Email: <Link className='d-inline'><small>info@hopeacademyct.com</small></Link></p>
-            <p>Facebook: <Link className='d-inline'><small>info@hopeacademyct.com</small></Link></p>
-            <p>Twitter: <Link className='d-inline'><small>info@hopeacademyct.com</small></Link></p>
-            <p>WhatsApp: <Link className='d-inline'><small>info@hopeacademyct.com</small></Link></p>
-            <p>Telephone: (203) 799-6000</p>
-            <p>Facsimile: (203) 799-0000</p>
+            <p>Email: <a  href="mailto:adegbitejoshua07@gmail.com" className='d-inline'><small>adegbitejoshua07@gmail.com</small></a></p>
+            <p>Facebook: <Link className='d-inline'><small>Adegbite Joshua</small></Link></p>
+            <p>Twitter: <Link className='d-inline'><small>info@.com</small></Link></p>
+            <p>Telephone: <a href="tel:+2347015886456" className='d-inline'><small>+2347015886456</small></a></p>
+            <p>WhatsApp: <a href='wa.me/+2347015886456' className='d-inline'><small>+2347015886456</small></a></p>
             <iframe
                 width="100%"
                 height="250"

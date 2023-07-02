@@ -101,7 +101,7 @@ const SignInPage = () => {
             <span className='px-3 py-2 rounded-pill bg-dark text-light'><Link>Sign Up</Link></span>
             </div>
         </div>
-        <div id='snackbarContainer'><SnackBar body='qwertyuiopdsasdf' type='info'/></div>
+        <div id='snackbarContainer'><SnackBar body={snacksBarBody} type={snacksBarType}/></div>
     </>
   )
 }

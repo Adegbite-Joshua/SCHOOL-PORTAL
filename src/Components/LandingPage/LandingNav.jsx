@@ -15,7 +15,7 @@ const LandingNav = ({percent}) => {
         <div className='LandingNav w-100 blue500 d-flex position-relative '>
             <div className='d-flex h-100 align-items-center'>
                 <img src="vite.svg" alt="" style={{height: '50px', width: '50px'}} />
-                <h3>PROADE SCHOOL</h3>
+                <h3>HOPE ACADEMY</h3>
             </div>
             <ul id='navUl' className=''>
                 <li className="">
