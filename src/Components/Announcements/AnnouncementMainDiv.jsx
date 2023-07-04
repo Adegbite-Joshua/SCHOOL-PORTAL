@@ -1,9 +1,9 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Announcement from './Announcement'
 import './style.scss'
 import {useSelector} from 'react-redux'
 import SnackBar from '../../SnackBar'
-
+import axios from 'axios'
 
 const AnnouncementMainDiv = ({socket}) => {
   let studentInfo = useSelector((state)=>state.studentInformation);
@@ -65,7 +65,7 @@ const AnnouncementMainDiv = ({socket}) => {
       }
     })
     .catch((error)=>{
-      navigate('/signin')
+      // navigate('/signin')
       console.log(error);
     })
   }

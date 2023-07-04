@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import StudentMainDiv from './StudentMainDiv'
 import StudentSideNav from '../StudentNav/StudentSideNav'
 import Tasks from './Tasks'
@@ -9,6 +9,7 @@ import axios from 'axios'
 import { fetchStudent, setFetched } from '../../redux/studentInformation'
 import Loader from '../../Loader'
 import SnackBar from '../../SnackBar'
+import socketClient from 'socket.io-client'
 
 
 const StudentDashboard = () => {
@@ -20,12 +21,17 @@ const StudentDashboard = () => {
     console.log(values);
     let studentInfo = useSelector((state)=>state.studentInformation.studentInformation);
     let fetching = useSelector((state)=>state.studentInformation.studentFetchingState);
+    const socket = useRef()
+    const validateToken =()=>{
+
+    }
     const getInfo =()=>{
       fetchStudentInformation()
     }
     useEffect(() => {
       getInfo()
       validateStudent()
+      socket.current = socketClient('http://localhost:7777/')
     }, [])
 
     const fetchStudentInformation =()=>{

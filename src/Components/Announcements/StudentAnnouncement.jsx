@@ -3,20 +3,24 @@ import StudentSideNav from '../StudentNav/StudentSideNav';
 import AnnouncementMainDiv from './AnnouncementMainDiv';
 import {useSelector} from 'react-redux'
 import socketClient from 'socket.io-client'
-
+import axios from 'axios'
 
 const StudentAnnouncement = () => {
     document.querySelector("title").innerText = `Announcement`
     let studentInfo = useSelector((state)=>state.studentInformation);
-    let socketRef = useRef()
+    let socket = useRef()
+    const validateToken =()=>{
+      socket.current.emit('student/validate_token', 'hello')
+    }
     useEffect(()=>{
-      socketRef.current = socketClient('http://localhost:7777/student/dashboard')
+      socket.current = socketClient('http://localhost:7777/')
+      validateToken()
     }, [])
   return (
     <>
         <div className="d-flex">
             <StudentSideNav/>
-            <AnnouncementMainDiv socket={socketRef.current}/>
+            <AnnouncementMainDiv socket={socket.current}/>
         </div>
     </>
   )
