@@ -12,10 +12,18 @@ const StudentAnnouncement = () => {
     const validateToken =()=>{
       socket.current.emit('student/validate_token', 'hello')
     }
+    const recieveSocket =()=>{
+      if(socket.current){
+        socket.current.on('back', (message)=>{
+          console.log(message)
+        })
+      }
+    }
     useEffect(()=>{
       socket.current = socketClient('http://localhost:7777/')
       validateToken()
-    }, [])
+      recieveSocket()
+    }, [socket])
   return (
     <>
         <div className="d-flex">
