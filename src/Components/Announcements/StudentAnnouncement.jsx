@@ -13,31 +13,22 @@ const StudentAnnouncement = () => {
     const validateToken =()=>{
       socket.current.emit('validate_token', 'hello')
     }
-    const recieveSocket =()=>{
-      console.log('recieving');
-        socket.current.on('back', (message)=>{
-          console.log(message);
-        })
-    }
-
+    
     useEffect(()=>{
       socket.current.on('connect', ()=>{
         console.log('Student connected');
         validateToken()
       })
     }, [])
-
-    useEffect(()=>{
-      // if(socket.current){
-        recieveSocket()
-      // }
-    }, [socket])
-   
+    socket.current.on('back', (message)=>{
+      console.log(message)
+    })
   return (
     <>
         <div className="d-flex">
             <StudentSideNav/>
             <AnnouncementMainDiv socket={socket.current}/>
+            <button onClick={validateToken}>va</button>
         </div>
     </>
   )
