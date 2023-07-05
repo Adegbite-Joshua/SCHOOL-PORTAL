@@ -17,10 +17,16 @@ import StudentSettings from './Components/Settings/StudentSettings'
 import StudentActivity from './Components/Activities/StudentActivity'
 import ContactUsPage from './Components/ContactUs/ContactUsPage'
 import AboutUsPage from './Components/AboutUs/AboutUsPage'
+import {useSelector} from 'react-redux'
 
 
 function App() {
   let token = localStorage.token
+  let socketIO = useSelector((state)=>state.socketIO.socket);
+  socketIO.on('connect', ()=>{
+    console.log('Socket connected')
+  })
+  // socke = socketIO
   return (
     <>      
         <Routes>

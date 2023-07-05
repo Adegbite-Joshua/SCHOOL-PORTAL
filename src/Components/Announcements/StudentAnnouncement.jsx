@@ -8,29 +8,26 @@ import axios from 'axios'
 const StudentAnnouncement = () => {
     document.querySelector("title").innerText = `Announcement`
     let studentInfo = useSelector((state)=>state.studentInformation);
-    let socketIo = useSelector((state)=>state);
-    console.log(socketIo)
+    let socketIO = useSelector((state)=>state.socketIO.socket);
+    console.log(socketIO)
 
-    let socket = useRef()
-    socket.current = socketClient('http://localhost:7777/student')
+    // let socket = useRef()
+    //socketClient('http://localhost:7777/student')
     const validateToken =()=>{
-      socket.current.emit('validate_token', 'hello')
+      socketIO.emit('validate_token', 'hello')
     }
 
     useEffect(()=>{
-      socket.current.on('connect', ()=>{
-        console.log('Student connected');
-        validateToken()
-      })
+      validateToken()
     }, [])
-    socket.current.on('back', (message)=>{
+    socketIO.on('back', (message)=>{
       console.log(message)
     })
   return (
     <>
         <div className="d-flex">
             <StudentSideNav/>
-            <AnnouncementMainDiv socket={socket.current}/>
+            <AnnouncementMainDiv socket={socketIO}/>
             <button onClick={validateToken}>va</button>
         </div>
     </>
