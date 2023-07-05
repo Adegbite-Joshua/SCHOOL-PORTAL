@@ -8,12 +8,15 @@ import axios from 'axios'
 const StudentAnnouncement = () => {
     document.querySelector("title").innerText = `Announcement`
     let studentInfo = useSelector((state)=>state.studentInformation);
+    let socketIo = useSelector((state)=>state);
+    console.log(socketIo)
+
     let socket = useRef()
     socket.current = socketClient('http://localhost:7777/student')
     const validateToken =()=>{
       socket.current.emit('validate_token', 'hello')
     }
-    
+
     useEffect(()=>{
       socket.current.on('connect', ()=>{
         console.log('Student connected');
