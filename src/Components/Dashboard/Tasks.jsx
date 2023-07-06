@@ -7,7 +7,7 @@ const Tasks = ({task, date, empty, wholeTask, index}) => {
   let studentInfo = useSelector((state)=>state.studentInformation.studentInformation);
   const deleteTask = ()=>{
     let endpoint = 'http://localhost:7777/student/deletetask'
-    axios.post(endpoint, wholeTask)
+    axios.post(endpoint, {class: studentInfo.class, email: studentInfo.email, index})
     .then((res)=>{
       console.log(res.data);
     })

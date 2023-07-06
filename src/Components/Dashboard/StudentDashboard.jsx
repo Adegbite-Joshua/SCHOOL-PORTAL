@@ -105,7 +105,8 @@ const StudentDashboard = () => {
         taskTime: taskTime.value.split('T')[1],
         taskBody: taskBody.value,
         class: Number(studentInfo.class),
-        email: studentInfo.email
+        email: studentInfo.email,
+        token: localStorage.getItem('token')
       }
       console.log(taskDetails);
       let endpoint = 'http://localhost:7777/student/addtotask'
@@ -114,11 +115,10 @@ const StudentDashboard = () => {
         setaddingTask(false)
         closeAddToTask()
         setsnacksBarBody('Task Added Successfully!')
-        // dispatch(fetchStudent(res.data))
+        dispatch(fetchStudent(res.data))
         console.log(res.data)
         setsnacksBarType('info')
         showSnackBar()
-        // console.log(res.data);
       })
       .catch((error)=>{
         setaddingTask(false)
@@ -160,7 +160,7 @@ const StudentDashboard = () => {
                 </div>
               </div>
               </>)}
-              <div id='snackbarContainer'><SnackBar body='qwertyuiopdsasdf' type='info'/></div>
+              <div id='snackbarContainer'><SnackBar body={snacksBarBody} type={snacksBarType}/></div>
         </div>
      
     </>
