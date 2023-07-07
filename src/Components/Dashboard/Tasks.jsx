@@ -7,11 +7,12 @@ const Tasks = ({task, date, empty, wholeTask, index}) => {
   let studentInfo = useSelector((state)=>state.studentInformation.studentInformation);
   const deleteTask = ()=>{
     let endpoint = 'http://localhost:7777/student/deletetask'
-    axios.post(endpoint, {class: studentInfo.class, email: studentInfo.email, index})
+    axios.post(endpoint, {class: Number(studentInfo.class), email: studentInfo.email, wholeTask})
     .then((res)=>{
       console.log(res.data);
     })
     .catch((error)=>{
+      
       console.log(error);
     })
   }
@@ -37,7 +38,7 @@ const Tasks = ({task, date, empty, wholeTask, index}) => {
   return (
     <>
         <div className=" w-100 bg-light rounded-5 px-2 py-2 my-1">
-          <h5>Task: {task}{!empty?<><span className='ms-3'>Date: {date}</span><i onClick={updateTask} className='fas fa-edit'></i><i onClick={deleteTask} className='fas fa-trash'></i></>:''}</h5>
+          <p>Task: {task}{!empty?<><span className='ms-3'>Date: {date}</span><i onClick={updateTask} className='fas fa-edit'></i><i onClick={deleteTask} className='fas fa-trash'></i></>:''}</p>
         </div>
     </>
   )
