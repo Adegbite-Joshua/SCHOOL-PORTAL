@@ -91,10 +91,8 @@ const StudentDashboard = () => {
     window.showLink = showLink
 
     const showSnackBar = () => {
-      // Get the snackbar DIV
       var x = document.getElementById("snackbarContainer");
-      x.className = "show";
-    
+      x.className = "show";    
       setTimeout(()=>{ x.className = x.className.replace("show", ""); }, 3000);
     }
 
@@ -116,7 +114,8 @@ const StudentDashboard = () => {
         closeAddToTask()
         setsnacksBarBody('Task Added Successfully!')
         dispatch(fetchStudent(res.data))
-        console.log(res.data)
+        taskBody.value = ''
+        taskTime.value = ''
         setsnacksBarType('info')
         showSnackBar()
       })
@@ -155,7 +154,7 @@ const StudentDashboard = () => {
                 <div class="popup p-4" id="popup">
                     <button type="button" class="btn-close ms-auto d-block my-2" onClick={closeAddToTask} aria-label="Close"></button>
                     <textarea name="taskBody" id="taskBody" className='w-100' rows="10" placeholder='Add Task ...'></textarea>
-                    <input type="datetime-local" name="" className='form-control' id="taskTime" />
+                    <input type="datetime-local" name="" className='form-control'  id="taskTime" />
                     <button type="button" disabled={addingTask?true:false} id="button1" onClick={addToTasks}>{addingTask?'Adding':'Add Task'}</button>
                 </div>
               </div>
