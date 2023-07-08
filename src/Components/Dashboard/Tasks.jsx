@@ -1,18 +1,20 @@
 import axios from 'axios'
 import React from 'react'
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
+import { fetchStudent, setFetched } from '../../redux/studentInformation'
 
 
 const Tasks = ({task, date, empty, wholeTask, index}) => {
   let studentInfo = useSelector((state)=>state.studentInformation.studentInformation);
+  let dispatch = useDispatch();
   const deleteTask = ()=>{
     let endpoint = 'http://localhost:7777/student/deletetask'
-    axios.post(endpoint, {class: Number(studentInfo.class), email: studentInfo.email, wholeTask})
+    axios.post(endpoint, {token: localStorage.getItem('token'), wholeTask})
     .then((res)=>{
       console.log(res.data);
+      dispatch(fetchStudent(res.data))
     })
     .catch((error)=>{
-      
       console.log(error);
     })
   }
