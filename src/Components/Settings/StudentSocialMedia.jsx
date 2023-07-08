@@ -21,12 +21,12 @@ const StudentSocialMedia = () => {
         'links.twitterlink': twitterlink,
         'links.facebooklink': facebooklink,
         'links.whatsapplink': whatsapplink,
-        'links.otherlink': otherlink
+        'links.otherlink': otherlink,
       }
       let endpoint = 'http://localhost:7777/student/updateinfo'
       try {
-       const upload = await axios.post(endpoint, details)
-       console.log(res);
+       const upload = await axios.post(endpoint, {details, token: localStorage.token})
+       console.log(upload);
       } catch (error) {
        console.log(error);
       }

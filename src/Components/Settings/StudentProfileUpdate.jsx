@@ -22,13 +22,21 @@ const ErrorPage = () => {
       },
       onSubmit: async(values)=>{
         let endpoint = 'http://localhost:7777/student/updateinfo'
-        try {
-          const update = await axios.post(endpoint, {...values, token})
-          console.log(update)
-          dispatch(fetchStudent(update.data))
-        } catch (error) {
+        // const update = await axios.post(endpoint, {...values, token})
+        axios.post(endpoint, {...values, token})
+        .then((res)=>{
+          console.log(res)
+          if(res.status==200){
+            dispatch(fetchStudent(res.data))
+          } else {
+            console.log(res)
+          }
+        })
+        .catch((error)=>{
           console.log(error)
-        }
+        })
+        
+        // update.status==200?dispatch(fetchStudent(update.data)):console.log(update)
       }
     })
   return (

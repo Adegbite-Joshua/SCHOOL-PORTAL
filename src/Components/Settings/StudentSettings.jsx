@@ -31,13 +31,13 @@ const StudentSettings = () => {
     const fetchStudentInformation =()=>{
       if(Object.keys(studentInfo).length === 0 && studentInfo.constructor === Object){
         dispatch(setFetched(true))
-        let endpoint = 'http://localhost:7777/student/dashboard'
-        let details = {
-          class: Number(localStorage.getItem('studentclass')),
-          password: localStorage.getItem('studentpassword'),
-          matricNumber: localStorage.getItem('studentmatric')
-        }
-        axios.post(endpoint, details)
+        let endpoint = 'http://localhost:7777/student/dashboard';
+        let token = localStorage.getItem('token')
+        axios.get(endpoint, {headers : {
+          "Authorization": `Bearer ${token}`,
+          "Content-Toe": "application/json",
+          "Accept": "application/json"
+        }})  
         .then((res)=>{
           if (res.status==200) {
             dispatch(fetchStudent(res.data))
@@ -48,6 +48,7 @@ const StudentSettings = () => {
         })
       }
     }
+
     const validateStudent =()=>{
       let token = localStorage.token
       let validateEndpoint = 'http://localhost:7777/student/validatedashboard'

@@ -33,34 +33,7 @@ const StudentSubject = () => {
             }
         })
     }
-    const myArray = [
-        {name: 'one', index:0},
-        {name: 'two', index:1},
-        {name: 'three', index:3}
-    ]
-    let match = false
-    for (let i = 0; i < 12; i++) {
-        myArray.filter(user=>{
-            if (user.index == i) {
-                console.log(`${user.name} is found`);
-                return
-            }
-        })
-    }
-    // console.log(addedSubjects);
-    // addedSubjects.map((subject, index)=>{
-    //     if (unAddedSubjects.includes(subject.subjectIndex)) {
-    //         unAddedSubjects.splice(subject.subjectIndex,1)
-    //     }
-    // })
-    // for (let i = 0; i < 11; i++) {
-    //     if (addedSubjects[i] && unAddedSubjects.includes(addedSubjects[i].subjectIndex)) {
-    //         unAddedSubjects.splice(i,1)
-    //     }
-    // }
-    console.log(addedSubjects);
-    console.log(unAddedSubjects);
-    console.log(newUn);
+  
   return (
     <>
         <div className='w-100 px-4'>
