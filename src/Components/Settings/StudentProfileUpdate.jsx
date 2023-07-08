@@ -1,27 +1,31 @@
 import { useFormik } from 'formik'
 import React from 'react'
 import axios from 'axios'
-import { useSelector } from 'react-redux';
+import { fetchStudent, setFetched } from '../../redux/studentInformation'
+import {useSelector, useDispatch} from 'react-redux'
 
 
 const ErrorPage = () => {
     // document.querySelector("title").innerText = `404 - Error Page`
     let studentInfo = useSelector((state)=>state.studentInformation.studentInformation);
+    const  token = localStorage.token
+    let dispatch = useDispatch();
     const formik = useFormik({
       initialValues:{
         firstName: studentInfo.firstName,
         lastName: studentInfo.lastName,
         phoneNumber: studentInfo.phoneNumber,
         email: studentInfo.email,
-        address: '',
-        localGovernment: '',
-        state: ''
+        address: studentInfo.address,
+        localGovernment:  studentInfo.localGovernment,
+        state: studentInfo.state
       },
       onSubmit: async(values)=>{
         let endpoint = 'http://localhost:7777/student/updateinfo'
         try {
-          const upload = await axios.post(endpoint, values)
-          console.log(res);
+          const update = await axios.post(endpoint, {...values, token})
+          console.log(update)
+          dispatch(fetchStudent(update.data))
         } catch (error) {
           console.log(error)
         }
