@@ -6,7 +6,7 @@ import axios from 'axios'
 
 
 
-const InboxMainDiv = ({func, category, individualEmail, mainindex, partner}) => {
+const InboxMainDiv = ({func, partner}) => {
     useEffect(() => {
         // console.log(document.getElementById("messageContainer").scrollHeight)
         document.getElementById("messageContainer").scrollTop = document.getElementById("messageContainer").scrollHeight
@@ -25,8 +25,7 @@ const InboxMainDiv = ({func, category, individualEmail, mainindex, partner}) => 
             message: document.getElementById('message').value,
             senderId: studentInfo._id
         }
-        console.log(messageDetails);
-        // let endpoint = 'http://localhost:7777/student/sendmessage'
+        let endpoint = 'http://localhost:7777/student/sendmessage'
         // axios.post(endpoint, messageDetails)
         // .then((res)=>{
         //     console.log(res);

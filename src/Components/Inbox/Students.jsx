@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import OnlineStudents from './OnlineStudents'
+import OnlinePeople from './OnlineStudents'
 import {useSelector} from 'react-redux'
 
 
@@ -17,7 +17,7 @@ const Students = ({func}) => {
                 <option value="5">SSS 3</option>
             </select>
         {allStudents[viewing]?allStudents[viewing].map((student, index) =>(
-            <OnlineStudents func={func} id={student._id} name={`${student.firstName} ${student.lastName}`}/>
+            <OnlinePeople func={func} id={student._id} name={`${student.firstName} ${student.lastName}`}/>
         )): ''}
     </>
   )

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import OnlineStudents from './OnlineStudents'
+import OnlinePeople from './OnlineStudents'
 import {useSelector} from 'react-redux'
 
 
@@ -19,7 +19,7 @@ const Staffs = ({func}) => {
         </select>
         {allStaffs[viewing]?allStaffs[viewing].map((staff, index)=>(
             <>
-                <OnlineStudents func={func} clas={viewing} email={staff.email} name={`${staff.firstName} ${staff.lastName}`}/>
+                <OnlinePeople func={func} id={staff._id} email={staff.email} name={`${staff.firstName} ${staff.lastName}`}/>
             </>
         )):''}
     </>

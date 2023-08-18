@@ -91,17 +91,26 @@ const StudentInbox = () => {
       validateStudent()
       fetchAll()
     }, [])
-    const [category, setcategory] = useState('')
+    const [partnerClass, setpartnerClass] = useState('')
     const [mainindex, setmainindex] = useState('')
-    const [individualEmail, setindividualEmail] = useState('')
+    const [partnerId, setpartnerId] = useState('')
     const [partnerName, setpartnerName] = useState('')
 
 
-    const setAll =(cat, main, ind, partner)=>{
-      setcategory(cat)
-      setmainindex(main)
-      setindividualEmail(ind)
-      setpartnerName(partner)
+    const setAll =(partnerName, partnerId)=>{
+      setpartnerId(partnerId)
+      setpartnerName(partnerName)
+      let chatId = {
+        firstId: partnerId,
+        secondId: studentInfo._id
+      }
+      axios.post('http://localhost:7777/student/createchat', chatId)
+      .then((res)=>{
+        console.log(res);
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
     }
   return (
     <>
@@ -109,7 +118,7 @@ const StudentInbox = () => {
             <StudentSideNav/>
             {fetching==true && (<Loader/>)}
             {fetching==false && (<>
-            <InboxMainDiv category={category} mainindex={mainindex} func={toggleSideNav} partner={partnerName}/>
+            <InboxMainDiv  func={toggleSideNav} partner={partnerName}/>
             <OtherStudents  func={toggleSideNav} func2={setAll}/></>)}
         </div>
     </>
