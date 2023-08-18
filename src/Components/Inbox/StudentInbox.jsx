@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import InboxMainDiv from './InboxMainDiv'
 import OtherStudents from './OtherStudents'
 import StudentSideNav from '../StudentNav/StudentSideNav'
@@ -95,7 +95,8 @@ const StudentInbox = () => {
     const [mainindex, setmainindex] = useState('')
     const [partnerId, setpartnerId] = useState('')
     const [partnerName, setpartnerName] = useState('')
-
+    const [partnerCommonId, setpartnerCommonId] = useState('')
+    
 
     const setAll =(partnerName, partnerId)=>{
       setpartnerId(partnerId)
@@ -105,6 +106,28 @@ const StudentInbox = () => {
         secondId: studentInfo._id
       }
       axios.post('http://localhost:7777/student/createchat', chatId)
+      .then((res)=>{
+        setpartnerCommonId(res.data._id)
+        fetchChatId()
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
+    }
+
+    const fetchChatId = useCallback(()=>{
+      axios.post('http://localhost:7777/student/createchat', chatId)
+      .then((res)=>{
+        setpartnerCommonId(res.data._id);
+        fetchMessages();
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
+    }, [partnerCommonId])
+
+    const fetchMessages = () =>{
+      axios.post('http://localhost:7777/student/getmessage', partnerCommonId)
       .then((res)=>{
         console.log(res);
       })
