@@ -22,10 +22,6 @@ import {useSelector} from 'react-redux'
 
 function App() {
   let token = localStorage.token
-  let socketIO = useSelector((state)=>state.socketIO.socket);
-  socketIO.on('connect', ()=>{
-    console.log('Socket connected')
-  })
   // socke = socketIO
   return (
     <>      

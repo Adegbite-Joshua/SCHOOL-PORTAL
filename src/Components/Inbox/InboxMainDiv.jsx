@@ -20,27 +20,20 @@ const InboxMainDiv = ({func, category, individualEmail, mainindex, partner}) => 
     const sendMessage =()=>{
         console.log(studentInfo);
         let messageDetails = {
-            messageSenderClass: studentInfo.class,
-            messageSenderEmail: studentInfo.email,
-            messageSenderName: `${studentInfo.firstName} ${studentInfo.lastName}`,
-            receiverRelationship: category==1?'staff':'student',
-            receiverClass: mainindex,
-            receiverEmail: individualEmail,
-            senderRelationship: 'student',
-            senderClass: staffInfo.class,
             messageDate: new Date().toLocaleDateString(),
             messageTime: new Date().toLocaleTimeString(),
-            messageBody: document.getElementById('message').value
+            message: document.getElementById('message').value,
+            senderId: studentInfo._id
         }
         console.log(messageDetails);
-        let endpoint = 'http://localhost:7777/student/sendmessage'
-        axios.post(endpoint, messageDetails)
-        .then((res)=>{
-            console.log(res);
-        })
-        .catch((error)=>{
-            console.log(error);
-        })
+        // let endpoint = 'http://localhost:7777/student/sendmessage'
+        // axios.post(endpoint, messageDetails)
+        // .then((res)=>{
+        //     console.log(res);
+        // })
+        // .catch((error)=>{
+        //     console.log(error);
+        // })
     }
 
     let chattingWithName = ''

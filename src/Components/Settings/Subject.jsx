@@ -1,16 +1,16 @@
 import React from 'react'
 
 
-const ErrorPage = () => {
+const Subject = ({name}) => {
     // document.querySelector("title").innerText = `404 - Error Page`
   return (
     <>
         {/* <div className=''>
           <h4>Mathematics</h4>
         </div> */}
-        <option value='you'>Mathematics</option>
+        <option value='you'>{name}</option>
     </>
   )
 }
 
-export default ErrorPage
+export default Subject

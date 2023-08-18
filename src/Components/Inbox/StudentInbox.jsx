@@ -98,7 +98,6 @@ const StudentInbox = () => {
 
 
     const setAll =(cat, main, ind, partner)=>{
-      console.log(cat, main, ind, partner);
       setcategory(cat)
       setmainindex(main)
       setindividualEmail(ind)
@@ -110,7 +109,7 @@ const StudentInbox = () => {
             <StudentSideNav/>
             {fetching==true && (<Loader/>)}
             {fetching==false && (<>
-            <InboxMainDiv category={category} mainindex={mainindex} individualEmail={individualEmail} func={toggleSideNav} partner={partnerName}/>
+            <InboxMainDiv category={category} mainindex={mainindex} func={toggleSideNav} partner={partnerName}/>
             <OtherStudents  func={toggleSideNav} func2={setAll}/></>)}
         </div>
     </>

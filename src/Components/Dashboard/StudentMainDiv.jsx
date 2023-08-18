@@ -36,7 +36,6 @@ const StudentMainDiv = ({welcomeNote}) => {
     // console.log(studentSubject)
     announcement = studentInfo?studentInfo.announcements.filter((annouce, index)=>index<=3):''
   }
- 
   return (
     <>
         <div className="StudentMainDiv p-4">
@@ -45,7 +44,12 @@ const StudentMainDiv = ({welcomeNote}) => {
             {/* <img src="/vite.svg"  alt="" /> */}
             
             <p style={{display: 'inline'}}><h4 className='d-inline'>Hi {studentInfo.firstName}</h4> {welcomeNote}</p>
-            <button className='btn btn-warning'>Profile</button>
+            <p>Matric Number: {studentInfo.entranceTest.score!=''||studentInfo.entranceTest.score!=undefined?studentInfo.matricNumber:'You need to take your entrance test'}</p>
+            {studentInfo.entranceTest.score==''||studentInfo.entranceTest.score==undefined?
+              <button className='btn btn-warning d-block my-2'>Take Entrance Test</button>
+            :''}
+            <button className='btn btn-warning '>Profile</button>
+            
           </div>
           <div className="w-100 p-2">
             <h4 className='ms-4'>Your Subjects <Link className='float-end me-4' to='/subjects'>See All</Link></h4>
