@@ -91,11 +91,10 @@ const StudentInbox = () => {
       validateStudent()
       fetchAll()
     }, [])
-    const [partnerClass, setpartnerClass] = useState('')
-    const [mainindex, setmainindex] = useState('')
     const [partnerId, setpartnerId] = useState('')
     const [partnerName, setpartnerName] = useState('')
     const [partnerCommonId, setpartnerCommonId] = useState('')
+    const [messages, setmessages] = useState([])
     let chatId = {};
 
     const setAll =(partnerName, partnerId)=>{
@@ -109,6 +108,7 @@ const StudentInbox = () => {
       .then((res)=>{
         console.log(res.data);
         setpartnerCommonId(res.data.created._id)
+        setmessages(res.data.chats)
         // fetchChatId()
       })
       .catch((error)=>{
@@ -142,7 +142,7 @@ const StudentInbox = () => {
             <StudentSideNav/>
             {fetching==true && (<Loader/>)}
             {fetching==false && (<>
-            <InboxMainDiv  func={toggleSideNav} partner={partnerName}/>
+            <InboxMainDiv messages={messages} func={toggleSideNav} partner={partnerName}/>
             <OtherStudents  func={toggleSideNav} func2={setAll}/></>)}
         </div>
     </>
