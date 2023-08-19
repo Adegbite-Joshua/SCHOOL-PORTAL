@@ -96,19 +96,20 @@ const StudentInbox = () => {
     const [partnerId, setpartnerId] = useState('')
     const [partnerName, setpartnerName] = useState('')
     const [partnerCommonId, setpartnerCommonId] = useState('')
-    
+    let chatId = {};
 
     const setAll =(partnerName, partnerId)=>{
       setpartnerId(partnerId)
       setpartnerName(partnerName)
-      let chatId = {
+      chatId = {
         firstId: partnerId,
         secondId: studentInfo._id
       }
       axios.post('http://localhost:7777/student/createchat', chatId)
       .then((res)=>{
-        setpartnerCommonId(res.data._id)
-        fetchChatId()
+        console.log(res.data);
+        setpartnerCommonId(res.data.created._id)
+        // fetchChatId()
       })
       .catch((error)=>{
         console.log(error);
@@ -119,7 +120,7 @@ const StudentInbox = () => {
       axios.post('http://localhost:7777/student/createchat', chatId)
       .then((res)=>{
         setpartnerCommonId(res.data._id);
-        fetchMessages();
+        // fetchMessages();
       })
       .catch((error)=>{
         console.log(error);

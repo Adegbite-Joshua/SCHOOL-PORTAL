@@ -9,27 +9,30 @@ import axios from 'axios'
 import { fetchStudent, setFetched } from '../../redux/studentInformation'
 import Loader from '../../Loader'
 import SnackBar from '../../SnackBar'
-import socketClient from 'socket.io-client'
+import socketConnect from '../../CustomHooks/socketConnect'
+import io from 'socket.io-client';
+import useSocketConnection from '../../CustomHooks/useSocketConnection'
+
 
 
 const StudentDashboard = () => {
-  let dispatch = useDispatch();
-  const navigate = useNavigate();
-  const [addingTask, setaddingTask] = useState(false)
-  document.querySelector("title").innerText = `Dashboard`
+    let dispatch = useDispatch();
+    const navigate = useNavigate();
+    const [addingTask, setaddingTask] = useState(false);
+    document.querySelector("title").innerText = `Dashboard`;
     let values = useParams()
-    console.log(values);
     let studentInfo = useSelector((state)=>state.studentInformation.studentInformation);
     let fetching = useSelector((state)=>state.studentInformation.studentFetchingState);
     const socket = useRef()
 
+
+    // const useSoc = useSocketConnection('http://localhost:7777')
     const getInfo =()=>{
       fetchStudentInformation()
     }
     useEffect(() => {
       getInfo()
       validateStudent()
-      socket.current = socketClient('http://localhost:7777/')
     }, [])
 
     const fetchStudentInformation =()=>{
@@ -70,7 +73,9 @@ const StudentDashboard = () => {
         console.log(res);
         if (res.status != 200) {
           navigate('/signin')
+          // const connect = socketConnect('http://localhost:7777/student');
         }
+
       })
       .catch((error)=>{
         navigate('/signin')
