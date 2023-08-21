@@ -21,6 +21,9 @@ const StudentInbox = () => {
     let allStaffs = useSelector((state)=>state.studentInformation.allStaffs);
     let allStudents = useSelector((state)=>state.studentInformation.allStudents);
     let fetching = useSelector((state)=>state.studentInformation.studentFetchingState);
+    let socket = useSelector((state)=>state.socketIO.socket);
+
+
     const fetchAll =()=>{
       let studentEndpoint = 'http://localhost:7777/student/allstudents'
       let staffEndPoint = 'http://localhost:7777/student/allstaffs'
@@ -94,7 +97,9 @@ const StudentInbox = () => {
     const [partnerId, setpartnerId] = useState('')
     const [partnerName, setpartnerName] = useState('')
     const [partnerCommonId, setpartnerCommonId] = useState('')
-    const [messages, setmessages] = useState([])
+    const [messages, setmessages] = useState([]);
+    const [allMessages, setallMessages] = useState({})
+
     let chatId = {};
 
     const setAll =(partnerName, partnerId)=>{
@@ -104,16 +109,21 @@ const StudentInbox = () => {
         firstId: partnerId,
         secondId: studentInfo._id
       }
-      axios.post('http://localhost:7777/student/createchat', chatId)
-      .then((res)=>{
-        console.log(res.data);
-        setpartnerCommonId(res.data.created._id)
-        setmessages(res.data.chats)
-        // fetchChatId()
-      })
-      .catch((error)=>{
-        console.log(error);
-      })
+      if (!allMessages[partnerCommonId]) {
+        axios.post('http://localhost:7777/student/createchat', chatId)
+        .then((res)=>{
+          console.log(res.data);
+          setpartnerCommonId(res.data.created._id)
+          setmessages(res.data.chats)
+          let newAll = allMessages
+          newAll[res.data.created._id] = res.data.chats
+          setallMessages(newAll)
+          // fetchChatId()
+        })
+        .catch((error)=>{
+          console.log(error);
+        })
+      }
     }
 
     const fetchChatId = useCallback(()=>{
@@ -136,14 +146,42 @@ const StudentInbox = () => {
         console.log(error);
       })
     }
+
+    const sendMessage =(message)=>{
+      console.log(studentInfo);
+      let messageDetails = {
+          messageDate: new Date().toLocaleDateString(),
+          messageTime: new Date().toLocaleTimeString(),
+          message,
+          // senderId: 'jkfjkjfdj',
+          senderId: studentInfo._id,
+          partnerCommonId: partnerCommonId 
+      }
+      let endpoint = 'http://localhost:7777/student/sendmessage'
+      socket.emit('sendMessage', messageDetails)
+      let newAll = allMessages
+      newAll[partnerCommonId] = [...messages, messageDetails]
+      setallMessages(newAll)
+      console.log(messageDetails);
+      console.log(allMessages);
+      // axios.post(endpoint, messageDetails)
+      // .then((res)=>{
+      //     console.log(res);
+      // })
+      // .catch((error)=>{
+      //     console.log(error);
+      // })
+    }
+   
   return (
     <>
         <div className='d-flex w-100 overflow-hidden'>
             <StudentSideNav/>
-            {fetching==true && (<Loader/>)}
-            {fetching==false && (<>
-            <InboxMainDiv messages={messages} func={toggleSideNav} partner={partnerName}/>
-            <OtherStudents  func={toggleSideNav} func2={setAll}/></>)}
+            {/* {fetching==true && (<Loader/>)}
+            {fetching==false && (<> */}
+              <InboxMainDiv messages={messages} func={toggleSideNav} sendMessage={sendMessage} partnerName={partnerName} partnerCommonId={partnerCommonId} />
+              <OtherStudents  func={toggleSideNav} func2={setAll}/>
+            {/* </>)} */}
         </div>
     </>
   )

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import ReceiverMessage from './ReceiverMessage'
 import SenderMessage from './SenderMessage'
 import {useSelector, useDispatch} from 'react-redux'
@@ -6,7 +6,7 @@ import axios from 'axios'
 
 
 
-const InboxMainDiv = ({func, partnerId, messages}) => {
+const InboxMainDiv = ({func, partnerName, messages, partnerCommonId, sendMessage}) => {
     useEffect(() => {
         // console.log(document.getElementById("messageContainer").scrollHeight)
         document.getElementById("messageContainer").scrollTop = document.getElementById("messageContainer").scrollHeight
@@ -16,24 +16,7 @@ const InboxMainDiv = ({func, partnerId, messages}) => {
     let allStaffs = useSelector((state)=>state.studentInformation.allStaffs);    
     let allStudents = useSelector((state)=>state.studentInformation.allStudents);    
     let fetching = useSelector((state)=>state.studentInformation.staffFetchingState);
-
-    const sendMessage =()=>{
-        console.log(studentInfo);
-        let messageDetails = {
-            messageDate: new Date().toLocaleDateString(),
-            messageTime: new Date().toLocaleTimeString(),
-            message: document.getElementById('message').value,
-            senderId: studentInfo._id
-        }
-        let endpoint = 'http://localhost:7777/student/sendmessage'
-        // axios.post(endpoint, messageDetails)
-        // .then((res)=>{
-        //     console.log(res);
-        // })
-        // .catch((error)=>{
-        //     console.log(error);
-        // })
-    }
+    const [messageInput, setmessageInput] = useState('')
 
     let chattingWithName = ''
     // const showPartnerName =()=>{
@@ -52,7 +35,7 @@ const InboxMainDiv = ({func, partnerId, messages}) => {
         <div className='InboxMainDiv p-5 position-relative topSpace'>
             <h3 className='position-sticky top-0 text-center'>Adegbite Joshua <span id='toggleIcon' onClick={func} className='float-end border-2 p-2 rounded-3'><i className='fas fa-bars'></i></span></h3>
             <div id='messageContainer' className='messageContainer'>                
-                {partnerId?studentInfo.messages.map((message, index)=>(
+                {partnerName?studentInfo.messages.map((message, index)=>(
                     <>
                         <SenderMessage messageBody={message} message={message.messageBody} time={`Date: ${message.messageDate} Time: ${message.messageTime}`}/> {/* src={message.senderRelationship=='student'?allStudents[0].find((student)=>student.class==message.senderClass):'vite.svg'} */}
                     </>
@@ -63,10 +46,10 @@ const InboxMainDiv = ({func, partnerId, messages}) => {
                 </>}                    
             </div>
             <div id='sendContainer'>
-                <p className='text-center fw-bold'>{partnerId?partnerId:'Select A Name'}</p>
+                <p className='text-center fw-bold'>{partnerName?partnerName:'Select A Name'}</p>
                 <div>
-                    <input type="text" id='message' className='form-control my-2' />
-                    <button onClick={sendMessage} className='btn btn-info my-2'>Send Message</button>
+                    <input type="text" id='message' onChange={(e)=>setmessageInput(e.value)} className='form-control my-2' />
+                    <button onClick={()=>sendMessage(messageInput)} className='btn btn-info my-2'>Send Message</button>
                 </div>
             </div>
         {/* {document.getElementById("messageContainer").onscroll = measure} */}
