@@ -23,7 +23,7 @@ const StudentDashboard = () => {
     let values = useParams()
     let studentInfo = useSelector((state)=>state.studentInformation.studentInformation);
     let fetching = useSelector((state)=>state.studentInformation.studentFetchingState);
-    const socket = useRef()
+    let socket = useSelector((state)=>state.socketIO.socket);
 
 
     // const useSoc = useSocketConnection('http://localhost:7777')
@@ -33,6 +33,7 @@ const StudentDashboard = () => {
     useEffect(() => {
       getInfo()
       validateStudent()
+      socket.emit('connectSocketId', studentInfo._id)
     }, [])
 
     const fetchStudentInformation =()=>{

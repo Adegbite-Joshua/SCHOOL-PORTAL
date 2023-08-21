@@ -93,6 +93,8 @@ const StudentInbox = () => {
     useEffect(() => {
       validateStudent()
       fetchAll()
+      socket.emit('connectSocketId', studentInfo._id)
+
     }, [])
     const [partnerId, setpartnerId] = useState('')
     const [partnerName, setpartnerName] = useState('')
@@ -148,7 +150,6 @@ const StudentInbox = () => {
     }
 
     const sendMessage =(message)=>{
-      console.log(studentInfo);
       let messageDetails = {
           messageDate: new Date().toLocaleDateString(),
           messageTime: new Date().toLocaleTimeString(),
@@ -162,7 +163,10 @@ const StudentInbox = () => {
       let newAll = allMessages
       newAll[partnerCommonId] = [...messages, messageDetails]
       setallMessages(newAll)
-      console.log(messageDetails);
+      setallMessages(prevData => ({
+        ...prevData,
+        [messageDetails.partnerCommonId]: [...prevData[messageDetails.partnerCommonId], messageDetails]
+      }));
       console.log(allMessages);
       // axios.post(endpoint, messageDetails)
       // .then((res)=>{
@@ -173,6 +177,17 @@ const StudentInbox = () => {
       // })
     }
    
+    socket.on('getMessage', (messageDetails)=>{
+      let newAll = allMessages
+      newAll[messageDetails.partnerCommonId] = [...messages, messageDetails]
+      setallMessages(newAll)
+      console.log(messageDetails);
+    })
+    socket.on('getNotification', (notificationDetails)=>{
+      console.log(notificationDetails);
+    })
+
+
   return (
     <>
         <div className='d-flex w-100 overflow-hidden'>
@@ -188,3 +203,4 @@ const StudentInbox = () => {
 }
 
 export default StudentInbox
+
