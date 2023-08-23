@@ -90,12 +90,50 @@ const StudentInbox = () => {
         console.log(error);
       })
     }
-    useEffect(() => {
-      validateStudent()
-      fetchAll()
-      socket.emit('connectSocketId', studentInfo._id)
+    // useEffect(() => {
+    //   validateStudent()
+    //   fetchAll()
+    //   socket.emit('connectSocketId', studentInfo._id)
+    //   socket.on('getMessage', (messageDetails)=>{
+    //     let newAll = allMessages
+    //     newAll[messageDetails.partnerCommonId] = [...messages, messageDetails]
+    //     setallMessages(newAll)
+    //     console.log(messageDetails);
+    //     return
+    //   })
+    //   socket.on('getNotification', (notificationDetails)=>{
+    //     console.log(notificationDetails);
+    //   })
+    // }, [socket])
 
-    }, [])
+    useEffect(() => {
+      validateStudent();
+      fetchAll();
+      socket.emit('connectSocketId', studentInfo._id);
+  
+      socket.on('getMessage', (messageDetails) => {
+          setallMessages((prevAllMessages) => {
+              const newAll = { ...prevAllMessages };
+              if (newAll[partnerCommonId]) {
+                  newAll[partnerCommonId] = [...newAll[partnerCommonId], messageDetails];
+              } else {
+                  newAll[partnerCommonId] = [messageDetails];
+              }
+              return newAll;
+          });
+          console.log(allMessages);
+      });
+  
+      socket.on('getNotification', (notificationDetails) => {
+          console.log(notificationDetails);
+      });
+
+      return () => {
+          socket.off('getMessage');
+          socket.off('getNotification');
+      };
+  }, [socket]);
+  
     const [partnerId, setpartnerId] = useState('')
     const [partnerName, setpartnerName] = useState('')
     const [partnerCommonId, setpartnerCommonId] = useState('')
@@ -153,20 +191,21 @@ const StudentInbox = () => {
       let messageDetails = {
           messageDate: new Date().toLocaleDateString(),
           messageTime: new Date().toLocaleTimeString(),
-          message,
-          // senderId: 'jkfjkjfdj',
+          message: message,
           senderId: studentInfo._id,
           partnerCommonId: partnerCommonId 
       }
       let endpoint = 'http://localhost:7777/student/sendmessage'
       socket.emit('sendMessage', messageDetails)
-      let newAll = allMessages
-      newAll[partnerCommonId] = [...messages, messageDetails]
-      setallMessages(newAll)
-      setallMessages(prevData => ({
-        ...prevData,
-        [messageDetails.partnerCommonId]: [...prevData[messageDetails.partnerCommonId], messageDetails]
-      }));
+      setallMessages((prevAllMessages) => {
+          const newAll = { ...prevAllMessages };
+          if (newAll[partnerCommonId]) {
+              newAll[partnerCommonId] = [...newAll[partnerCommonId], messageDetails];
+          } else {
+              newAll[partnerCommonId] = [messageDetails];
+          }
+          return newAll;
+      });
       console.log(allMessages);
       // axios.post(endpoint, messageDetails)
       // .then((res)=>{
@@ -176,16 +215,6 @@ const StudentInbox = () => {
       //     console.log(error);
       // })
     }
-   
-    socket.on('getMessage', (messageDetails)=>{
-      let newAll = allMessages
-      newAll[messageDetails.partnerCommonId] = [...messages, messageDetails]
-      setallMessages(newAll)
-      console.log(messageDetails);
-    })
-    socket.on('getNotification', (notificationDetails)=>{
-      console.log(notificationDetails);
-    })
 
 
   return (

@@ -48,7 +48,7 @@ const InboxMainDiv = ({func, partnerName, messages, partnerCommonId, sendMessage
             <div id='sendContainer'>
                 <p className='text-center fw-bold'>{partnerName?partnerName:'Select A Name'}</p>
                 <div>
-                    <input type="text" id='message' onChange={(e)=>setmessageInput(e.value)} className='form-control my-2' />
+                    <input type="text" id='message' onChange={(e)=>setmessageInput(e.target.value)} className='form-control my-2' />
                     <button onClick={()=>sendMessage(messageInput)} className='btn btn-info my-2'>Send Message</button>
                 </div>
             </div>
