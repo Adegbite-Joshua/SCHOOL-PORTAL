@@ -35,7 +35,13 @@ const StudentInbox = () => {
             password: localStorage.getItem('studentpassword'),
             matricNumber: localStorage.getItem('studentmatric')
           }
-          axios.post(endpoint, details)
+          let token = localStorage.token
+          let validateEndpoint = 'http://localhost:7777/student/validatedashboard'
+          axios.get(validateEndpoint, {headers : {
+            "Authorization": `Bearer ${token}`,
+            "Content-Toe": "application/json",
+            "Accept": "application/json"
+          }})
           .then((res)=>{
             if (res.status==200) {
               dispatch(fetchStudent(res.data))
@@ -121,6 +127,7 @@ const StudentInbox = () => {
               }
               return newAll;
           });
+          console.log(messageDetails);
           console.log(allMessages);
       });
   
@@ -154,10 +161,21 @@ const StudentInbox = () => {
         .then((res)=>{
           console.log(res.data);
           setpartnerCommonId(res.data.created._id)
-          setmessages(res.data.chats)
-          let newAll = allMessages
-          newAll[res.data.created._id] = res.data.chats
-          setallMessages(newAll)
+          // setmessages(res.data.chats)
+          // let newAll = allMessages
+          // newAll[res.data.created._id] = res.data.chats
+          // setallMessages(newAll)
+          setallMessages((prevAllMessages) => {
+              const newAll = { ...prevAllMessages };
+              if (newAll[partnerCommonId]) {
+                  newAll[partnerCommonId] = [...newAll[partnerCommonId], ...res.data.chats];
+              } else {
+                  newAll[partnerCommonId] = [...res.data.chats];
+              }
+              return newAll;
+          });
+        
+          console.log(allMessages);
           // fetchChatId()
         })
         .catch((error)=>{

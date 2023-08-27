@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 
 const useSocketConnection = (serverUrl) => {
+  console.log('sockets')
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
