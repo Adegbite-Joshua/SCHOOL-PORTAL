@@ -8,6 +8,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import axios from 'axios'
 import { fetchAllStaffs, fetchAllStudents, fetchStudent, setFetched } from '../../redux/studentInformation'
 import Loader from '../../Loader'
+import fetchStudentInfo from '../../CustomHooks/fetchStudentInfo'
 
 
 
@@ -22,35 +23,38 @@ const StudentInbox = () => {
     let allStudents = useSelector((state)=>state.studentInformation.allStudents);
     let fetching = useSelector((state)=>state.studentInformation.studentFetchingState);
     let socket = useSelector((state)=>state.socketIO.socket);
+    const [name] = fetchStudentInfo();
+
 
 
     const fetchAll =()=>{
       let studentEndpoint = 'http://localhost:7777/student/allstudents'
       let staffEndPoint = 'http://localhost:7777/student/allstaffs'
-        let endpoint = 'http://localhost:7777/student/dashboard'
-        if(Object.keys(studentInfo).length === 0 && studentInfo.constructor === Object){
-          dispatch(setFetched(true))
-          let details = {
-            class: Number(localStorage.getItem('studentclass')),
-            password: localStorage.getItem('studentpassword'),
-            matricNumber: localStorage.getItem('studentmatric')
-          }
-          let token = localStorage.token
-          let validateEndpoint = 'http://localhost:7777/student/validatedashboard'
-          axios.get(validateEndpoint, {headers : {
-            "Authorization": `Bearer ${token}`,
-            "Content-Toe": "application/json",
-            "Accept": "application/json"
-          }})
-          .then((res)=>{
-            if (res.status==200) {
-              dispatch(fetchStudent(res.data))
-              dispatch(setFetched(false))
-            } else{
-              console.log('error');
-            }
-          })
-        }
+        // let endpoint = 'http://localhost:7777/student/dashboard'
+        // if(Object.keys(studentInfo).length === 0 && studentInfo.constructor === Object){
+        //   dispatch(setFetched(true))
+        //   let details = {
+        //     class: Number(localStorage.getItem('studentclass')),
+        //     password: localStorage.getItem('studentpassword'),
+        //     matricNumber: localStorage.getItem('studentmatric')
+        //   }
+        //   let token = localStorage.token
+        //   let validateEndpoint = 'http://localhost:7777/student/validatedashboard'
+        //   axios.get(validateEndpoint, {headers : {
+        //     "Authorization": `Bearer ${token}`,
+        //     "Content-Toe": "application/json",
+        //     "Accept": "application/json"
+        //   }})
+        //   .then((res)=>{
+        //     if (res.status==200) {
+        //       dispatch(fetchStudent(res.data))
+        //       dispatch(setFetched(false))
+        //     } else{
+        //       console.log('error');
+        //     }
+        //   })
+        // }
+
 
         if(allStaffs.length==0){
           dispatch(setFetched(true))
