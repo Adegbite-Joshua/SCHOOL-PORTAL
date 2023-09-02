@@ -28,9 +28,9 @@ const StudentDashboard = () => {
 
 
     // const useSoc = useSocketConnection('http://localhost:7777')
-    const getInfo =()=>{
-      fetchStudentInformation()
-    }
+    // const getInfo =()=>{
+    //   fetchStudentInformation()
+    // }
     useEffect(() => {
       // getInfo()
       validateStudent()

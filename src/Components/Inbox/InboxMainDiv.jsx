@@ -17,7 +17,7 @@ const InboxMainDiv = ({func, partnerName, messages, partnerCommonId, sendMessage
     let allStudents = useSelector((state)=>state.studentInformation.allStudents);    
     let fetching = useSelector((state)=>state.studentInformation.staffFetchingState);
     const [messageInput, setmessageInput] = useState('')
-
+    console.log(messages);
     let chattingWithName = ''
     // const showPartnerName =()=>{
     //     if(category==0 && mainindex!=''){
@@ -41,7 +41,7 @@ const InboxMainDiv = ({func, partnerName, messages, partnerCommonId, sendMessage
                     </>
                 )):<>
                     <div className='d-flex h-100 w-100 bg-light justify-content-center align-items-center'>
-                        <p>Select A Partner Name</p>
+                        <p>You currently have no message with this user</p>
                     </div>
                 </>}                    
             </div>

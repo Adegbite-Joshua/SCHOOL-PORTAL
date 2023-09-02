@@ -123,12 +123,8 @@ const StudentInbox = () => {
   
       socket.on('getMessage', (messageDetails) => {
           setallMessages((prevAllMessages) => {
-              const newAll = { ...prevAllMessages };
-              if (newAll[partnerCommonId]) {
-                  newAll[partnerCommonId] = [...newAll[partnerCommonId], messageDetails];
-              } else {
-                  newAll[partnerCommonId] = [messageDetails];
-              }
+              let newAll = { ...prevAllMessages };
+              newAll[messageDetails.senderId] = [...newAll[messageDetails.secondId], ...res.data.chats]
               return newAll;
           });
           console.log(messageDetails);
@@ -148,6 +144,7 @@ const StudentInbox = () => {
     const [partnerId, setpartnerId] = useState('')
     const [partnerName, setpartnerName] = useState('')
     const [partnerCommonId, setpartnerCommonId] = useState('')
+    let commonId = ''
     const [messages, setmessages] = useState([]);
     const [allMessages, setallMessages] = useState({})
 
@@ -160,27 +157,19 @@ const StudentInbox = () => {
         firstId: partnerId,
         secondId: studentInfo._id
       }
-      if (!allMessages[partnerCommonId]) {
+      if (allMessages[partnerId]==undefined || allMessages[partnerId]==null) {
         axios.post('http://localhost:7777/student/createchat', chatId)
         .then((res)=>{
-          console.log(res.data);
-          setpartnerCommonId(res.data.created._id)
-          // setmessages(res.data.chats)
-          // let newAll = allMessages
-          // newAll[res.data.created._id] = res.data.chats
-          // setallMessages(newAll)
-          setallMessages((prevAllMessages) => {
-              const newAll = { ...prevAllMessages };
-              if (newAll[partnerCommonId]) {
-                  newAll[partnerCommonId] = [...newAll[partnerCommonId], ...res.data.chats];
-              } else {
-                  newAll[partnerCommonId] = [...res.data.chats];
-              }
+          console.log(res.data.created._id);
+          setpartnerCommonId(res.data.created._id);
+          commonId = partnerId
+          setallMessages(
+            (prevAllMessages) => {
+              let newAll = { ...prevAllMessages };
+              newAll[commonId] = res.data.chats
               return newAll;
-          });
-        
-          console.log(allMessages);
-          // fetchChatId()
+            }
+          );
         })
         .catch((error)=>{
           console.log(error);
@@ -220,15 +209,11 @@ const StudentInbox = () => {
       let endpoint = 'http://localhost:7777/student/sendmessage'
       socket.emit('sendMessage', messageDetails)
       setallMessages((prevAllMessages) => {
-          const newAll = { ...prevAllMessages };
-          if (newAll[partnerCommonId]) {
-              newAll[partnerCommonId] = [...newAll[partnerCommonId], messageDetails];
-          } else {
-              newAll[partnerCommonId] = [messageDetails];
-          }
-          return newAll;
+        let newAll = { ...prevAllMessages };
+        newAll[partnerId] = [...newAll[partnerId], messageDetails]
+        return newAll;
       });
-      console.log(allMessages);
+      // console.log(allMessages);
       // axios.post(endpoint, messageDetails)
       // .then((res)=>{
       //     console.log(res);
@@ -245,7 +230,7 @@ const StudentInbox = () => {
             <StudentSideNav/>
             {/* {fetching==true && (<Loader/>)}
             {fetching==false && (<> */}
-              <InboxMainDiv messages={messages} func={toggleSideNav} sendMessage={sendMessage} partnerName={partnerName} partnerCommonId={partnerCommonId} />
+              <InboxMainDiv messages={allMessages} func={toggleSideNav} sendMessage={sendMessage} partnerName={partnerName} partnerCommonId={partnerCommonId} />
               <OtherStudents  func={toggleSideNav} func2={setAll}/>
             {/* </>)} */}
         </div>
