@@ -60,7 +60,6 @@ const StudentInbox = () => {
           dispatch(setFetched(true))
           axios.get(staffEndPoint)
           .then((res)=>{
-            console.log(res);
             dispatch(fetchAllStaffs(res.data))
             dispatch(setFetched(false))
           })
@@ -119,16 +118,23 @@ const StudentInbox = () => {
     useEffect(() => {
       validateStudent();
       fetchAll();
-      socket.emit('connectSocketId', studentInfo._id);
-  
       socket.on('getMessage', (messageDetails) => {
+        console.log(allMessages)
+        console.log(allMessages[messageDetails.senderId])
+        if(allMessages[messageDetails.senderId].length>=1){
           setallMessages((prevAllMessages) => {
               let newAll = { ...prevAllMessages };
-              newAll[messageDetails.senderId] = [...newAll[messageDetails.secondId], ...res.data.chats]
+              newAll[messageDetails.senderId] = [...newAll[messageDetails.senderId],res.data.chats]
               return newAll;
           });
-          console.log(messageDetails);
-          console.log(allMessages);
+        }
+        // } else {
+        //   setallMessages((prevAllMessages) => {
+        //       let newAll = { ...prevAllMessages };
+        //       newAll[messageDetails.senderId] = [res.data.chats]
+        //       return newAll;
+        //   });
+        // }
       });
   
       socket.on('getNotification', (notificationDetails) => {
@@ -144,7 +150,7 @@ const StudentInbox = () => {
     const [partnerId, setpartnerId] = useState('')
     const [partnerName, setpartnerName] = useState('')
     const [partnerCommonId, setpartnerCommonId] = useState('')
-    let commonId = ''
+    let commonId = '';
     const [messages, setmessages] = useState([]);
     const [allMessages, setallMessages] = useState({})
 
@@ -207,7 +213,7 @@ const StudentInbox = () => {
           partnerCommonId: partnerCommonId 
       }
       let endpoint = 'http://localhost:7777/student/sendmessage'
-      socket.emit('sendMessage', messageDetails)
+      socket.emit('sendMessage', messageDetails, partnerId)
       setallMessages((prevAllMessages) => {
         let newAll = { ...prevAllMessages };
         newAll[partnerId] = [...newAll[partnerId], messageDetails]
