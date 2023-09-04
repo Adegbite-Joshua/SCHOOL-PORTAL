@@ -24,6 +24,13 @@ const StudentInbox = () => {
     let fetching = useSelector((state)=>state.studentInformation.studentFetchingState);
     let socket = useSelector((state)=>state.socketIO.socket);
     const [name] = fetchStudentInfo();
+    const [partnerId, setpartnerId] = useState('')
+    const [partnerName, setpartnerName] = useState('')
+    const [partnerCommonId, setpartnerCommonId] = useState('')
+    let commonId = '';
+    const [messages, setmessages] = useState([]);
+    const [allMessages, setallMessages] = useState({})
+    let chatId = {};
 
 
 
@@ -89,7 +96,7 @@ const StudentInbox = () => {
         "Accept": "application/json"
       }})
       .then((res)=>{
-        console.log(res);
+        // console.log(res);
         if (res.status != 200) {
           navigate('/signin')
         }
@@ -99,62 +106,34 @@ const StudentInbox = () => {
         console.log(error);
       })
     }
-    // useEffect(() => {
-    //   validateStudent()
-    //   fetchAll()
-    //   socket.emit('connectSocketId', studentInfo._id)
-    //   socket.on('getMessage', (messageDetails)=>{
-    //     let newAll = allMessages
-    //     newAll[messageDetails.partnerCommonId] = [...messages, messageDetails]
-    //     setallMessages(newAll)
-    //     console.log(messageDetails);
-    //     return
-    //   })
-    //   socket.on('getNotification', (notificationDetails)=>{
-    //     console.log(notificationDetails);
-    //   })
-    // }, [socket])
+    let date = new Date()
 
     useEffect(() => {
       validateStudent();
       fetchAll();
-      socket.on('getMessage', (messageDetails) => {
-        console.log(allMessages)
-        console.log(allMessages[messageDetails.senderId])
-        if(allMessages[messageDetails.senderId].length>=1){
+
+      const handleMessage = (messageDetails) => {
+        if(allMessages[messageDetails.senderId]!=undefined){
           setallMessages((prevAllMessages) => {
               let newAll = { ...prevAllMessages };
-              newAll[messageDetails.senderId] = [...newAll[messageDetails.senderId],res.data.chats]
+              newAll[messageDetails.senderId] = [...newAll[messageDetails.senderId], messageDetails]
               return newAll;
           });
         }
-        // } else {
-        //   setallMessages((prevAllMessages) => {
-        //       let newAll = { ...prevAllMessages };
-        //       newAll[messageDetails.senderId] = [res.data.chats]
-        //       return newAll;
-        //   });
-        // }
-      });
-  
-      socket.on('getNotification', (notificationDetails) => {
-          console.log(notificationDetails);
-      });
+      };
+
+      const handleNotification = (notificationDetails) => {
+        console.log(notificationDetails);
+      };
+
+      socket.on('getMessage', handleMessage);
+      socket.on('getNotification', handleNotification);
 
       return () => {
           socket.off('getMessage');
           socket.off('getNotification');
       };
-  }, [socket]);
-  
-    const [partnerId, setpartnerId] = useState('')
-    const [partnerName, setpartnerName] = useState('')
-    const [partnerCommonId, setpartnerCommonId] = useState('')
-    let commonId = '';
-    const [messages, setmessages] = useState([]);
-    const [allMessages, setallMessages] = useState({})
-
-    let chatId = {};
+  }, [socket, allMessages]);
 
     const setAll =(partnerName, partnerId)=>{
       setpartnerId(partnerId)
@@ -219,14 +198,6 @@ const StudentInbox = () => {
         newAll[partnerId] = [...newAll[partnerId], messageDetails]
         return newAll;
       });
-      // console.log(allMessages);
-      // axios.post(endpoint, messageDetails)
-      // .then((res)=>{
-      //     console.log(res);
-      // })
-      // .catch((error)=>{
-      //     console.log(error);
-      // })
     }
 
 
@@ -236,7 +207,7 @@ const StudentInbox = () => {
             <StudentSideNav/>
             {/* {fetching==true && (<Loader/>)}
             {fetching==false && (<> */}
-              <InboxMainDiv messages={allMessages} func={toggleSideNav} sendMessage={sendMessage} partnerName={partnerName} partnerCommonId={partnerCommonId} />
+              <InboxMainDiv messages={allMessages[partnerId]} func={toggleSideNav} sendMessage={sendMessage} partnerName={partnerName} partnerCommonId={partnerCommonId} />
               <OtherStudents  func={toggleSideNav} func2={setAll}/>
             {/* </>)} */}
         </div>
