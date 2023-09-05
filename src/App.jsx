@@ -41,6 +41,7 @@ function App() {
           <Route path='/activities' element={<StudentActivity/>}/>
           <Route path='/feepayment' element={<SchoolFeePayment/>} />
           <Route path='/settings' element={<StudentSettings/>} />
+          <Route path='/forgottenpassword/:token' element={<ForgottenPasswordPage/>} />
           <Route path='/forgottenpassword' element={<ForgottenPasswordPage/>} />
           <Route path='/contactus' element={<ContactUsPage/>} />
           <Route path='/aboutus' element={<AboutUsPage/>} />

@@ -1,19 +1,23 @@
-import React from 'react'
-import StudentSideNav from '../StudentNav/StudentSideNav';
+import React from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import LandingNav from '../LandingPage/LandingNav';
+import SendLink from './SendLink';
+import SetNewPassword from './SetNewPassword';
 
 const ForgottenPasswordPage = () => {
-    const forgottenPassword =()=>{
+    const navigate = useNavigate();
+    const params = useParams();
+    const token = params.token;
 
+    if (typeof token === 'undefined' || token === '') {
+        navigate('/signin');
     }
+
     return (
-        <div className='d-flex allWrap'>
-            <StudentSideNav/>
-            <div className="container">
-                <h2>Forgot Password</h2>
-                <p>Are you sure you want to proceed without entering your password? A reset email will be sent to your registered email address.</p>
-                <button className="btn btn-primary" onClick={forgottenPassword}>
-                Proceed
-                </button>
+        <div>
+            <LandingNav />
+            <div className="vh-100 d-flex justify-content-center align-items-center border border-3">
+                {token === undefined ? <SendLink /> : <SetNewPassword />}
             </div>
         </div>
     );
