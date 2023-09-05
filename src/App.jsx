@@ -19,6 +19,7 @@ import ContactUsPage from './Components/ContactUs/ContactUsPage'
 import AboutUsPage from './Components/AboutUs/AboutUsPage'
 import {useSelector} from 'react-redux'
 import SchoolFeePayment from './Components/Payments/SchoolFeePayment'
+import ForgottenPasswordPage from './Components/ForgottenPassword/ForgottenPasswordPage'
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           <Route path='/activities' element={<StudentActivity/>}/>
           <Route path='/feepayment' element={<SchoolFeePayment/>} />
           <Route path='/settings' element={<StudentSettings/>} />
+          <Route path='/forgottenpassword' element={<ForgottenPasswordPage/>} />
           <Route path='/contactus' element={<ContactUsPage/>} />
           <Route path='/aboutus' element={<AboutUsPage/>} />
           <Route path='*' element={<ErrorPage/>}/>

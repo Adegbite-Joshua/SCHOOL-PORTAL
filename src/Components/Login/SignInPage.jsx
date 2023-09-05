@@ -94,6 +94,7 @@ const SignInPage = () => {
                   <label htmlFor="password">Password</label>
                   <input className='form-control my-2' {...formik.getFieldProps('password')} id='password' name='password' type="password" placeholder='Password' />
                   <button type='submit' onClick={formik.handleSubmit} className='btn btn-success w-100 d-block'>Sign In</button>
+                  <Link to='/forgottenpassword'>Forgotten Password?</Link>
                   <Link>Sign Up</Link>
               </form>
             </div>
