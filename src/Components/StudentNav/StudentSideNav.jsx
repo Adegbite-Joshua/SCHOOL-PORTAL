@@ -15,7 +15,7 @@ const StudentSideNav = () => {
             <NavLink to='/inbox'><span id='icon'><i className='d-none fas fa-inbox '></i><span>Inbox</span></span></NavLink>
             <NavLink to='/subjects'><span id='icon'><i className='d-none fas fa-book '></i><span>Subjects</span></span></NavLink>
             <NavLink to='/announcement'><span id='icon'><i className='d-none fas fa-bell '></i><span>Announcements</span></span></NavLink>
-            <NavLink to='/activities'><span id='icon'><i className='d-none fas fa-calendar '></i><span>Activities</span></span></NavLink>
+            <NavLink to='/feepayment'><span id='icon'><i className='d-none fas fa-calendar '></i><span>Activities</span></span></NavLink>
             <NavLink to='/activities'><span id='icon'><i className='d-none fas fa-calendar '></i><span>Payments</span></span></NavLink>
             <NavLink to='/settings'><span id='icon'><i className='d-none fas fa-gear '></i><span>Settings</span></span></NavLink>
             <NavLink to='/'><span id='icon'><i className='d-none fas fa-sign-out '></i><span>Sign Out</span></span></NavLink>    
