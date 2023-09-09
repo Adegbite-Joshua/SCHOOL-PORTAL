@@ -1,10 +1,17 @@
-import React from 'react'
-const SetNewPassword = () => {
+import React, {useEffect} from 'react'
+import NewPasswordForm from './NewPasswordForm'
+import axios from 'axios'
+
+
+const SetNewPasswordForm = () => {
+  useEffect(()=>{
+    axios.post('', {token})
+  },[])
   return (
     <div>
-
+      <NewPasswordForm/>
     </div>
   )
 }
 
-export default SetNewPassword
+export default SetNewPasswordForm;

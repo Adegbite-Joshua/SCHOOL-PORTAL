@@ -17,7 +17,7 @@ const ForgottenPasswordPage = () => {
         <div>
             <LandingNav />
             <div className="vh-100 d-flex justify-content-center align-items-center border border-3">
-                {token === undefined ? <SendLink /> : <SetNewPassword />}
+                {token === undefined ? <SendLink /> : <SetNewPassword token={token} />}
             </div>
         </div>
     );
