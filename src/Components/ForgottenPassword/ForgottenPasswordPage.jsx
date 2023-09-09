@@ -1,14 +1,13 @@
 import React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import LandingNav from '../LandingPage/LandingNav';
 import SendLink from './SendLink';
 import SetNewPassword from './SetNewPassword';
 
 const ForgottenPasswordPage = () => {
     const navigate = useNavigate();
-    const params = useParams();
-    const token = params.token;
-
+    const location = useLocation();
+    const token = new URLSearchParams(location.search).get('token');
     if (typeof token === 'undefined' || token === '') {
         navigate('/signin');
     }
