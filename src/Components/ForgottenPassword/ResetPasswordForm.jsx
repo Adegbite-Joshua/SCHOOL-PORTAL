@@ -31,12 +31,12 @@ const ResetPasswordForm = () => {
       <div className="form-group">
         <label htmlFor="clas">Class</label>
         <select onChange={(e)=>setstudentClass(e.target.value)} required className='form-control my-2'>
-          <option value="0" selected>JSS1</option>
-          <option value="1">JSS2</option>
-          <option value="2">JSS3</option>
-          <option value="3">SSS1</option>
-          <option value="4">SSS2</option>
-          <option value="5">SSS3</option>
+          <option value={0} selected>JSS1</option>
+          <option value={1}>JSS2</option>
+          <option value={2}>JSS3</option>
+          <option value={3}>SSS1</option>
+          <option value={4}>SSS2</option>
+          <option value={5}>SSS3</option>
         </select>
         <label htmlFor="email">Email address:</label>
         <input

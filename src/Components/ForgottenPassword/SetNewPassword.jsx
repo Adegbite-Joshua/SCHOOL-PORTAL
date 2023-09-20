@@ -1,11 +1,12 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import NewPasswordForm from './NewPasswordForm'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 
 
-const SetNewPasswordForm = ({}) => {
+const SetNewPasswordForm = ({token}) => {
   const navigate = useNavigate();
+  const [userDetails, setuserDetails] = useState({})
   
 
   useEffect(()=>{
@@ -15,7 +16,9 @@ const SetNewPasswordForm = ({}) => {
       if(res.status==203){
         alert('Invalid or expired token')
         navigate('/signin')
+        return;
       }
+      setuserDetails(res.data.result)
     })
     .catch((error)=>{
       console.log(error)
@@ -23,7 +26,7 @@ const SetNewPasswordForm = ({}) => {
   },[])
   return (
     <div>
-      <NewPasswordForm/>
+      <NewPasswordForm userDetails={userDetails} />
     </div>
   )
 }

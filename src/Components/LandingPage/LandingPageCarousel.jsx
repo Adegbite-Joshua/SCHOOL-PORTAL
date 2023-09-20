@@ -58,7 +58,7 @@ const LandingPageCarousel = () => {
                 </div>
                 <div className='carouselOverlay w-100 h-100 position-absolute d-flex justify-content-center align-items-center ' style={{zIndex: '-8888'}}>
                     <div id='carouselCenter' className='justify-content-center align-items-center'>
-                        <h3 className='text-center text-light'>Our mission is to educate the whole child. <br /> Because evry child desrves a little HOPE...</h3>
+                        <h3 className='text-center text-light'>Our mission is to educate the whole child. <br /> Because every child deserves a little HOPE...</h3>
                     </div>
                 </div>
             </div>
