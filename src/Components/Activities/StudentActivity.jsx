@@ -1,4 +1,5 @@
 import React from 'react'
+import checkStudentFeeStatus from '../../CustomHooks/checkStudentFeeStatus'
 import StudentSideNav from '../StudentNav/StudentSideNav'
 import ActivityMainDiv from './ActivityMainDiv'
 import ActivityOtherSide from './ActivityOtherSide'
@@ -10,8 +11,10 @@ const StudentActivity = () => {
     console.log(number.toLocaleString())
     // console.log(new Date(2023,3))
     const toggleSideNav =()=>{
-      document.getElementById('ActivityOtherSide').classList.toggle('ActivityOtherSide')
-  }
+        document.getElementById('ActivityOtherSide').classList.toggle('ActivityOtherSide')
+    }
+  const [paymentDisplayOption] = checkStudentFeeStatus();
+  paymentDisplayOption=='indebt'?navigate('/feepayment'):'';
   return (
     <>
         <div className="d-flex">

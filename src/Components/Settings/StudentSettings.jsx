@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import checkStudentFeeStatus from '../../CustomHooks/checkStudentFeeStatus'
+import fetchStudentInfo from '../../CustomHooks/fetchStudentInfo'
 import Loader from '../../Loader'
 import { fetchStudent, setFetched } from '../../redux/studentInformation'
 import StudentSideNav from '../StudentNav/StudentSideNav'
@@ -28,26 +30,29 @@ const StudentSettings = () => {
       validateStudent()
     }, [])
     const dispatch = useDispatch()
-    const fetchStudentInformation =()=>{
-      if(Object.keys(studentInfo).length === 0 && studentInfo.constructor === Object){
-        dispatch(setFetched(true))
-        let endpoint = 'http://localhost:7777/student/dashboard';
-        let token = localStorage.getItem('token')
-        axios.get(endpoint, {headers : {
-          "Authorization": `Bearer ${token}`,
-          "Content-Toe": "application/json",
-          "Accept": "application/json"
-        }})  
-        .then((res)=>{
-          if (res.status==200) {
-            dispatch(fetchStudent(res.data))
-            dispatch(setFetched(false))
-          } else{
-            console.log('error');
-          }
-        })
-      }
-    }
+    // const fetchStudentInformation =()=>{
+    //   if(Object.keys(studentInfo).length === 0 && studentInfo.constructor === Object){
+    //     dispatch(setFetched(true))
+    //     let endpoint = 'http://localhost:7777/student/dashboard';
+    //     let token = localStorage.getItem('token')
+    //     axios.get(endpoint, {headers : {
+    //       "Authorization": `Bearer ${token}`,
+    //       "Content-Toe": "application/json",
+    //       "Accept": "application/json"
+    //     }})  
+    //     .then((res)=>{
+    //       if (res.status==200) {
+    //         dispatch(fetchStudent(res.data))
+    //         dispatch(setFetched(false))
+    //       } else{
+    //         console.log('error');
+    //       }
+    //     })
+    //   }
+    // }
+    let [name] = fetchStudentInfo();
+    const [paymentDisplayOption] = checkStudentFeeStatus();
+    paymentDisplayOption=='indebt'?navigate('/feepayment'):'';
 
     const validateStudent =()=>{
       let token = localStorage.token

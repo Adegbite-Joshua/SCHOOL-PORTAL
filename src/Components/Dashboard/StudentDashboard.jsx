@@ -13,6 +13,7 @@ import socketConnect from '../../CustomHooks/socketConnect'
 import io from 'socket.io-client';
 import useSocketConnection from '../../CustomHooks/useSocketConnection'
 import fetchStudentInfo from '../../CustomHooks/fetchStudentInfo'
+import checkStudentFeeStatus from '../../CustomHooks/checkStudentFeeStatus'
 
 
 
@@ -25,6 +26,8 @@ const StudentDashboard = () => {
     let studentInfo = useSelector((state)=>state.studentInformation.studentInformation);
     let fetching = useSelector((state)=>state.studentInformation.studentFetchingState);
     let socket = useSelector((state)=>state.socketIO.socket);
+    const [paymentDisplayOption] = checkStudentFeeStatus();
+    paymentDisplayOption=='indebt'?navigate('/feepayment'):'';
 
 
     // const useSoc = useSocketConnection('http://localhost:7777')
